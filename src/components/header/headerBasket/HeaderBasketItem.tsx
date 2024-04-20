@@ -1,24 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import styles from "./HeaderBasketItem.module.css";
 
-const HeaderBasketItem : React.FunctionComponent<{productName: string, productPrice: number, productColor: string}> = ({productName, productPrice, productColor}) => {
+const HeaderBasketItem: React.FunctionComponent<{ productName: string, productPrice: number, productColor: string, inputId: string, labelId: string }> = ({ productName, productPrice, productColor, inputId, labelId }) => {
+    const [isChecked, setIsChecked] = useState(true);
+
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked);
+    }
     return (
-        <div className="basket-body__item basket-body-item">
-            <div className="basket-body-item__checkbox-block">
-                <input checked id="checkbox-basket" type="checkbox"/>
-                    <label className="basket-body-item__label" htmlFor="checkbox-basket"></label>
+        <div className={styles.basketBody__item}>
+            <div className={styles.basketBodyItem__checkboxBlock}>
+                <input checked={isChecked} onChange={handleCheckboxChange} id={inputId} type="checkbox" />
+                <label className={styles.basketBodyItem__label} htmlFor={labelId}></label>
             </div>
-            <div className="basket-body-item__content">
-                <div className="basket-body-item__image">
+            <div className={styles.basketBodyItem__content}>
+                <div className={styles.basketBodyItem__image}>
                     <a href="#">
-                        <picture><source srcSet="img/basket/image1.webp" type="image/webp"/><img src="img/basket/image1.jpg" alt="product"/></picture>
+                        <picture><source srcSet="img/basket/image1.webp" type="image/webp" /><img src="img/basket/image1.jpg" alt="product" /></picture>
                     </a>
                 </div>
-                <div className="basket-body-item__body">
-                    <div className="basket-body-item__price">{productPrice} грн</div>
-                    <div className="basket-body-item__text">
+                <div className={styles.basketBodyItem__body}>
+                    <div className={styles.basketBodyItem__price}>{productPrice} грн</div>
+                    <div className={styles.basketBodyItem__text}>
                         {productName}
                     </div>
-                    <div className="basket-body-item__info">Колір: {productColor}</div>
+                    <div className={styles.basketBodyItem__info}>Колір: {productColor}</div>
                 </div>
             </div>
         </div>

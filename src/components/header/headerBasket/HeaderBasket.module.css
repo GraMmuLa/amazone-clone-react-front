@@ -1,0 +1,89 @@
+.header__basketWrapper {
+   position: relative;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-orient: horizontal;
+   -webkit-box-direction: reverse;
+   -ms-flex-direction: row-reverse;
+   flex-direction: row-reverse;
+   -webkit-box-align: center;
+   -ms-flex-align: center;
+   align-items: center;
+}
+
+.header__basketBlock {
+   position: relative;
+   display: -webkit-inline-box;
+   display: -ms-inline-flexbox;
+   display: inline-flex;
+   gap: 0.5625rem;
+   -webkit-box-align: center;
+   -ms-flex-align: center;
+   align-items: center;
+}
+
+.header__basketBlock::before {
+   /* content: url("../img/basket/arrow.svg"); */
+   position: absolute;
+   bottom: -2.375rem;
+   left: 0;
+   z-index: 10;
+   visibility: hidden;
+}
+
+.basketBody {
+   position: absolute;
+   top: 4.4rem;
+   right: 0;
+   background-color: #fff;
+   z-index: 3;
+   padding: 1.875rem 0;
+   border-radius: 0 0 1.25rem 1.25rem;
+   width: 27.0625rem;
+   -webkit-box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.4156862745);
+   box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.4156862745);
+   visibility: hidden;
+}
+
+.basketBody::before {
+   content: "";
+   position: absolute;
+   top: -2.1875rem;
+   left: 0;
+   width: 100%;
+   height: 3.125rem;
+   background-color: transparent;
+}
+
+.basketBody__count {
+   font-size: 2rem;
+   line-height: 1.2;
+   margin-left: 1.25rem;
+}
+
+.basketBody__count:not(:last-child) {
+   margin-bottom: 1.125rem;
+}
+
+.header__value {
+   font-size: 2.25rem;
+}
+
+@media (any-hover: hover) {
+   .header__basketBlock:hover::before {
+      visibility: visible;
+   }
+
+   .header__basketBlock:hover+.basketBody {
+      visibility: visible;
+   }
+
+   .basketBody:hover {
+      visibility: visible;
+   }
+
+   .basketBody:hover .header__basketBlock::before {
+      visibility: visible;
+   }
+}
