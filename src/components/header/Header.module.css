@@ -1,0 +1,10 @@
+.header__top {
+   padding: 0.875rem;
+   display: -ms-grid;
+   display: grid;
+   align-items: center;
+   gap: 1.25rem;
+   -ms-grid-columns: 0.377fr 1.12fr 0.377fr;
+   grid-template-columns: 0.377fr 1.12fr 0.377fr;
+   min-height: 4.75rem;
+}

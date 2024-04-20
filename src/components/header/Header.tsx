@@ -1,17 +1,21 @@
-import { HeaderSearch } from "./HeaderSearch";
+import HeaderSearch from "./HeaderSearch";
 import HeaderBasket from "./headerBasket/HeaderBasket";
 import HeaderMenu from "./HeaderMenu";
+import styles from "./Header.module.css";
+import image from "../../logo.svg";
 
 const Header = () => {
     return (
-        <header className="header">
-            <div className="header__container">
-                <div className="header__top">
-                    <a href="" className="header__logo"><img src="img/logo.svg" alt="logo"/></a>
-                    <HeaderSearch/>
-                    <HeaderBasket/>
+        <header className={styles.header}>
+            <div className={styles.header__container}>
+                <div className={styles.header__top}>
+                    <div>
+                        <a href="" className={styles.header__logo}><img src={image} alt="logo" /></a>
+                    </div>
+                    <HeaderSearch />
+                    <HeaderBasket />
                 </div>
-                <HeaderMenu/>
+                <HeaderMenu />
             </div>
         </header>
     );
