@@ -17,7 +17,6 @@ const HeaderBasketItem : React.FunctionComponent<{productName: string, productPr
                     <div className="basket-body-item__price">{productPrice} грн</div>
                     <div className="basket-body-item__text">
                         {productName}
-
                     </div>
                     <div className="basket-body-item__info">Колір: {productColor}</div>
                 </div>

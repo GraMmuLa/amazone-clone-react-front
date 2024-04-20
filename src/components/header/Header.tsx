@@ -1,4 +1,4 @@
-import HeaderSearch from "./HeaderSearch";
+import { HeaderSearch } from "./HeaderSearch";
 import HeaderBasket from "./headerBasket/HeaderBasket";
 import HeaderMenu from "./HeaderMenu";
 
