@@ -1,0 +1,38 @@
+.dayDiscount {
+    margin-top: 80px;
+}
+
+.dayDiscount__top {
+    display: flex;
+    position: relative;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dayDiscount__title {
+    display: inline-block;
+    font-size: 64px;
+    font-weight: 500;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timer__header {
+    display: inline-block;
+    font-size: 40px;
+}
+
+.timer__time {
+    display: inline-block;
+    margin-left: 30px;
+    padding: 10px 20px;
+    font-size: 26px;
+    background: #E0DEE0;
+    color: #767476;
+    font-weight: 700;
+}

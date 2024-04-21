@@ -1,4 +1,7 @@
+import ICategoryImage from "./ICategoryImage";
+
 export default interface ICategory {
     id?: number,
-    name: string
+    name: string,
+    categoryImageId: number
 }

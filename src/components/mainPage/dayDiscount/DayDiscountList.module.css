@@ -1,0 +1,4 @@
+.dayDiscountList {
+    display: flex;
+    flex-wrap: wrap;
+}
