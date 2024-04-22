@@ -1,14 +1,14 @@
-.category {
+.subcategory {
 
 }
 
-.categoryList {
+.subcategoryList {
     display: flex;
     flex-flow: wrap;
     align-items: center;
     justify-content: space-around;
 }
 
-.categoryItem {
+.subcategoryItem {
 
 }
