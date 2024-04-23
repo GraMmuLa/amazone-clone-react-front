@@ -1,0 +1,22 @@
+.footer__column:not(:last-child) {
+   margin-bottom: 1.875rem;
+}
+
+.footer__label {
+   font-size: 1.625rem;
+   font-weight: 500;
+   line-height: 1.2;
+}
+
+.footer__label:not(:last-child) {
+   margin-bottom: 1.25rem;
+}
+
+.footer__menuItem {
+   font-size: 1.375rem;
+   line-height: 1.2;
+}
+
+.footer__menuItem:not(:last-child) {
+   margin-bottom: 0.875rem;
+}

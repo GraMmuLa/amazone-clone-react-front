@@ -1,3 +1,9 @@
+.header__container {
+   max-width: 1720px;
+   margin: 0 auto;
+   padding: 0 15px;
+}
+
 .header__top {
    padding: 0.875rem;
    display: -ms-grid;
