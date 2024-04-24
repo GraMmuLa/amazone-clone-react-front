@@ -1,0 +1,101 @@
+.aside {
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-orient: vertical;
+   -webkit-boxDirection: normal;
+   -ms-flexDirection: column;
+   flex-direction: column;
+   padding: 3.4375rem 2rem 3.4375rem 3rem;
+   border-right: 2px solid #E6E6E6;
+   width: 21.354167%;
+}
+
+.asideMain__allProducts {
+   font-size: 1.375rem;
+}
+
+.asideMain__allProducts:not(:last-child) {
+   margin-bottom: 0.4375rem;
+}
+
+.asideMain__inStock {
+   font-size: 1.375rem;
+}
+
+.asideMain__inStock:not(:last-child) {
+   margin-bottom: 0.4375rem;
+}
+
+.asideMain__wishList {
+   font-size: 1.375rem;
+}
+
+.asideMain__wishList:not(:last-child) {
+   margin-bottom: 1.5625rem;
+}
+
+.asideMain__sections:not(:last-child) {
+   margin-bottom: 1.5625rem;
+}
+
+.asideMain__sectionsLabel {
+   font-size: 1.625rem;
+   font-weight: 500;
+}
+
+.asideMain__sectionsLabel:not(:last-child) {
+   margin-bottom: 0.9375rem;
+}
+
+.asidePrise:not(:last-child) {
+   margin-bottom: 1.5625rem;
+}
+
+.asideDiscount:not(:last-child) {
+   margin-bottom: 1.5625rem;
+}
+
+.asidePrice__label {
+   font-size: 1.625rem;
+   font-weight: 500;
+}
+
+.asidePrice__label:not(:last-child) {
+   margin-bottom: 0.8125rem;
+}
+
+.asidePrice__allPricesLabel {
+   font-size: 1.5rem;
+   font-weight: 500;
+}
+
+.asidePrice__allPricesLabel:not(:last-child) {
+   margin-bottom: 0.5rem;
+}
+
+.asidePrice__allPricesItem:not(:last-child) {
+   margin-bottom: 0.4375rem;
+}
+
+.asideDiscount__label {
+   font-size: 1.625rem;
+   font-weight: 500;
+}
+
+.asideDiscount__label:not(:last-child) {
+   margin-bottom: 0.8125rem;
+}
+
+.asideDiscount__allProductsLabel {
+   font-size: 1.5rem;
+   font-weight: 500;
+}
+
+.asideDiscount__allProductsLabel:not(:last-child) {
+   margin-bottom: 0.5rem;
+}
+
+.asideDiscount__allProductsItem:not(:last-child) {
+   margin-bottom: 0.4375rem;
+}

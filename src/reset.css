@@ -71,3 +71,9 @@ h6 {
 input[type=checkbox] {
    display: none;
 }
+
+[class*=__container] {
+   max-width: 109.375rem;
+   margin: 0 auto;
+   padding: 0 0.9375rem;
+}

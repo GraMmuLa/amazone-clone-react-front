@@ -1,0 +1,25 @@
+.itemOffers {
+   text-align: center;
+}
+
+.itemOffers__image:not(:last-child) {
+   margin-bottom: 1.25rem;
+}
+
+.itemOffers__image a {
+   display: inline-block;
+   border-radius: 50%;
+   overflow: hidden;
+   aspect-ratio: 125/125;
+   background-color: #a0a0a0;
+}
+
+.itemOffers__image img {
+   max-width: 100%;
+   min-width: 125px;
+   min-height: 125px;
+}
+
+.itemOffers__title._active {
+   font-weight: 500;
+}

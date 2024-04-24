@@ -1,0 +1,22 @@
+.offers {
+   padding-top: 1.5rem;
+}
+
+.offers__container {
+   max-width: 89.0625rem;
+}
+
+.offers__container:not(:last-child) {
+   margin-bottom: 1.875rem;
+}
+
+.offers__title {
+   font-size: 2.5rem;
+   font-weight: 500;
+   line-height: 1.2;
+}
+
+.offers__itemsWrapper {
+   background-color: #FAFAFA;
+   padding: 1.5625rem 0;
+}
