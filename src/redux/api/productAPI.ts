@@ -10,6 +10,12 @@ export const productAPI = createApi({
                 url: "/all"
             })
         }),
+        fetchProductByDiscountTypeName: build.query<IProduct[], string>({
+            query: (discountTypeName: string) => ({
+                url: "/discountType",
+                params: {discountTypeName: discountTypeName}
+            })
+        }),
         fetchProduct: build.query<IProduct, number>({
             query: (id: number) => ({
                 url: "",

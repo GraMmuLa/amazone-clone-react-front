@@ -1,0 +1,46 @@
+.discount__img-block {
+    position: relative;
+    cursor: pointer;
+    max-height: 400px;
+    max-width: 300px;
+}
+
+.discount__img {
+    width: 100%;
+    height: 100%;
+}
+
+.discount__discount {
+    color: red;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.discount__discountPercent {
+    color: red;
+    padding: 1px 2px;
+    border: 1px solid red;
+}
+
+.discounts__nav {
+    display: flex;
+    justify-content: center;
+}
+
+.discounts__navItem:not(:last-child) {
+    margin-right: 55px;
+}
+
+.buttonLink {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 32px;
+    color: #959595;
+}
+
+.buttonLinkActive {
+    color: #000000;
+    cursor: auto;
+}

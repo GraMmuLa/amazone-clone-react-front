@@ -2,19 +2,23 @@
     margin-right: 55px;
 }
 
-.dayDiscountItem__img-block {
+.dayDiscountItem__imgBlock {
     position: relative;
-    max-width: 300px;
-    max-height: 400px;
+    width: 300px;
+    height: 400px;
     cursor: pointer;
+    padding-top: calc(100% * (100 / 300));
 }
 
 .dayDiscountItem__img {
+    position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
-.dayDiscountItem__discount-tag {
+.dayDiscountItem__discountTag {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,13 +27,17 @@
     font-weight: 700;
 }
 
+.dayDiscountItem__discountBlock {
+    margin-top: 30px;
+}
+
 .dayDiscountItem__discount {
     color: red;
     font-size: 24px;
     font-weight: 500;
 }
 
-.dayDiscountItem__full-price {
+.dayDiscountItem__fullPrice {
     color: #959595;
     text-decoration: line-through;
     font-size: 16px;
