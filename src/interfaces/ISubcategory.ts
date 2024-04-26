@@ -1,5 +1,5 @@
 export default interface ISubcategory {
-    id?: number,
+    id: number,
     name: string,
     categoryId: number,
     subcategoryImageId: number

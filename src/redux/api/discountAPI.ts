@@ -5,7 +5,7 @@ export const discountAPI = createApi({
     reducerPath: "discountAPI",
     baseQuery: fetchBaseQuery({baseUrl: "http://localhost:8081/discount"}),
     endpoints: (build) => ({
-        fetchDiscounts: build.query<IDiscount, void>({
+        fetchDiscounts: build.query<IDiscount[], void>({
             query: () => ({
                 url: "/all"
             })

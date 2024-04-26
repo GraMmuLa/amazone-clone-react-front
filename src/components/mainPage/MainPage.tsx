@@ -5,19 +5,21 @@ import classes from "./MainPage.module.css"
 import DayDiscount from "./discounts/dayDiscount/DayDiscount";
 import {Wrapper} from "../wrapper/Wrapper";
 import OtherDiscounts from "./discounts/otherDiscounts/OtherDiscounts";
+import AdminPage from "../adminPage/AdminPage";
 
 const MainPage = () => {
     return (
         <>
-            <Wrapper>
-                <Header/>
-            </Wrapper>
-            <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night"/>
-            <Wrapper>
-                <SubcategoryList/>
-                <DayDiscount/>
-                <OtherDiscounts/>
-            </Wrapper>
+            {/*<Wrapper>*/}
+            {/*    <Header/>*/}
+            {/*</Wrapper>*/}
+            {/*<img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night"/>*/}
+            {/*<Wrapper>*/}
+            {/*    <SubcategoryList/>*/}
+            {/*    <DayDiscount/>*/}
+            {/*    /!*<OtherDiscounts/>*!/*/}
+            {/*</Wrapper>*/}
+            <AdminPage/>
         </>
     );
 }

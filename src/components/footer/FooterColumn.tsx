@@ -1,5 +1,5 @@
-import exp from "node:constants";
 import styles from "./FooterColumn.module.css";
+import React from "react";
 
 
 const FooterColumn: React.FunctionComponent<{ links: string[], label: string }> = ({ links, label }) => {

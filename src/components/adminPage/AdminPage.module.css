@@ -1,0 +1,22 @@
+.buttons__nav {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonLink {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 32px;
+    color: #959595;
+}
+
+.buttonLink:not(:last-child) {
+    margin-right: 30px;
+}
+
+.buttonLinkActive {
+    color: #000000;
+    cursor: auto;
+}

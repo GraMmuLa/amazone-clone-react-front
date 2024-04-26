@@ -2,7 +2,7 @@ import React from "react";
 import FooterColumn from "./FooterColumn";
 import styles from "./Footer.module.css";
 
-const Footer = () => {
+const Footer: React.FunctionComponent = () => {
     const footerMenuItems = [
         {
             label: "Знайомтеся з нами",

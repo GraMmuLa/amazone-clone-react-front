@@ -9,6 +9,7 @@ import {discountAPI} from "../api/discountAPI";
 import {productColorAPI} from "../api/productColorAPI";
 import {discountTypeAPI} from "../api/discountTypeAPI";
 import {productColorImageAPI} from "../api/productColorImageAPI";
+import {productTypeAPI} from "../api/productTypeAPI";
 
 const rootReducer = combineReducers({
     categories: categoryReducer,
@@ -16,11 +17,12 @@ const rootReducer = combineReducers({
     [categoryImageAPI.reducerPath]: categoryImageAPI.reducer,
     [subcategoryAPI.reducerPath]: subcategoryAPI.reducer,
     [subcategoryImageAPI.reducerPath]: subcategoryImageAPI.reducer,
+    [productTypeAPI.reducerPath]: productTypeAPI.reducer,
     [productAPI.reducerPath]: productAPI.reducer,
-    [discountAPI.reducerPath]: discountAPI.reducer,
     [productColorAPI.reducerPath]: productColorAPI.reducer,
     [productColorImageAPI.reducerPath]: productColorImageAPI.reducer,
-    [discountTypeAPI.reducerPath]: discountTypeAPI.reducer
+    [discountTypeAPI.reducerPath]: discountTypeAPI.reducer,
+    [discountAPI.reducerPath]: discountAPI.reducer
 });
 
 
@@ -33,11 +35,12 @@ const setupStore = () => {
                 .concat(categoryImageAPI.middleware)
                 .concat(subcategoryAPI.middleware)
                 .concat(subcategoryImageAPI.middleware)
+                .concat(productTypeAPI.middleware)
                 .concat(productAPI.middleware)
-                .concat(discountAPI.middleware)
                 .concat(productColorAPI.middleware)
                 .concat(productColorImageAPI.middleware)
                 .concat(discountTypeAPI.middleware)
+                .concat(discountAPI.middleware)
     });
 }
 
