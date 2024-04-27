@@ -1,6 +1,7 @@
 .buttons__nav {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .buttonLink {
@@ -10,6 +11,7 @@
     background: none;
     font-size: 32px;
     color: #959595;
+    margin: 20px 0;
 }
 
 .buttonLink:not(:last-child) {

@@ -5,18 +5,18 @@ export const productAPI = createApi({
     reducerPath: "productAPI",
     baseQuery: fetchBaseQuery({baseUrl: "http://localhost:8081/product"}),
     endpoints: (build) => ({
-        fetchProducts: build.query<IProduct[], void>({
+        fetchAll: build.query<IProduct[], void>({
             query: () => ({
                 url: "/all"
             })
         }),
-        fetchProductByDiscountTypeName: build.query<IProduct[], string>({
+        fetchAllByDiscountTypeName: build.query<IProduct[], string>({
             query: (discountTypeName: string) => ({
                 url: "/discountType",
                 params: {discountTypeName: discountTypeName}
             })
         }),
-        fetchProduct: build.query<IProduct, number>({
+        fetchById: build.query<IProduct, number>({
             query: (id: number) => ({
                 url: "",
                 params: {id: id}

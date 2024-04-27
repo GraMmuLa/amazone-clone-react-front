@@ -1,42 +1,32 @@
 import HeaderBasketList from "./HeaderBasketList";
 import styles from "./HeaderBasket.module.css";
 import headerBasketImg from "../../../imgs/header/basket.svg"
+import React from "react";
+import IProduct from "../../../interfaces/IProduct";
+import {productAPI} from "../../../redux/api/productAPI";
 
-const HeaderBasket = () => {
+const HeaderBasket: React.FunctionComponent = () => {
 
-    const headerBasketItems = [
-        {
-            productName: "QINSEN  Жіночі міні-сукні з ліфом із квадратним вирізом і довгими рукавами",
-            productPrice: 1539.38,
-            productColor: "Чорний",
-            inputId: "1",
-            labelId: "1",
-        },
-        {
-            productName: "Жіночі чорні шкіряні спідниці з високою талією, облягаючі міні-спідниці",
-            productPrice: 962.86,
-            productColor: "Білий",
-            inputId: "2",
-            labelId: "2",
-        },
-        {
-            productName: "Жіночі чорні шкіряні спідниці з високою талією, облягаючі міні-спідниці",
-            productPrice: 962.86,
-            productColor: "Чорний",
-            inputId: "3",
-            labelId: "3",
-        }
-    ];
+    const {data: products, isLoading} = productAPI.useFetchAllQuery();
 
     return (
         <div className={styles.header__basketWrapper}>
             <a href="" className={styles.header__basketBlock}>
                 <img src={headerBasketImg} alt="basket" />
-                <div className={styles.header__value}>3</div>
+                { isLoading ?
+                    <div>Loading...</div> :
+                    products && <div className={styles.header__value}>{products.length}</div>}
             </a>
             <div className={styles.basketBody}>
-                <div className={styles.basketBody__count}>Ваші товари: <span>{headerBasketItems.length}</span></div>
-                <HeaderBasketList products={headerBasketItems} />
+
+                { isLoading ?
+                    <div>Loading...</div> :
+                    products &&
+                    <>
+                        <div className={styles.basketBody__count}>Ваші товари: <span>{products.length}</span></div>
+                        <HeaderBasketList products={products}/>
+                    </>
+                }
             </div>
         </div>
     );

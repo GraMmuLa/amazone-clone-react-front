@@ -8,7 +8,7 @@ import IProductColor from "../../../../interfaces/IProductColor";
 
 const DayDiscountItem: React.FunctionComponent<{dayDiscount: IProduct}> = ({dayDiscount}) => {
 
-    const {data: productColor, isLoading} = productColorAPI.useFetchProductColorQuery(dayDiscount.productColorsIds[0]);
+    const {data: productColor, isLoading} = productColorAPI.useFetchByIdQuery(dayDiscount.productColorsIds[0]);
 
     return (
         <>
@@ -26,7 +26,7 @@ const DayDiscountItem: React.FunctionComponent<{dayDiscount: IProduct}> = ({dayD
 }
 
 const Image: React.FunctionComponent<{productColor: IProductColor}> = ({productColor}) => {
-    const {data: productColorImage} = productColorImageAPI.useFetchProductColorImageQuery(productColor.mainImageId);
+    const {data: productColorImage} = productColorImageAPI.useFetchByIdQuery(productColor.mainImageId);
 
     return (
         <>
@@ -37,7 +37,7 @@ const Image: React.FunctionComponent<{productColor: IProductColor}> = ({productC
 
 const DiscountTag: React.FunctionComponent<{dayDiscount: IProduct, productColor: IProductColor}> = ({dayDiscount, productColor}) => {
 
-    const {data: discount} = discountAPI.useFetchDiscountQuery(productColor.discountId!);
+    const {data: discount} = discountAPI.useFetchByIdQuery(productColor.discountId!);
 
     const getDiscountPercent = () => {
         if(discount)
@@ -50,7 +50,7 @@ const DiscountTag: React.FunctionComponent<{dayDiscount: IProduct, productColor:
 }
 
 const DiscountBlock: React.FunctionComponent<{dayDiscount: IProduct, productColor: IProductColor}> = ({dayDiscount, productColor}) => {
-    const {data: discount} = discountAPI.useFetchDiscountQuery(productColor.discountId!);
+    const {data: discount} = discountAPI.useFetchByIdQuery(productColor.discountId!);
 
     return (
         <div className={classes.dayDiscountItem__discountBlock}>

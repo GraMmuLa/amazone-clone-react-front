@@ -5,12 +5,12 @@ export const subcategoryImageAPI = createApi({
     reducerPath: "subcategoryImageAPI",
     baseQuery: fetchBaseQuery({baseUrl: "http://localhost:8081/subcategoryImage"}),
     endpoints: (build) =>( {
-        fetchSubcategoryImages: build.query<ISubcategoryImage, void>({
+        fetchAll: build.query<ISubcategoryImage[], void>({
             query: ()=>({
                 url: "/all"
             })
         }),
-        fetchSubcategoryImage: build.query<ISubcategoryImage, number>({
+        fetchById: build.query<ISubcategoryImage, number>({
             query: (id: number) => ({
                 url: "",
                 params: {id: id}

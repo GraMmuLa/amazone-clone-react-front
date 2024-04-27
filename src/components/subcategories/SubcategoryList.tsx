@@ -3,7 +3,7 @@ import SubcategoryCard from "./SubcategoryCard";
 import {subcategoryAPI} from "../../redux/api/subcategoryAPI";
 
 const SubcategoryList = () => {
-    const {data: subcategories} = subcategoryAPI.useFetchSubcategoriesQuery();
+    const {data: subcategories} = subcategoryAPI.useFetchAllQuery();
 
     return (
         <div className={classes.subcategory}>

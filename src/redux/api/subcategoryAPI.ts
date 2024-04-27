@@ -5,12 +5,12 @@ export const subcategoryAPI = createApi({
     reducerPath: "subcategoryAPI",
     baseQuery: fetchBaseQuery({baseUrl: "http://localhost:8081/subcategory"}),
     endpoints: (build) => ({
-        fetchSubcategories: build.query<ISubcategory[], void>({
+        fetchAll: build.query<ISubcategory[], void>({
             query: () => ({
                 url: "/all"
             })
         }),
-        fetchSubcategory: build.query<ISubcategory, number>({
+        fetchById: build.query<ISubcategory, number>({
             query: (id: number) => ({
                 url: "",
                 params: {id: id}

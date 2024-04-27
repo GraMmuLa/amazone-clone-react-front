@@ -6,6 +6,6 @@ export default interface IProduct {
     productTypeId: number,
     mainImageId?: number,
     productColorsIds: number[],
-    //TODO
-    // productReviewsId: number[],
+    productReviewsIds: number[],
+    productDetailValuesIds: number[]
 }

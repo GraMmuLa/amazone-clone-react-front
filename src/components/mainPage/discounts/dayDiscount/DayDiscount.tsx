@@ -10,7 +10,7 @@ const DayDiscount: React.FunctionComponent = () => {
 
     const [sub, setSub] = useState<Date>(new Date(tomorrow.getTime() - new Date().getTime()));
 
-    const {data: products, isLoading} = productAPI.useFetchProductByDiscountTypeNameQuery(Discounts.dayDiscount);
+    const {data: products, isLoading} = productAPI.useFetchAllByDiscountTypeNameQuery(Discounts.dayDiscount);
 
     useEffect(() => {
         const interval = setInterval(() => {

@@ -13,7 +13,7 @@ import {discountAPI} from "../../../../redux/api/discountAPI";
 
 const OtherDiscounts: React.FunctionComponent = () => {
 
-    const {data: discountTypes, isLoading} = discountTypeAPI.useFetchOtherDiscountTypesQuery(Discounts.dayDiscount);
+    const {data: discountTypes, isLoading} = discountTypeAPI.useFetchExceptDiscountTypeNameQuery(Discounts.dayDiscount);
 
     return (
         <Tabs>
@@ -38,7 +38,7 @@ const OtherDiscounts: React.FunctionComponent = () => {
 
 const OtherDiscountsProduct: React.FunctionComponent<{product: IProduct}> = ({product}) => {
 
-    const {data: productColor, isLoading} = productColorAPI.useFetchProductColorQuery(product.productColorsIds[0]);
+    const {data: productColor, isLoading} = productColorAPI.useFetchByIdQuery(product.productColorsIds[0]);
 
     return (
         <>
@@ -55,7 +55,7 @@ const OtherDiscountsProduct: React.FunctionComponent<{product: IProduct}> = ({pr
 }
 
 const Image: React.FunctionComponent<{productColor: IProductColor}> = ({productColor}) => {
-    const {data: productColorImage} = productColorImageAPI.useFetchProductColorImageQuery(productColor.mainImageId);
+    const {data: productColorImage} = productColorImageAPI.useFetchByIdQuery(productColor.mainImageId);
 
     return (
         <>
@@ -65,7 +65,7 @@ const Image: React.FunctionComponent<{productColor: IProductColor}> = ({productC
 }
 
 const DiscountBlock: React.FunctionComponent<{product: IProduct, productColor: IProductColor}> = ({product, productColor}) => {
-    const {data: discount} = discountAPI.useFetchDiscountQuery(productColor.discountId!);
+    const {data: discount} = discountAPI.useFetchByIdQuery(productColor.discountId!);
 
     return (
         <div>
@@ -78,7 +78,7 @@ const DiscountBlock: React.FunctionComponent<{product: IProduct, productColor: I
 
 const OtherDiscountsContent: React.FunctionComponent<{ discountType: IDiscountType }> = ({discountType}) => {
 
-    const {data: products, isLoading} = productAPI.useFetchProductByDiscountTypeNameQuery(discountType.type);
+    const {data: products, isLoading} = productAPI.useFetchAllByDiscountTypeNameQuery(discountType.type);
 
     return (
         <>

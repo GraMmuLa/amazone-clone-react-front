@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import styles from "./HeaderBasketItem.module.css";
+import IProduct from "../../../interfaces/IProduct";
+import {productColorAPI} from "../../../redux/api/productColorAPI";
 
-const HeaderBasketItem: React.FunctionComponent<{ productName: string, productPrice: number, productColor: string, inputId: string, labelId: string }> = ({ productName, productPrice, productColor, inputId, labelId }) => {
+const HeaderBasketItem: React.FunctionComponent<{ product: IProduct }> = ({ product }) => {
+
     const [isChecked, setIsChecked] = useState(true);
 
     const handleCheckboxChange = () => {
         setIsChecked(!isChecked);
     }
+
     return (
         <div className={styles.basketBody__item}>
             <div className={styles.basketBodyItem__checkboxBlock}>
-                <input checked={isChecked} onChange={handleCheckboxChange} id={inputId} type="checkbox" />
-                <label className={styles.basketBodyItem__label} htmlFor={labelId}></label>
+                <input checked={isChecked} onChange={handleCheckboxChange} id={`${product.id}`} type="checkbox" />
+                <label className={styles.basketBodyItem__label} htmlFor={`${product.id}`}></label>
             </div>
             <div className={styles.basketBodyItem__content}>
                 <div className={styles.basketBodyItem__image}>
@@ -20,14 +24,29 @@ const HeaderBasketItem: React.FunctionComponent<{ productName: string, productPr
                     </a>
                 </div>
                 <div className={styles.basketBodyItem__body}>
-                    <div className={styles.basketBodyItem__price}>{productPrice} грн</div>
+                    <div className={styles.basketBodyItem__price}>{product.price} грн</div>
                     <div className={styles.basketBodyItem__text}>
-                        {productName}
+                        {product.name}
                     </div>
-                    <div className={styles.basketBodyItem__info}>Колір: {productColor}</div>
+                    <ProductColor product={product}/>
+
                 </div>
             </div>
         </div>
+    );
+}
+
+const ProductColor: React.FunctionComponent<{product: IProduct}> = ({product}) => {
+
+    const {data: productColor, isLoading} = productColorAPI.useFetchByIdQuery(product.productColorsIds[0]);
+
+    return (
+        <>
+            { isLoading ?
+                <div>Loading...</div> :
+                productColor && <div className={styles.basketBodyItem__info}>{`Колір: ${productColor.color}`}</div>
+            }
+        </>
     );
 }
 

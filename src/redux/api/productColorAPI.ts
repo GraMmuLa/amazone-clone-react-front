@@ -5,12 +5,12 @@ export const productColorAPI = createApi({
     reducerPath: "productColorAPI",
     baseQuery: fetchBaseQuery({baseUrl: "http://localhost:8081/productColor"}),
     endpoints: (build) => ({
-        fetchProductColors: build.query<IProductColor[], void>({
+        fetchAll: build.query<IProductColor[], void>({
             query: () => ({
                 url: "/all"
             })
         }),
-        fetchProductColor: build.query<IProductColor, number>({
+        fetchById: build.query<IProductColor, number>({
             query: (id: number) => ({
                 url: "",
                 params: {id: id}
