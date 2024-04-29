@@ -1,5 +1,5 @@
 export default interface IDiscount {
-    id: number,
+    id?: number,
     period: Date;
     price: number;
     discountTypeId: number;

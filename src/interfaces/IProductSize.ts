@@ -1,5 +1,5 @@
 export default interface IProductSize {
-    id: number,
+    id?: number,
     size: string,
     productColorIds: number[]
 }

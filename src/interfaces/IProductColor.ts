@@ -1,6 +1,6 @@
 
 export default interface IProductColor {
-    id: number;
+    id?: number;
     color: string;
     productId: number;
     discountId?: number;

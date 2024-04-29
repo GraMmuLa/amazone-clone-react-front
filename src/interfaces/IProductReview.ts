@@ -1,5 +1,5 @@
 export default interface IProductReview {
-    id: number,
+    id?: number,
     mark: number,
     username: string,
     review_text: string,

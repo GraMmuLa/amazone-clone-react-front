@@ -1,5 +1,5 @@
 export default interface ICategoryImage {
-    id: number,
-    data: string,
+    id?: number,
+    data: File,
     categoryId: number
 }

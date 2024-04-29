@@ -1,5 +1,5 @@
 export default interface IDiscountType {
-    id: number;
+    id?: number;
     type: string;
     discountIds: number[];
 }

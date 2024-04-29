@@ -10,16 +10,15 @@ import AdminPage from "../adminPage/AdminPage";
 const MainPage = () => {
     return (
         <>
-            {/*<Wrapper>*/}
-            {/*    <Header/>*/}
-            {/*</Wrapper>*/}
-            {/*<img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night"/>*/}
-            {/*<Wrapper>*/}
-            {/*    <SubcategoryList/>*/}
-            {/*    <DayDiscount/>*/}
-            {/*    /!*<OtherDiscounts/>*!/*/}
-            {/*</Wrapper>*/}
-            <AdminPage/>
+            <Wrapper>
+                <Header/>
+            </Wrapper>
+            <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night"/>
+            <Wrapper>
+                <SubcategoryList/>
+                <DayDiscount/>
+                <OtherDiscounts/>
+            </Wrapper>
         </>
     );
 }

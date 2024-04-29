@@ -1,5 +1,5 @@
 export default interface IProductDetailValue {
-   id: number,
+   id?: number,
    value: string,
    productDetailKeyId: number,
    productId: number

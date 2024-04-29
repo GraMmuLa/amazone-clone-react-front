@@ -1,5 +1,5 @@
 export default interface IProductColorImage {
-    id: number;
+    id?: number;
     data: string;
     productColorId: number;
 }

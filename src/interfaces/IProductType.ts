@@ -1,5 +1,5 @@
 export default interface IProductType {
-    id: number,
+    id?: number,
     name: string,
     subcategoryId: number,
     productIds: number[]
