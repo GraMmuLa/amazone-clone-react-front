@@ -5,7 +5,7 @@ import {subcategoryImageAPI} from "../../redux/api/subcategoryImageAPI";
 
 const SubcategoryCard : React.FunctionComponent<{subcategory: ISubcategory}> = ({subcategory}) => {
 
-    const {data: subcategoryImage } = subcategoryImageAPI.useFetchByIdQuery(subcategory.subcategoryImageId);
+    const {data: subcategoryImage } = subcategoryImageAPI.useFetchByIdQuery(subcategory.subcategoryImageId!);
 
 
     return (

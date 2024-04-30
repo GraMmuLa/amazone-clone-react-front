@@ -20,12 +20,20 @@ export const subcategoryImageAPI = createApi({
             }),
             providesTags: ['SubcategoryImage']
         }),
-        add: build.mutation<void, ISubcategoryImage>({
-            query: (subcategoryImage: ISubcategoryImage) =>  ({
-                url: "",
-                method: "POST",
-                body: subcategoryImage
-            }),
+        add: build.mutation<void, { file: File, subcategoryId: number }>({
+            query: (subcategoryImage) =>  {
+                const body = new FormData();
+                body.append("Content-Type", subcategoryImage.file.type);
+                body.append("file", subcategoryImage.file);
+
+                return {
+                    url: "",
+                    method: "POST",
+                    body,
+                    params: {subcategoryId: subcategoryImage.subcategoryId},
+                    formData: true
+                }
+            },
             invalidatesTags: ['SubcategoryImage']
         }),
         delete: build.mutation<void, number>({

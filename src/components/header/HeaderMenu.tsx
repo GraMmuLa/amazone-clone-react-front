@@ -1,5 +1,7 @@
 import styles from "./HeaderMenu.module.css";
 import arrowImg from "../../imgs/arrow.svg"
+import React from "react";
+import {NavLink} from "react-router-dom";
 
 const HeaderMenu = () => {
     return (
@@ -16,7 +18,7 @@ const HeaderMenu = () => {
                         </li>
                     </ul>
                 </li>
-                <li className={styles.menu__item}><a href="" className={styles.menu__link}>Сьогоднішні пропозиції</a></li>
+                <li className={styles.menu__item}><NavLink to="/todaysOffers" className={styles.menu__link}>Сьогоднішні пропозиції</NavLink></li>
                 <li className={styles.menu__item}><a href="" className={styles.menu__link}>Купити знову</a></li>
                 <li className={styles.menu__item}><a href="" className={styles.menu__link}>Обслуговування клієнтів</a></li>
                 <li className={styles.menu__item}><a href="" className={styles.menu__link}>Подарункові карти</a></li>

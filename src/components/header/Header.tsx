@@ -3,6 +3,7 @@ import HeaderBasket from "./headerBasket/HeaderBasket";
 import HeaderMenu from "./HeaderMenu";
 import styles from "./Header.module.css";
 import image from "../../logo.svg";
+import {NavLink} from "react-router-dom";
 
 const Header = () => {
     return (
@@ -10,7 +11,7 @@ const Header = () => {
             <div className={styles.header__container}>
                 <div className={styles.header__top}>
                     <div>
-                        <a href="" className={styles.header__logo}><img src={image} alt="logo" /></a>
+                        <NavLink to="/" className={styles.header__logo}><img src={image} alt="logo" /></NavLink>
                     </div>
                     <HeaderSearch />
                     <HeaderBasket />

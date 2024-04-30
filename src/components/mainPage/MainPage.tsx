@@ -3,8 +3,9 @@ import Footer from "../footer/Footer";
 import promNightBanner from "../../imgs/promNightBanner.jpg"
 import SubcategoryList from "../subcategories/SubcategoryList";
 import classes from "./MainPage.module.css"
-import DayDiscount from "./dayDiscount/DayDiscount";
 import { Wrapper } from "../wrapper/Wrapper";
+import OtherDiscounts from "./discounts/otherDiscounts/OtherDiscounts";
+import DayDiscount from "./discounts/dayDiscount/DayDiscount";
 
 const MainPage = () => {
     return (
@@ -16,6 +17,7 @@ const MainPage = () => {
             <Wrapper>
                 <SubcategoryList />
                 <DayDiscount />
+                <OtherDiscounts/>
             </Wrapper>
             <Footer />
         </>

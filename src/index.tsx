@@ -12,11 +12,34 @@ import {Provider} from "react-redux";
 import store from "./redux/store/store"
 import MainPage from "./components/mainPage/MainPage";
 import AdminPage from "./components/adminPage/AdminPage";
-import {AdminAddCategoryImagePage, AdminAddCategoryPage} from "./components/adminPage/AdminAddPage";
+import ProductsPage from "./components/productsPage/ProductsPage";
+import AddSubcategoryImage from "./components/adminPage/addPages/AddSubcategoryImage";
+import AddCategoryImage from "./components/adminPage/addPages/AddCategoryImage";
+import AddCategory from "./components/adminPage/addPages/AddCategory";
+import AddSubcategory from "./components/adminPage/addPages/AddSubcategory";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const addRouters = [
+    {
+        path: "/admin/addCategory",
+        element: <AddCategory/>
+    },
+    {
+        path: "/admin/addCategoryImage",
+        element: <AddCategoryImage/>
+    },
+    {
+        path: "/admin/addSubcategory",
+        element: <AddSubcategory/>
+    },
+    {
+        path: "/admin/addSubcategoryImage",
+        element: <AddSubcategoryImage/>
+    }
+]
 
 const router = createBrowserRouter([
     {
@@ -27,14 +50,16 @@ const router = createBrowserRouter([
         path: "/admin",
         element: <AdminPage/>
     },
+    ...addRouters,
     {
-        path: "/admin/addCategory",
-        element: <AdminAddCategoryPage/>
-    },
-    {
-        path: "/admin/addCategoryImage",
-        element: <AdminAddCategoryImagePage/>
+        path: "/todaysOffers",
+        element: <ProductsPage/>
     }
+    //TODO
+    // {
+    //     path: "/productPage",
+    //     element: <ProductPage/>
+    // }
 ]);
 
 root.render(
