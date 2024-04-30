@@ -1,0 +1,10 @@
+.offers__items {
+   display: -ms-grid;
+   display: grid;
+   display: grid;
+   gap: 3.125rem;
+   grid-template-columns: repeat(auto-fit, minmax(6.25rem, 1fr));
+   max-width: 95.3125rem;
+   margin: 0 auto;
+   padding: 0 0.9375rem;
+}

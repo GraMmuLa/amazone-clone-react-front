@@ -1,0 +1,6 @@
+.main__wrapper {
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   border-top: 0.125rem solid #E6E6E6;
+}

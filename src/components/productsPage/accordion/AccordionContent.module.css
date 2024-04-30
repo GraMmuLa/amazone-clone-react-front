@@ -1,0 +1,113 @@
+.accordion__content {
+   position: relative;
+   -webkit-transition: 0.3s ease 0s;
+   transition: 0.3s ease 0s;
+}
+
+.accordion__content:not(:last-child) {
+   margin-bottom: 10px;
+}
+
+.accordion__blockWrapper {
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-align: center;
+   -ms-flex-align: center;
+   align-items: center;
+   gap: 0.625rem;
+}
+
+.accordion__block {
+   cursor: pointer;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-align: center;
+   -ms-flex-align: center;
+   align-items: center;
+   -webkit-box-pack: justify;
+   -ms-flex-pack: justify;
+   justify-content: space-between;
+   gap: 0.625rem;
+   -webkit-transition: 0.3s ease 0s;
+   transition: 0.3s ease 0s;
+}
+
+.accordion__arrow {
+   width: 0.9375rem;
+   height: 0.4375rem;
+   -webkit-transition: 0.3s ease 0s;
+   transition: 0.3s ease 0s;
+}
+
+.accordion__arrow img {
+   width: 100%;
+}
+
+.accordion__arrow._open {
+   -webkit-transform: rotate(-180deg);
+   -ms-transform: rotate(-180deg);
+   transform: rotate(-180deg);
+}
+
+.accordion__title {
+   -webkit-transition: 0.3s ease 0s;
+   transition: 0.3s ease 0s;
+}
+
+.accordion__body {
+   padding: 0.5rem 0 0 4.0625rem;
+   opacity: 0;
+   transition: all 0.3s ease 0s;
+}
+
+.accordion__body._open {
+   visibility: visible;
+   opacity: 1;
+}
+
+.checkbox__block {
+   position: relative;
+   width: 1.25rem;
+   height: 1.25rem;
+}
+
+.checkbox__label {
+   cursor: pointer;
+}
+
+.checkbox__label::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 1.25rem;
+   height: 1.25rem;
+   border: 0.125rem solid #858585;
+   border-radius: 50%;
+}
+
+.checkbox__label::after {
+   content: "";
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   -webkit-transform: translate(-50%, -50%);
+   -ms-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
+   width: 0.5rem;
+   height: 0.5rem;
+   background-color: #fff;
+   border-radius: 50%;
+   opacity: 0;
+}
+
+input[type=checkbox]:checked+.checkbox__label::before {
+   background-color: #7581E9;
+   border: 0.125rem solid #7581E9;
+}
+
+input[type=checkbox]:checked+.checkbox__label::after {
+   opacity: 1;
+}
