@@ -16,6 +16,7 @@ import {Button, Table} from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import classes from "./AdminPage.module.css";
 import {productSizeAPI} from "../../redux/api/productSizeAPI";
+import {colorAPI} from "../../redux/api/colorAPI";
 
 const itemsPerPage = 3;
 
@@ -240,24 +241,34 @@ export const SubcategoryImageAdminTable: React.FunctionComponent = () => {
     );
 }
 
+export const ColorAdminTable: React.FunctionComponent = () => {
+    const [deleteColorMutation] = colorAPI.useDeleteMutation();
+
+    const {data: colors, isLoading} = colorAPI.useFetchAllQuery();
+
+    return (
+        <>
+            { isLoading ?
+                <div>Loading...</div> :
+                colors && <AdminTable itemsPerPage={itemsPerPage} items={colors} deleteMutation={deleteColorMutation}/>
+            }
+        </>
+    )
+}
+
 const AdminTable: React.FunctionComponent<{items: {id?: number, [key: string]: any}[], itemsPerPage: number, deleteMutation: (id: number) => void}> = ({items, itemsPerPage, deleteMutation}) => {
 
     const [itemOffset, setItemOffset] = useState(0);
 
-    // Simulate fetching items from another resources.
-    // (This could be items from props; or items loaded in a local state
-    // from an API endpoint with useEffect and useState)
+    if(!items || items.length === 0)
+        return (<h2>Empty table</h2>);
+
     const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     const currentItems = items.slice(itemOffset, endOffset);
     const pageCount = Math.ceil(items.length / itemsPerPage);
 
-    // Invoke when user click to request another page.
     const handlePageClick = (event: any) => {
         const newOffset = (event.selected * itemsPerPage) % items.length;
-        console.log(
-            `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
         setItemOffset(newOffset);
     };
 
@@ -278,6 +289,7 @@ const AdminTable: React.FunctionComponent<{items: {id?: number, [key: string]: a
                             else if(typeof value === "string" && value.length > 255)
                                 return (<td><img src={`data:image/jpg;base64,${value}`} alt="Image"/></td>);
                             return <td>{value}</td>;
+
                         })}
                         <td><Button variant="danger" onClick={(e)=>deleteMutation(currentItem.id!)}>Delete</Button></td>
                     </tr>

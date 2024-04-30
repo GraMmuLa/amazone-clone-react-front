@@ -4,7 +4,7 @@ import classes from "./AdminPage.module.css"
 
 import {
     CategoryAdminTable,
-    CategoryImageAdminTable,
+    CategoryImageAdminTable, ColorAdminTable,
     DiscountAdminTable,
     DiscountTypeAdminTable,
     ProductAdminTable,
@@ -35,6 +35,9 @@ const AdminPage: React.FunctionComponent = () => {
                 </Tab>
                 <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Продукти
+                </Tab>
+                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                    Колір
                 </Tab>
                 <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Колір продукту
@@ -82,6 +85,10 @@ const AdminPage: React.FunctionComponent = () => {
 
             <TabPanel>
                 <ProductAdminTable/>
+            </TabPanel>
+
+            <TabPanel>
+                <ColorAdminTable/>
             </TabPanel>
 
             <TabPanel>

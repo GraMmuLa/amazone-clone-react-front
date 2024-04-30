@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./HeaderBasketItem.module.css";
 import IProduct from "../../../interfaces/IProduct";
 import {productColorAPI} from "../../../redux/api/productColorAPI";
+import {colorAPI} from "../../../redux/api/colorAPI";
 
 const HeaderBasketItem: React.FunctionComponent<{ product: IProduct }> = ({ product }) => {
 
@@ -38,13 +39,13 @@ const HeaderBasketItem: React.FunctionComponent<{ product: IProduct }> = ({ prod
 
 const ProductColor: React.FunctionComponent<{product: IProduct}> = ({product}) => {
 
-    const {data: productColor, isLoading} = productColorAPI.useFetchByIdQuery(product.productColorsIds[0]);
+    const {data: color, isLoading} = colorAPI.useFetchByProductColorIdQuery(product.productColorsIds[0]);
 
     return (
         <>
             { isLoading ?
                 <div>Loading...</div> :
-                productColor && <div className={styles.basketBodyItem__info}>{`Колір: ${productColor.color}`}</div>
+                color && <div className={styles.basketBodyItem__info}>{`Колір: ${color.color}`}</div>
             }
         </>
     );
