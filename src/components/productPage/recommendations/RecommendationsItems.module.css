@@ -1,0 +1,6 @@
+.recommendations__items {
+   display: -ms-grid;
+   display: grid;
+   gap: 2.75rem;
+   grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+}

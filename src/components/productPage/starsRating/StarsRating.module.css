@@ -1,0 +1,17 @@
+.starsRating {
+   position: relative;
+   width: calc(24px * 5);
+   height: 22px;
+   background-image: url('../../../imgs/star.svg');
+   background-size: 24px 22px;
+}
+
+.starsRatingActive {
+   position: absolute;
+   top: 0;
+   left: 0;
+   /* width: calc(24px * 4); */
+   height: 100%;
+   background-image: url('../../../imgs/solidStar.svg');
+   background-size: 24px 22px;
+}
