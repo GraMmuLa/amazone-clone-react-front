@@ -12,6 +12,7 @@ import MainPage from "./components/mainPage/MainPage";
 import AdminPage from "./components/adminPage/AdminPage";
 import ProductPage from "./components/productPage/ProductPage";
 import ProductsPage from "./components/productsPage/ProductsPage";
+import RegisterPage from "./components/registerPage/RegisterPage";
 import AddSubcategoryImage from "./components/adminPage/addPages/AddSubcategoryImage";
 import AddCategoryImage from "./components/adminPage/addPages/AddCategoryImage";
 import AddCategory from "./components/adminPage/addPages/AddCategory";
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
     {
         path: "/todaysOffers",
         element: <ProductsPage />
+    },
+    {
+        path: "/registerPage",
+        element: <RegisterPage />
     },
     {
         path: "/productPage",

@@ -26,7 +26,7 @@ const Reviews = () => {
       },
    ]
 
-   const reviews = reviewsInfo.map(item => item.review);
+   // const reviews = reviewsInfo.map(item => item.review);
 
    return (
       <div className={styles.reviews}>
