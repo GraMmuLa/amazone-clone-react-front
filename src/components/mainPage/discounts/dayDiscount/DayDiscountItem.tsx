@@ -8,7 +8,7 @@ import IProductColor from "../../../../interfaces/IProductColor";
 
 const DayDiscountItem: React.FunctionComponent<{dayDiscount: IProduct}> = ({dayDiscount}) => {
 
-    const {data: productColor, isLoading} = productColorAPI.useFetchByIdQuery(dayDiscount.productColorsIds[0]);
+    const {data: productColor, isLoading} = productColorAPI.useFetchByIdQuery(dayDiscount.productColorsIds![0]);
 
     return (
         <>
@@ -26,7 +26,7 @@ const DayDiscountItem: React.FunctionComponent<{dayDiscount: IProduct}> = ({dayD
 }
 
 const Image: React.FunctionComponent<{productColor: IProductColor}> = ({productColor}) => {
-    const {data: productColorImage} = productColorImageAPI.useFetchByIdQuery(productColor.mainImageId);
+    const {data: productColorImage} = productColorImageAPI.useFetchByIdQuery(productColor.mainImageId!);
 
     return (
         <>

@@ -20,7 +20,7 @@ export const productReviewAPI = createApi({
             }),
             providesTags: ['ProductReview']
         }),
-        add: build.mutation<void, IProductReview>({
+        add: build.mutation<IProductReview, IProductReview>({
             query: (productReview: IProductReview) =>  ({
                 url: "",
                 method: "POST",

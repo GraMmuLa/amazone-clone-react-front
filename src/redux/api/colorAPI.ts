@@ -26,7 +26,7 @@ export const colorAPI = createApi({
             }),
             providesTags: ['Color']
         }),
-        add: build.mutation<void, IColor>({
+        add: build.mutation<IColor, IColor>({
             query: (color: IColor) => ({
                 url: "",
                 method: "POST",

@@ -5,7 +5,7 @@ export default interface IProduct {
     price: number,
     productTypeId: number,
     mainImageId?: number,
-    productColorsIds: number[],
-    productReviewsIds: number[],
-    productDetailValuesIds: number[]
+    productColorsIds?: number[],
+    productReviewsIds?: number[],
+    productDetailValuesIds?: number[]
 }

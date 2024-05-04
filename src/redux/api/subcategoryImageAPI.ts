@@ -20,7 +20,7 @@ export const subcategoryImageAPI = createApi({
             }),
             providesTags: ['SubcategoryImage']
         }),
-        add: build.mutation<void, { file: File, subcategoryId: number }>({
+        add: build.mutation<ISubcategoryImage, { file: File, subcategoryId: number }>({
             query: (subcategoryImage) =>  {
                 const body = new FormData();
                 body.append("Content-Type", subcategoryImage.file.type);

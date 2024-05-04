@@ -6,8 +6,9 @@ import classes from "./MainPage.module.css"
 import { Wrapper } from "../wrapper/Wrapper";
 import OtherDiscounts from "./discounts/otherDiscounts/OtherDiscounts";
 import DayDiscount from "./discounts/dayDiscount/DayDiscount";
+import React from "react";
 
-const MainPage = () => {
+const MainPage: React.FunctionComponent = () => {
     return (
         <>
             <Wrapper>

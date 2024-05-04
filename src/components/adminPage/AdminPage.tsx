@@ -1,25 +1,36 @@
 import React from "react"
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import classes from "./AdminPage.module.css"
-
-import {
-    CategoryAdminTable,
-    CategoryImageAdminTable, ColorAdminTable,
-    DiscountAdminTable,
-    DiscountTypeAdminTable,
-    ProductAdminTable,
-    ProductColorAdminTable,
-    ProductColorImageAdminTable,
-    ProductDetailKeyAdminTable,
-    ProductDetailValueAdminTable,
-    ProductReviewAdminTable,
-    ProductSizeAdminTable,
-    ProductTypeAdminTable,
-    SubcategoryAdminTable,
-    SubcategoryImageAdminTable
-} from "./AdminTables";
+import CategoryTable from "./tables/CategoryTable";
+import SubcategoryTable from "./tables/SubcategoryTable";
+import ProductTypeTable from "./tables/ProductTypeTable";
+import ProductTable from "./tables/ProductTable";
+import ColorTable from "./tables/ColorTable";
+import ProductColorTable from "./tables/ProductColorTable";
+import DiscountTypeTable from "./tables/DiscountTypeTable";
+import DiscountTable from "./tables/DiscountTable";
+import ProductReviewTable from "./tables/ProductReviewTable";
+import ProductSizeTable from "./tables/ProductSizeTable";
+import ProductDetailKeyTable from "./tables/ProductDetailKeyTable";
+import ProductDetailValueTable from "./tables/ProductDetailValueTable";
+import CategoryImageTable from "./tables/CategoryImageTable";
+import SubcategoryImageTable from "./tables/SubcategoryImageTable";
+import ProductColorImageTable from "./tables/ProductColorImageTable";
+import AddCategory from "./addPages/AddCategory";
+import AddSubcategory from "./addPages/AddSubcategory";
+import AddProductType from "./addPages/AddProductType";
+import AddProduct from "./addPages/AddProduct";
+import AddProductDetailValue from "./addPages/AddProductDetailValue";
+import AddProductDetailKey from "./addPages/AddProductDetailKey";
+import {AddColor} from "./addPages/AddColor";
+import AddProductColor from "./addPages/AddProductColor";
+import AddProductSize from "./addPages/AddProductSize";
+import AddDiscountType from "./addPages/AddDiscountType";
+import AddDiscount from "./addPages/AddDiscount";
 
 const AdminPage: React.FunctionComponent = () => {
+
+    const itemsPerPage = 5;
 
     return (
         <Tabs>
@@ -72,63 +83,74 @@ const AdminPage: React.FunctionComponent = () => {
             </TabList>
 
             <TabPanel>
-                <CategoryAdminTable/>
+                <AddCategory/>
+                <CategoryTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <SubcategoryAdminTable/>
+                <AddSubcategory/>
+                <SubcategoryTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <ProductTypeAdminTable/>
+                <AddProductType/>
+                <ProductTypeTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <ProductAdminTable/>
+                <AddProduct/>
+                <ProductTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <ColorAdminTable/>
+                <AddColor/>
+                <ColorTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <ProductColorAdminTable/>
+                <AddProductColor/>
+                <ProductColorTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <DiscountTypeAdminTable/>
+                <AddDiscountType/>
+                <DiscountTypeTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <DiscountAdminTable/>
+                <AddDiscount/>
+                <DiscountTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <ProductReviewAdminTable/>
+                <ProductReviewTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <ProductSizeAdminTable/>
+                <AddProductSize/>
+                <ProductSizeTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <ProductDetailKeyAdminTable/>
+                <AddProductDetailKey/>
+                <ProductDetailKeyTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <ProductDetailValueAdminTable/>
+                <AddProductDetailValue/>
+                <ProductDetailValueTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <CategoryImageAdminTable/>
+                <CategoryImageTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <SubcategoryImageAdminTable/>
+                <SubcategoryImageTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>
-                <ProductColorImageAdminTable/>
+                <ProductColorImageTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
         </Tabs>
     );

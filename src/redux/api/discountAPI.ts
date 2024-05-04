@@ -20,7 +20,7 @@ export const discountAPI = createApi({
             }),
             providesTags: ['Discount']
         }),
-        add: build.mutation<void, IDiscount>({
+        add: build.mutation<IDiscount, IDiscount>({
             query: (discount: IDiscount) =>  ({
                 url: "",
                 method: "POST",

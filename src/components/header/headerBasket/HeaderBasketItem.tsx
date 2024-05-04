@@ -39,7 +39,7 @@ const HeaderBasketItem: React.FunctionComponent<{ product: IProduct }> = ({ prod
 
 const ProductColor: React.FunctionComponent<{product: IProduct}> = ({product}) => {
 
-    const {data: color, isLoading} = colorAPI.useFetchByProductColorIdQuery(product.productColorsIds[0]);
+    const {data: color, isLoading} = colorAPI.useFetchByProductColorIdQuery(product.productColorsIds![0]);
 
     return (
         <>

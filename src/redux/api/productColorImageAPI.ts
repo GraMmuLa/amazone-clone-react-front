@@ -19,12 +19,20 @@ export const productColorImageAPI = createApi({
             }),
             providesTags: ['ProductColorImage']
         }),
-        add: build.mutation<void, IProductColorImage>({
-            query: (productColorImage: IProductColorImage) =>  ({
-                url: "",
-                method: "POST",
-                body: productColorImage
-            }),
+        add: build.mutation<IProductColorImage, { file: File, productColorId: number }>({
+            query: (productColorImage) =>  {
+                const body = new FormData();
+                body.append("Content-Type", productColorImage.file.type);
+                body.append("file", productColorImage.file);
+
+                return {
+                    url: "",
+                    method: "POST",
+                    body,
+                    params: {productColorId: productColorImage.productColorId},
+                    formData: true
+                }
+            },
             invalidatesTags: ['ProductColorImage']
         }),
         delete: build.mutation<void, number>({
