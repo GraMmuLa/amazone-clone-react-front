@@ -1,0 +1,26 @@
+.productSlider {
+   display: flex;
+   gap: 10px;
+}
+
+#subProductSlider {
+   width: 100px;
+   max-height: 690px;
+}
+
+#subProductSlider img {
+   max-width: 100%;
+}
+
+.productSliderLink {
+   display: inline-block;
+   width: 100%;
+   font-size: 40px;
+   font-weight: 500;
+   color: #fff;
+   background-color: #000;
+   padding: 15px 20px;
+   text-align: center;
+   border-radius: 50pc;
+   margin-top: 50px;
+}

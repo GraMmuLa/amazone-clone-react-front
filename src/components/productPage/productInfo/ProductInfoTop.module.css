@@ -1,0 +1,32 @@
+.productInfoTop {
+   padding-bottom: 25px;
+   border-bottom: 0.5px solid #000;
+   margin-bottom: 25px;
+}
+
+.productInfoTop__link {
+   display: inline-block;
+   color: #000AFF;
+   margin-bottom: 13px;
+   line-height: 1.2;
+}
+
+.productInfoTop__title {
+   font-size: 32px;
+   font-weight: 500;
+   margin-bottom: 10px;
+   line-height: 1.2;
+}
+
+.productInfoTop__ratingBlock {
+   display: flex;
+   align-items: end;
+   gap: 40px;
+   line-height: 0.8;
+}
+
+.productInfoTop__ratingWrapper {
+   display: flex;
+   align-items: end;
+   gap: 7px;
+}

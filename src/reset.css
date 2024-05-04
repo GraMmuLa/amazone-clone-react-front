@@ -54,6 +54,13 @@ ul li {
    list-style: none;
 }
 
+dl,
+ol,
+ul {
+   margin: 0;
+   padding: 0;
+}
+
 img {
    vertical-align: top;
 }
@@ -66,6 +73,7 @@ h5,
 h6 {
    font-weight: inherit;
    font-size: inherit;
+   margin: 0;
 }
 
 input[type=checkbox] {
@@ -73,7 +81,17 @@ input[type=checkbox] {
 }
 
 [class*=__container] {
+   max-width: 1480px;
+   margin: 0 auto;
+   padding: 0 0.9375rem;
+}
+
+[class*=__containerMax] {
    max-width: 109.375rem;
    margin: 0 auto;
    padding: 0 0.9375rem;
+}
+
+.swiper {
+   margin: 0;
 }
