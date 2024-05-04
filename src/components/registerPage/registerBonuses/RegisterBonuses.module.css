@@ -1,0 +1,40 @@
+.registerBonuses {
+   padding: 100px 0;
+}
+
+.registerBonuses__container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 30px;
+}
+
+.registerBonuses__image img {
+   max-width: 100%;
+}
+
+.registerBonuses__textBlock {
+   max-width: 763px;
+}
+
+.registerBonuses__title {
+   font-size: 60px;
+   font-weight: 500;
+   margin-bottom: 35px;
+}
+
+.registerBonuses__text {
+   font-size: 28px;
+   line-height: 1.2;
+   margin-bottom: 35px;
+}
+
+.registerBonuses__list {}
+
+.registerBonuses__item {
+   font-size: 22px;
+}
+
+.registerBonuses__item:not(:last-child) {
+   margin-bottom: 20px;
+}

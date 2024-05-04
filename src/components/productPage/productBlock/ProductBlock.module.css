@@ -1,0 +1,10 @@
+.productBlock {
+   padding-top: 30px;
+   border-top: 0.5px solid #000;
+   margin-bottom: 40px;
+}
+
+.productBlock__wrapper {
+   display: flex;
+   gap: 40px;
+}
