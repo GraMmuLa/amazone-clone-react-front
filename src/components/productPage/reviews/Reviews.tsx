@@ -30,7 +30,7 @@ const Reviews = () => {
 
    return (
       <div className={styles.reviews}>
-         <div className="reviews__container">
+         <div className="reviews__containerMax">
             <h2 className={styles.reviews__title}>Відгуки</h2>
             <ReviewsItems reviewsInfo={reviewsInfo} />
          </div>

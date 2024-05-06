@@ -1,19 +1,25 @@
 import styles from "./ProductInfoMain.module.css";
 
 const ProductInfoMain = () => {
+   document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.closest(".productInfoMain__sizes button")) {
+         target.classList.toggle(`${styles._active}`)
+      }
+   });
    return (
       <div className={styles.productInfoMain}>
          <div className={styles.productInfoMain__price}>
             <h2>Ціна:</h2><span>289 грн</span>
          </div>
-         <div className={styles.productInfoMain__sizes}>
+         <div className={`${styles.productInfoMain__sizes} productInfoMain__sizes`}>
             <h2>Розмір:</h2>
             <ul>
-               <li><a href="">S</a></li>
-               <li><a href="">M</a></li>
-               <li><a href="">L</a></li>
-               <li><a href="">XL</a></li>
-               <li><a href="">XXL</a></li>
+               <li><button>S</button></li>
+               <li><button>M</button></li>
+               <li><button>L</button></li>
+               <li><button>XL</button></li>
+               <li><button>XXL</button></li>
             </ul>
          </div>
          <div className={styles.productInfoMain__color}>

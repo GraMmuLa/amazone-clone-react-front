@@ -13,6 +13,7 @@ import AdminPage from "./components/adminPage/AdminPage";
 import ProductPage from "./components/productPage/ProductPage";
 import ProductsPage from "./components/productsPage/ProductsPage";
 import RegisterPage from "./components/registerPage/RegisterPage";
+import Orders from "./components/orders/Orders";
 import AddSubcategoryImage from "./components/adminPage/addPages/AddSubcategoryImage";
 import AddCategoryImage from "./components/adminPage/addPages/AddCategoryImage";
 import AddCategory from "./components/adminPage/addPages/AddCategory";
@@ -58,13 +59,17 @@ const router = createBrowserRouter([
         element: <ProductsPage />
     },
     {
+        path: "/productPage",
+        element: <ProductPage />
+    },
+    {
         path: "/registerPage",
         element: <RegisterPage />
     },
     {
-        path: "/productPage",
-        element: <ProductPage />
-    }
+        path: "/orders",
+        element: <Orders />
+    },
 ]);
 
 root.render(

@@ -42,6 +42,15 @@ const Recommendations = () => {
          productReviewsIds: []
       },
       {
+         name: 'Мужские домашние тапочки',
+         description: 'lorem ipsum',
+         price: 237,
+         productTypeId: 11111,
+         productColorsIds: [4, 5, 6],
+         productDetailValuesIds: [],
+         productReviewsIds: []
+      },
+      {
          name: 'Мужская джинсовая куртка',
          description: 'lorem ipsum',
          price: 1362,
@@ -53,7 +62,7 @@ const Recommendations = () => {
    ]
    return (
       <div className={styles.recommendations}>
-         <div className="recommendations__container">
+         <div className="recommendations__containerMax">
             <h2 className={styles.recommendations__title}>Клієнти також переглядали</h2>
             <RecommendationsItems products={product} />
          </div>

@@ -1,5 +1,5 @@
 import React from "react"
-import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import classes from "./AdminPage.module.css"
 
 import {
@@ -72,63 +72,63 @@ const AdminPage: React.FunctionComponent = () => {
             </TabList>
 
             <TabPanel>
-                <CategoryAdminTable/>
+                <CategoryAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <SubcategoryAdminTable/>
+                <SubcategoryAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <ProductTypeAdminTable/>
+                <ProductTypeAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <ProductAdminTable/>
+                <ProductAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <ColorAdminTable/>
+                <ColorAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <ProductColorAdminTable/>
+                <ProductColorAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <DiscountTypeAdminTable/>
+                <DiscountTypeAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <DiscountAdminTable/>
+                <DiscountAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <ProductReviewAdminTable/>
+                <ProductReviewAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <ProductSizeAdminTable/>
+                <ProductSizeAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <ProductDetailKeyAdminTable/>
+                <ProductDetailKeyAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <ProductDetailValueAdminTable/>
+                <ProductDetailValueAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <CategoryImageAdminTable/>
+                <CategoryImageAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <SubcategoryImageAdminTable/>
+                <SubcategoryImageAdminTable />
             </TabPanel>
 
             <TabPanel>
-                <ProductColorImageAdminTable/>
+                <ProductColorImageAdminTable />
             </TabPanel>
         </Tabs>
     );

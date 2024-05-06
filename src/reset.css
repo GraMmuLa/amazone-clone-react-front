@@ -76,6 +76,10 @@ h6 {
    margin: 0;
 }
 
+p {
+   margin: 0;
+}
+
 input[type=checkbox] {
    display: none;
 }
