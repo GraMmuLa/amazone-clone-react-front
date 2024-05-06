@@ -41,7 +41,6 @@ const AddDiscount: React.FunctionComponent = () => {
                     <Form.Label>Period</Form.Label>
                     <Form.Control value={period?.toISOString()} type="date" onChange={(e) => setPeriod(new Date(e.target.value))}/>
                 </Form.Group>
-                {/* TODO */}
                 <Form.Group>
                     <Form.Label>Product</Form.Label>
                     <Form.Select value={productId ? productId : 0} onChange={(e) => setProductId(parseInt(e.target.value))}>
@@ -52,7 +51,6 @@ const AddDiscount: React.FunctionComponent = () => {
                         <ProductColorSelect productId={productId} productColorId={productColorId} setProductColorId={setProductColorId}/>
                     }
                 </Form.Group>
-                {/* END TODO */}
                 <Form.Group>
                     <Form.Label>Discount Type id</Form.Label>
                     <Form.Select value={discountTypeId ? discountTypeId : 0} onChange={(e) => setDiscountTypeId(parseInt(e.target.value))}>
@@ -68,7 +66,7 @@ const AddDiscount: React.FunctionComponent = () => {
     );
 }
 
-const ProductColorSelect: React.FunctionComponent<{productId: number, productColorId: number | undefined, setProductColorId: Dispatch<SetStateAction<number | undefined>>}> = ({productId, productColorId, setProductColorId}) => {
+export const ProductColorSelect: React.FunctionComponent<{productId: number, productColorId: number | undefined, setProductColorId: Dispatch<SetStateAction<number | undefined>>}> = ({productId, productColorId, setProductColorId}) => {
 
     const {data: productColors} = productColorAPI.useFetchAllByProductIdQuery(productId);
 
@@ -84,7 +82,7 @@ const ProductColorSelect: React.FunctionComponent<{productId: number, productCol
     );
 }
 
-const ColorByProductColorId: React.FunctionComponent<{colorId: number}> = ({colorId}) => {
+export const ColorByProductColorId: React.FunctionComponent<{colorId: number}> = ({colorId}) => {
     const {data: color} = colorAPI.useFetchByIdQuery(colorId);
 
     return (

@@ -1,6 +1,7 @@
 
 export default interface IProductColor {
     id?: number,
+    price: number,
     colorId: number,
     productId: number,
     discountId?: number,

@@ -13,34 +13,35 @@ import store from "./redux/store/store"
 import MainPage from "./components/mainPage/MainPage";
 import AdminPage from "./components/adminPage/AdminPage";
 import ProductsPage from "./components/productsPage/ProductsPage";
+import ProductPage from "./components/productPage/ProductPage";
+import App from "./App";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <MainPage/>
-    },
-    {
-        path: "/admin",
-        element: <AdminPage/>
-    },
-    {
-        path: "/todaysOffers",
-        element: <ProductsPage/>
-    }
-    //TODO
-    // {
-    //     path: "/productPage",
-    //     element: <ProductPage/>
-    // }
-]);
+// const router = createBrowserRouter([
+//     {
+//         path: "/",
+//         element: <MainPage/>
+//     },
+//     {
+//         path: "/admin",
+//         element: <AdminPage/>
+//     },
+//     {
+//         path: "/todaysOffers",
+//         element: <ProductsPage/>
+//     },
+//     {
+//         path: "/productPage:productColorId",
+//         element: <ProductPage/>,
+//     }
+// ]);
 
 root.render(
     <Provider store={store}>
-        <RouterProvider router={router}/>
+        <App/>
     </Provider>
 );
 

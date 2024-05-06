@@ -1,6 +1,6 @@
 import React from "react";
 import {categoryImageAPI} from "../../../redux/api/categoryImageAPI";
-import AdminTable from "../AdminTables";
+import AdminTable from "../AdminTable";
 
 export const CategoryImageTable: React.FunctionComponent<{itemsPerPage: number}> = ({itemsPerPage}) => {
 

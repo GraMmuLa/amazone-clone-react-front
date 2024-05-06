@@ -17,7 +17,7 @@ const OtherDiscountsItem: React.FunctionComponent<{product: IProduct}> = ({produ
                     <div className={classes.discount__imgBlock}>
                         <Image productColor={productColor!}/>
                     </div>
-                    <DiscountBlock product={product} productColor={productColor!}/>
+                    <DiscountBlock productColor={productColor!}/>
                 </div>
             }
         </>
@@ -34,14 +34,14 @@ const Image: React.FunctionComponent<{productColor: IProductColor}> = ({productC
     );
 }
 
-const DiscountBlock: React.FunctionComponent<{product: IProduct, productColor: IProductColor}> = ({product, productColor}) => {
+const DiscountBlock: React.FunctionComponent<{productColor: IProductColor}> = ({productColor}) => {
     const {data: discount} = discountAPI.useFetchByIdQuery(productColor.discountId!);
 
     return (
         <div>
             {discount &&
                 <span
-                    className={classes.discount__discount}>{product.price - discount.price + " грн"}</span>}
+                    className={classes.discount__discount}>{productColor.price - discount.price + " грн"}</span>}
         </div>
     );
 }

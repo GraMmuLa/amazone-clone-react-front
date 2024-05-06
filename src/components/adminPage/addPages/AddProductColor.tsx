@@ -11,6 +11,7 @@ const AddProductColor: React.FunctionComponent = () => {
     const {data: colors} = colorAPI.useFetchAllQuery();
     const {data: products} = productAPI.useFetchAllQuery();
 
+    const [price, setPrice] = useState<number>();
     const [colorId, setColorId] = useState<number>();
     const [productId, setProductId] = useState<number>();
     const [productColorImages, setProductColorImages] = useState<File[]>([]);
@@ -34,8 +35,9 @@ const AddProductColor: React.FunctionComponent = () => {
 
     const addProductColor = (e: React.FormEvent) => {
         e.preventDefault();
-        if(colorId && productId && productColorImages.length !== 0) {
-            addMutation({productColor: {colorId, productId}, files: productColorImages});
+        if(colorId && price && productId && productColorImages.length !== 0) {
+            addMutation({productColor: {price, colorId, productId}, files: productColorImages});
+            setPrice(undefined);
             setColorId(undefined);
             setProductId(undefined);
             setProductColorImages([]);
@@ -46,6 +48,10 @@ const AddProductColor: React.FunctionComponent = () => {
     return (
         <Container>
             <Form onSubmit={(e) => addProductColor(e)}>
+                <Form.Group>
+                    <Form.Label>Price</Form.Label>
+                    <Form.Control value={price ? price : ""} type="number" step=".01" onChange={(e) => setPrice(parseFloat(e.target.value))}/>
+                </Form.Group>
                 <Form.Group>
                     <Form.Label>Color id</Form.Label>
                     <Form.Select value={colorId ? colorId : 0} onChange={(e) => setColorId(parseInt(e.target.value))}>

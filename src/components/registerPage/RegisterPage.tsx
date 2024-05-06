@@ -1,5 +1,5 @@
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
+import Header from "../layout/header/Header";
+import Footer from "../layout/footer/Footer";
 import RegisterBody from "./registerBody/RegisterBody";
 import RegisterBonuses from "./registerBonuses/RegisterBonuses";
 import styles from "./RegisterPage.module.css";

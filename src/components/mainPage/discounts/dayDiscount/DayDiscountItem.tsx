@@ -16,9 +16,9 @@ const DayDiscountItem: React.FunctionComponent<{dayDiscount: IProduct}> = ({dayD
                 <div className={classes.dayDiscountItem}>
                     <div className={classes.dayDiscountItem__imgBlock}>
                         <Image productColor={productColor!}/>
-                        <DiscountTag dayDiscount={dayDiscount} productColor={productColor!}/>
+                        <DiscountTag productColor={productColor!}/>
                     </div>
-                    <DiscountBlock dayDiscount={dayDiscount} productColor={productColor!}/>
+                    <DiscountBlock productColor={productColor!}/>
                 </div>
             }
         </>
@@ -35,13 +35,13 @@ const Image: React.FunctionComponent<{productColor: IProductColor}> = ({productC
     );
 }
 
-const DiscountTag: React.FunctionComponent<{dayDiscount: IProduct, productColor: IProductColor}> = ({dayDiscount, productColor}) => {
+const DiscountTag: React.FunctionComponent<{productColor: IProductColor}> = ({productColor}) => {
 
     const {data: discount} = discountAPI.useFetchByIdQuery(productColor.discountId!);
 
     const getDiscountPercent = () => {
         if(discount)
-            return Math.round(discount.price / (dayDiscount.price / 100));
+            return Math.round(discount.price / (productColor.price / 100));
     }
 
     return (
@@ -49,15 +49,15 @@ const DiscountTag: React.FunctionComponent<{dayDiscount: IProduct, productColor:
     );
 }
 
-const DiscountBlock: React.FunctionComponent<{dayDiscount: IProduct, productColor: IProductColor}> = ({dayDiscount, productColor}) => {
+const DiscountBlock: React.FunctionComponent<{productColor: IProductColor}> = ({productColor}) => {
     const {data: discount} = discountAPI.useFetchByIdQuery(productColor.discountId!);
 
     return (
         <div className={classes.dayDiscountItem__discountBlock}>
             {discount &&
                 <span
-                    className={classes.dayDiscountItem__discount}>{dayDiscount.price - discount.price + " грн"}</span>}
-            <span className={classes.dayDiscountItem__fullPrice}>{dayDiscount.price + ' грн'}</span>
+                    className={classes.dayDiscountItem__discount}>{productColor.price - discount.price + " грн"}</span>}
+            <span className={classes.dayDiscountItem__fullPrice}>{productColor.price + ' грн'}</span>
         </div>
     );
 }

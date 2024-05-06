@@ -1,7 +1,7 @@
 import React from "react";
 import {discountAPI} from "../../../redux/api/discountAPI";
 import {discountTypeAPI} from "../../../redux/api/discountTypeAPI";
-import AdminTable from "../AdminTables";
+import AdminTable from "../AdminTable";
 
 export const DiscountTypeTable: React.FunctionComponent<{itemsPerPage: number}> = ({itemsPerPage}) => {
 

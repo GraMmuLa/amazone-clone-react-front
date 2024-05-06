@@ -12,6 +12,12 @@ export const productColorImageAPI = createApi({
             }),
             providesTags: ['ProductColorImage']
         }),
+        fetchAllByProductColorId: build.query<IProductColorImage[], number>({
+            query: (productColorId: number) => ({
+                url: "/productColor",
+                params: {productColorId}
+            })
+        }),
         fetchById: build.query<IProductColorImage, number>({
             query: (id: number) => ({
                 url: "",

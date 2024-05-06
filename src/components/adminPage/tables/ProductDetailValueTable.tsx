@@ -1,6 +1,6 @@
 import React from "react";
 import {productDetailValueAPI} from "../../../redux/api/productDetailValueAPI";
-import AdminTable from "../AdminTables";
+import AdminTable from "../AdminTable";
 
 export const ProductDetailValueTable: React.FunctionComponent<{itemsPerPage: number}> = ({itemsPerPage}) => {
 

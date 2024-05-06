@@ -45,7 +45,7 @@ export const productColorAPI = createApi({
                     url: "/withImage",
                     method: "POST",
                     body,
-                    params: {colorId: data.productColor.colorId, productId: data.productColor.productId},
+                    params: {price: data.productColor.price, colorId: data.productColor.colorId, productId: data.productColor.productId},
                     formData: true
                 })
             },

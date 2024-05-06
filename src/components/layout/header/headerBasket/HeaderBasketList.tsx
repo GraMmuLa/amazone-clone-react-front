@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderBasketItem from "./HeaderBasketItem";
 import styles from "./HeaderBasketList.module.css";
-import IProduct from "../../../interfaces/IProduct";
+import IProduct from "../../../../interfaces/IProduct";
 
 const HeaderBasketList: React.FunctionComponent<{products: IProduct[]}> = ({ products }) => {
     return (

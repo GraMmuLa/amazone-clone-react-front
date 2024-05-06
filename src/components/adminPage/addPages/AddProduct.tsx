@@ -8,16 +8,14 @@ const AddProduct: React.FunctionComponent = () => {
     const {data: productTypes} = productTypeAPI.useFetchAllQuery();
 
     const [name, setName] = useState<string>();
-    const [price, setPrice] = useState<number>();
     const [description, setDescription] = useState<string>();
     const [productTypeId, setProductTypeId] = useState<number>();
 
     const addProduct = (e: React.FormEvent) => {
         e.preventDefault();
-        if(name && price && description && productTypeId) {
-            addMutation({name, price, description, productTypeId});
+        if(name && description && productTypeId) {
+            addMutation({name, description, productTypeId});
             setName(undefined);
-            setPrice(undefined);
             setDescription(undefined);
             setProductTypeId(undefined);
         }
@@ -29,10 +27,6 @@ const AddProduct: React.FunctionComponent = () => {
                 <Form.Group>
                     <Form.Label>Product name</Form.Label>
                     <Form.Control value={name ? name : ""} type="text" onChange={(e) => setName(e.target.value)}/>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Price</Form.Label>
-                    <Form.Control value={price ? price : ""} type="number" step=".01" onChange={(e) => setPrice(parseFloat(e.target.value))}/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Product description</Form.Label>

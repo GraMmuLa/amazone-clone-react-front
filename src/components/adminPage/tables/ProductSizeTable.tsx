@@ -1,6 +1,6 @@
 import React from "react";
 import {productSizeAPI} from "../../../redux/api/productSizeAPI";
-import AdminTable from "../AdminTables";
+import AdminTable from "../AdminTable";
 
 export const ProductSizeTable: React.FunctionComponent<{itemsPerPage: number}> = ({itemsPerPage}) => {
 

@@ -1,6 +1,6 @@
 import React from "react";
 import {productColorAPI} from "../../../redux/api/productColorAPI";
-import AdminTable from "../AdminTables";
+import AdminTable from "../AdminTable";
 
 const ProductColorTable: React.FunctionComponent<{itemsPerPage: number}> = ({itemsPerPage}) => {
 

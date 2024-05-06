@@ -1,5 +1,5 @@
 import styles from "./HeaderMenu.module.css";
-import arrowImg from "../../imgs/arrow.svg"
+import arrowImg from "../../../imgs/arrow.svg"
 import React from "react";
 import {NavLink} from "react-router-dom";
 

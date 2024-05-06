@@ -27,13 +27,15 @@ import AddProductColor from "./addPages/AddProductColor";
 import AddProductSize from "./addPages/AddProductSize";
 import AddDiscountType from "./addPages/AddDiscountType";
 import AddDiscount from "./addPages/AddDiscount";
+import AddProductColorSize from "./addPages/AddProductColorSize";
+import ProductColorSizeTable from "./tables/ProductColorSizeTable";
 
 const AdminPage: React.FunctionComponent = () => {
 
     const itemsPerPage = 5;
 
     return (
-        <Tabs>
+        <Tabs className={classes.adminTabs}>
             <TabList className={classes.buttons__nav}>
                 <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Категорії
@@ -64,6 +66,9 @@ const AdminPage: React.FunctionComponent = () => {
                 </Tab>
                 <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Розміри
+                </Tab>
+                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                    Розмір + Колір продукту
                 </Tab>
                 <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Ключі деталей продукту
@@ -129,6 +134,11 @@ const AdminPage: React.FunctionComponent = () => {
             <TabPanel>
                 <AddProductSize/>
                 <ProductSizeTable itemsPerPage={itemsPerPage}/>
+            </TabPanel>
+
+            <TabPanel>
+                <AddProductColorSize/>
+                <ProductColorSizeTable itemsPerPage={itemsPerPage}/>
             </TabPanel>
 
             <TabPanel>

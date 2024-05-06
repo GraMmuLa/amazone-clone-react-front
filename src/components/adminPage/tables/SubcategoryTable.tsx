@@ -1,6 +1,6 @@
 import React from "react";
 import {subcategoryAPI} from "../../../redux/api/subcategoryAPI";
-import AdminTable from "../AdminTables";
+import AdminTable from "../AdminTable";
 
 const SubcategoryTable: React.FunctionComponent<{itemsPerPage: number}> = ({itemsPerPage}) => {
 

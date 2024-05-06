@@ -1,6 +1,6 @@
 import React from "react";
 import {colorAPI} from "../../../redux/api/colorAPI";
-import AdminTable from "../AdminTables";
+import AdminTable from "../AdminTable";
 
 const ColorTable: React.FunctionComponent<{itemsPerPage: number}> = ({itemsPerPage}) => {
     const [deleteColor] = colorAPI.useDeleteMutation();
