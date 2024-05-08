@@ -31,6 +31,10 @@ body {
    -moz-osx-font-smoothing: grayscale;
 }
 
+input {
+   border: 1px solid #000;
+}
+
 input,
 button,
 textarea {
@@ -73,6 +77,10 @@ h5,
 h6 {
    font-weight: inherit;
    font-size: inherit;
+   margin: 0;
+}
+
+p {
    margin: 0;
 }
 

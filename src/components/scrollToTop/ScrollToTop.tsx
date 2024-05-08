@@ -1,7 +1,7 @@
-import React, {useEffect, useLayoutEffect} from "react";
-import {useLocation} from "react-router-dom";
+import React, { useEffect, useLayoutEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-const ScrollToTop: React.FunctionComponent<{children: React.ReactNode }> = ({children}) => {
+const ScrollToTop: React.FunctionComponent<{ children: React.ReactNode }> = ({ children }) => {
 
     const location = useLocation();
 
@@ -17,7 +17,7 @@ const ScrollToTop: React.FunctionComponent<{children: React.ReactNode }> = ({chi
         <>
             {children}
         </>
-        );
+    );
 }
 
 export default ScrollToTop;

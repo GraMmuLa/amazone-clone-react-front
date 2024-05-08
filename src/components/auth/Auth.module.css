@@ -1,10 +1,21 @@
 .formBlock {
-    display: flex;
-    margin-top: 70px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px 70px;
+    position: relative;
+    max-width: 620px;
+    margin: 80px auto 45px auto;
+}
+
+.returnButton {
+    position: absolute;
+    top: 0;
+    left: -10px;
+    transform: translate(-100%, 0);
+    padding: 15px;
+    background: #F6F6F6;
+    border-radius: 0.9pc;
+}
+
+.returnButton:hover {
+    background: #e4e4e4;
 }
 
 .cardWrapper {
@@ -12,29 +23,36 @@
     flex-direction: column;
     background: #F6F6F6;
     padding: 30px 70px;
-    border-radius: 15px;
-    min-width: 620px;
+    border-radius: 0.9pc;
 }
 
 .error {
-
+    background-color: rgba(255, 0, 0, 0.822);
+    color: #fff;
+    padding: 20px;
+    border-radius: 0.9pc;
+    margin-bottom: 15px;
+    line-height: 1.2;
 }
 
 .otherBlock {
     display: flex;
-    padding: 0 30px;
-    margin-top: 20px;
+    padding: 20px 70px;
     font-size: 20px;
     min-width: 620px;
     font-weight: 500;
     justify-content: space-between;
 }
 
+.formBody {
+    margin-bottom: 30px;
+}
+
 .formGroup:not(:last-child) {
     margin-bottom: 20px;
 }
 
-.formGroup label {
+.formGroup label:not(.formLabel) {
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: 500;
@@ -43,19 +61,44 @@
 .formInput {
     display: block;
     border: 3px solid #000000;
-    border-radius: 25px;
+    border-radius: 50pc;
     padding: 9px 30px;
     font-size: 18px;
     width: 100%;
 }
 
 .formLabel {
+    position: relative;
+    padding-left: 30px;
+}
 
+.formLabel::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    z-index: 5;
+    cursor: pointer;
+}
+
+.formCheckBox:checked+.formLabel::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    width: 20px;
+    height: 20px;
+    border: 5.5px solid #7581E9;
 }
 
 .formHeader {
     font-size: 40px;
-    font-weight: 700;
+    font-weight: 500;
     margin-bottom: 15px;
 }
 
@@ -63,7 +106,7 @@
     background-color: #000000;
     border: 1px solid #000000;
     padding: 15px 0;
-    border-radius: 50px;
+    border-radius: 50pc;
     color: #FFFFFF;
     width: 100%;
 }
@@ -77,5 +120,4 @@
 
 .formLink {
     color: #0066CC;
-    font-weight: 500;
 }

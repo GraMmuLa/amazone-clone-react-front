@@ -1,5 +1,5 @@
 import React from "react"
-import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import classes from "./AdminPage.module.css"
 import CategoryTable from "./tables/CategoryTable";
 import SubcategoryTable from "./tables/SubcategoryTable";
@@ -22,7 +22,7 @@ import AddProductType from "./addPages/AddProductType";
 import AddProduct from "./addPages/AddProduct";
 import AddProductDetailValue from "./addPages/AddProductDetailValue";
 import AddProductDetailKey from "./addPages/AddProductDetailKey";
-import {AddColor} from "./addPages/AddColor";
+import { AddColor } from "./addPages/AddColor";
 import AddProductColor from "./addPages/AddProductColor";
 import AddProductSize from "./addPages/AddProductSize";
 import AddDiscountType from "./addPages/AddDiscountType";
@@ -88,79 +88,79 @@ const AdminPage: React.FunctionComponent = () => {
             </TabList>
 
             <TabPanel>
-                <AddCategory/>
-                <CategoryTable itemsPerPage={itemsPerPage}/>
+                <AddCategory />
+                <CategoryTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <AddSubcategory/>
-                <SubcategoryTable itemsPerPage={itemsPerPage}/>
+                <AddSubcategory />
+                <SubcategoryTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <AddProductType/>
-                <ProductTypeTable itemsPerPage={itemsPerPage}/>
+                <AddProductType />
+                <ProductTypeTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <AddProduct/>
-                <ProductTable itemsPerPage={itemsPerPage}/>
+                <AddProduct />
+                <ProductTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <AddColor/>
-                <ColorTable itemsPerPage={itemsPerPage}/>
+                <AddColor />
+                <ColorTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <AddProductColor/>
-                <ProductColorTable itemsPerPage={itemsPerPage}/>
+                <AddProductColor />
+                <ProductColorTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <AddDiscountType/>
-                <DiscountTypeTable itemsPerPage={itemsPerPage}/>
+                <AddDiscountType />
+                <DiscountTypeTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <AddDiscount/>
-                <DiscountTable itemsPerPage={itemsPerPage}/>
+                <AddDiscount />
+                <DiscountTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <ProductReviewTable itemsPerPage={itemsPerPage}/>
+                <ProductReviewTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <AddProductSize/>
-                <ProductSizeTable itemsPerPage={itemsPerPage}/>
+                <AddProductSize />
+                <ProductSizeTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <AddProductColorSize/>
-                <ProductColorSizeTable itemsPerPage={itemsPerPage}/>
+                <AddProductColorSize />
+                <ProductColorSizeTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <AddProductDetailKey/>
-                <ProductDetailKeyTable itemsPerPage={itemsPerPage}/>
+                <AddProductDetailKey />
+                <ProductDetailKeyTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <AddProductDetailValue/>
-                <ProductDetailValueTable itemsPerPage={itemsPerPage}/>
+                <AddProductDetailValue />
+                <ProductDetailValueTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <CategoryImageTable itemsPerPage={itemsPerPage}/>
+                <CategoryImageTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <SubcategoryImageTable itemsPerPage={itemsPerPage}/>
+                <SubcategoryImageTable itemsPerPage={itemsPerPage} />
             </TabPanel>
 
             <TabPanel>
-                <ProductColorImageTable itemsPerPage={itemsPerPage}/>
+                <ProductColorImageTable itemsPerPage={itemsPerPage} />
             </TabPanel>
         </Tabs>
     );
