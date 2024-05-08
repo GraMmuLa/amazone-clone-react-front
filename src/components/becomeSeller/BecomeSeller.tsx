@@ -1,23 +1,21 @@
 import Header from "../layout/header/Header";
 import Footer from "../layout/footer/Footer";
-import RegisterBody from "./registerBody/RegisterBody";
-import RegisterBonuses from "./registerBonuses/RegisterBonuses";
-import styles from "./RegisterPage.module.css";
+import Body from "./body/Body";
+import Bonuses from "./bonuses/bonuses";
+import styles from "./BecomeSeller.module.css";
 
-const RegisterPage = () => {
+const BecomeSeller = () => {
    return (
       <>
-         <Header />
          <main className={styles.registerPage}>
             <div className="registerPageTitle__container">
                <h3 className={styles.registerPage__title}>Станьте продавцем та почніть продавати</h3>
             </div>
-            <RegisterBody />
-            <RegisterBonuses />
+            <Body />
+            <Bonuses />
          </main>
-         <Footer />
       </>
    );
 }
 
-export default RegisterPage;
+export default BecomeSeller;

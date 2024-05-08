@@ -1,7 +1,7 @@
-import styles from "./RegisterBonuses.module.css";
+import styles from "./bonuses.module.css";
 import image from "../../../imgs/register/image2.png"
 
-const RegisterBonuses = () => {
+const Bonuses = () => {
    return (
       <div className={styles.registerBonuses}>
          <div className={styles.registerBonuses__container}>
@@ -24,4 +24,4 @@ const RegisterBonuses = () => {
    );
 }
 
-export default RegisterBonuses;
+export default Bonuses;

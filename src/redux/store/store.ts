@@ -1,5 +1,5 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import {categoryReducer} from "../slices/categorySlice";
+import userReducer from "../slices/userSlice"
 import {categoryAPI} from "../api/categoryAPI";
 import {categoryImageAPI} from "../api/categoryImageAPI";
 import {subcategoryAPI} from "../api/subcategoryAPI";
@@ -16,9 +16,10 @@ import {productDetailValueAPI} from "../api/productDetailValueAPI";
 import {productDetailKeyAPI} from "../api/productDetailKeyAPI";
 import {colorAPI} from "../api/colorAPI";
 import {productColorSizeAPI} from "../api/productColorSizeAPI";
+import {authAPI} from "../api/authAPI";
 
 const rootReducer = combineReducers({
-    categories: categoryReducer,
+    user: userReducer,
     [categoryAPI.reducerPath]: categoryAPI.reducer,
     [categoryImageAPI.reducerPath]: categoryImageAPI.reducer,
     [subcategoryAPI.reducerPath]: subcategoryAPI.reducer,
@@ -34,7 +35,8 @@ const rootReducer = combineReducers({
     [productDetailKeyAPI.reducerPath]: productDetailKeyAPI.reducer,
     [productDetailValueAPI.reducerPath]: productDetailValueAPI.reducer,
     [colorAPI.reducerPath]: colorAPI.reducer,
-    [productColorSizeAPI.reducerPath]: productColorSizeAPI.reducer
+    [productColorSizeAPI.reducerPath]: productColorSizeAPI.reducer,
+    [authAPI.reducerPath]: authAPI.reducer
 });
 
 
@@ -59,6 +61,7 @@ const setupStore = () => {
                 .concat(productDetailValueAPI.middleware)
                 .concat(colorAPI.middleware)
                 .concat(productColorSizeAPI.middleware)
+                .concat(authAPI.middleware)
     });
 }
 
