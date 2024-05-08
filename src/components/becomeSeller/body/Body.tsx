@@ -1,7 +1,7 @@
-import styles from "./RegisterBody.module.css";
+import styles from "./body.module.css";
 import image from "../../../imgs/register/image1.png"
 
-const RegisterBody = () => {
+const Body = () => {
    return (
       <div className={styles.registerBody}>
          <div className={styles.registerBody__container}>
@@ -20,4 +20,4 @@ const RegisterBody = () => {
    );
 }
 
-export default RegisterBody;
+export default Body;

@@ -7,5 +7,5 @@ export default interface IUser {
     email: string,
     phone: string,
     roleName: string,
-    token: string
+    isLogged?: boolean
 }

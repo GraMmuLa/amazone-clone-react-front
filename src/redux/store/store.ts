@@ -1,5 +1,5 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import {categoryReducer} from "../slices/categorySlice";
+import userReducer from "../slices/userSlice"
 import {categoryAPI} from "../api/categoryAPI";
 import {categoryImageAPI} from "../api/categoryImageAPI";
 import {subcategoryAPI} from "../api/subcategoryAPI";
@@ -19,7 +19,7 @@ import {productColorSizeAPI} from "../api/productColorSizeAPI";
 import {authAPI} from "../api/authAPI";
 
 const rootReducer = combineReducers({
-    categories: categoryReducer,
+    user: userReducer,
     [categoryAPI.reducerPath]: categoryAPI.reducer,
     [categoryImageAPI.reducerPath]: categoryImageAPI.reducer,
     [subcategoryAPI.reducerPath]: subcategoryAPI.reducer,
