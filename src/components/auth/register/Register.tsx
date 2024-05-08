@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {userSlice} from "../../../redux/slices/userSlice";
 import {useAppDispatch} from "../../../redux/hooks/useAppDispatch";
 import {useAppSelector} from "../../../redux/hooks/useAppSelector";
+import classes from "../Auth.module.css"
 
 const Register:React.FunctionComponent = () => {
 
@@ -57,41 +58,56 @@ const Register:React.FunctionComponent = () => {
     }
 
     return (
-        <>
-            {isError && <div>Введіть коректні дані</div>}
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="usernameInput">Ім'я користувача</label>
-                    <input placeholder="Ім'я користувача" type="text" id="usernameInput" onChange={(e)=>setUsername(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="firstnameInput">Ім'я</label>
-                    <input placeholder="Ім'я" type="text" id="firstnameInput" onChange={(e)=>setFirstname(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="surname">Фамілія</label>
-                    <input placeholder="Фамілія" type="text" id="nameInput" onChange={(e)=>setSurname(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="emailInput">Емейл</label>
-                    <input type="text" id="emailInput" onChange={(e)=>setEmail(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="phoneInput">Номер телефону</label>
-                    <input type="text" id="phoneInput" onChange={(e)=>setPhone(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="phoneInput">Пароль</label>
-                    <input type="text" id="phoneInput" onChange={(e)=>setPassword(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="phoneInput">Повторіть пароль</label>
-                    <input type="text" id="phoneInput" onChange={(e)=>setPasswordRepeat(e.target.value)}/>
-                </div>
-                <button type="submit">Зареєструватися</button>
-            </form>
-        </>
-
+        <div className={classes.formBlock}>
+            <div className={classes.cardWrapper}>
+                {isError && <div>Введіть коректні дані</div>}
+                <form onSubmit={handleSubmit}>
+                    <h2 className={classes.formHeader}>Реєстрація</h2>
+                    <div className={classes.formGroup}>
+                        <label htmlFor="usernameInput">Ім'я користувача</label>
+                        <input className={classes.formInput} placeholder="Ім'я користувача" type="text"
+                               id="usernameInput" onChange={(e) => setUsername(e.target.value)}/>
+                    </div>
+                    <div className={classes.formGroup}>
+                        <label htmlFor="firstnameInput">Ім'я</label>
+                        <input className={classes.formInput} placeholder="Ім'я" type="text" id="firstnameInput"
+                               onChange={(e) => setFirstname(e.target.value)}/>
+                    </div>
+                    <div className={classes.formGroup}>
+                        <label htmlFor="surname">Фамілія</label>
+                        <input className={classes.formInput} placeholder="Фамілія" type="text" id="nameInput"
+                               onChange={(e) => setSurname(e.target.value)}/>
+                    </div>
+                    <div className={classes.formGroup}>
+                        <label htmlFor="emailInput">Емейл</label>
+                        <input className={classes.formInput} placeholder="Емейл" type="text" id="emailInput"
+                               onChange={(e) => setEmail(e.target.value)}/>
+                    </div>
+                    <div className={classes.formGroup}>
+                        <label htmlFor="phoneInput">Номер телефону</label>
+                        <input className={classes.formInput} placeholder="Номер телефону" type="text" id="phoneInput"
+                               onChange={(e) => setPhone(e.target.value)}/>
+                    </div>
+                    <div className={classes.formGroup}>
+                        <label htmlFor="passwordInput">Пароль</label>
+                        <input className={classes.formInput} placeholder="Пароль" type="text" id="passwordInput"
+                               onChange={(e) => setPassword(e.target.value)}/>
+                    </div>
+                    <div className={classes.formGroup}>
+                        <label htmlFor="passwordRepeatInput">Повторіть пароль</label>
+                        <input className={classes.formInput} placeholder="Повторіть пароль" type="text"
+                               id="passwordRepeatInput" onChange={(e) => setPasswordRepeat(e.target.value)}/>
+                    </div>
+                    <div className={classes.formGroup}>
+                        <input type="checkbox" id="checkBoxInput"/>
+                        <label className={classes.formLabel} htmlFor="checkboxInput">
+                            Я погоджуюсь з <a className={classes.formLink} href="#">Політикою конфеденційності</a>
+                        </label>
+                    </div>
+                    <button className={classes.formSubmit} type="submit">Зареєструватися</button>
+                </form>
+            </div>
+        </div>
     );
 };
 

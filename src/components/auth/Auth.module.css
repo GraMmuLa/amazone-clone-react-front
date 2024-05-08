@@ -1,51 +1,81 @@
 .formBlock {
     display: flex;
+    margin-top: 70px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 30px 70px;
-    position: relative;
-    min-height: 1000px;
 }
 
 .cardWrapper {
     display: flex;
     flex-direction: column;
     background: #F6F6F6;
-    padding: 30px 70px 0 70px;
+    padding: 30px 70px;
     border-radius: 15px;
-    align-self: flex-start;
+    min-width: 620px;
 }
 
 .error {
 
 }
 
+.otherBlock {
+    display: flex;
+    padding: 0 30px;
+    margin-top: 20px;
+    font-size: 20px;
+    min-width: 620px;
+    font-weight: 500;
+    justify-content: space-between;
+}
+
+.formGroup:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
 .formInput {
+    display: block;
     border: 3px solid #000000;
     border-radius: 25px;
     padding: 9px 30px;
     font-size: 18px;
-    min-width: 480px;
-    margin-top: 10px;
+    width: 100%;
 }
 
 .formLabel {
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: 15px;
+
 }
 
 .formHeader {
     font-size: 40px;
     font-weight: 700;
+    margin-bottom: 15px;
 }
 
 .formSubmit {
     background-color: #000000;
     border: 1px solid #000000;
     padding: 15px 0;
-    margin: 30px 0;
     border-radius: 50px;
     color: #FFFFFF;
-    min-width: 480px;
+    width: 100%;
+}
+
+.buttonLink {
+    color: #0066CC;
+    border: 0;
+    outline: 0;
+    font-weight: 500;
+}
+
+.formLink {
+    color: #0066CC;
+    font-weight: 500;
 }

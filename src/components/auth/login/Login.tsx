@@ -55,7 +55,7 @@ const Login: React.FunctionComponent = () => {
                 :
                 <>
                     {isError && <div className={classes.error}>Введіть коректний пароль</div>}
-                    <LoginPassword password={password} setPassword={setPassword}/>
+                    <LoginPassword password={password} setPassword={setPassword} setGoNext={setGoNext}/>
                 </>
             }
         </form>
@@ -74,30 +74,47 @@ const LoginEmail: React.FunctionComponent<{phoneEmail: string,
             <div className={classes.cardWrapper}>
                 {isError && <div className={classes.error}>Введіть коректний емейл або номер телефону</div>}
                 <h2 className={classes.formHeader}>Ввійти</h2>
-                <label className={classes.formLabel} htmlFor="loginInput">Емейл або номер телефону</label>
-                <input className={classes.formInput} placeholder="Емейл або номер телефону" id="loginInput" type="text" value={phoneEmail} onChange={(e) => setPhoneEmail(e.target.value)}/>
+                <div className={classes.formGroup}>
+                    <label htmlFor="loginInput">Емейл або номер телефону</label>
+                    <input className={classes.formInput} placeholder="Емейл або номер телефону" id="loginInput" type="text" value={phoneEmail} onChange={(e) => setPhoneEmail(e.target.value)}/>
+                </div>
                 <button className={classes.formSubmit} onClick={(e)=>{
-                    if(emailPattern.test(phoneEmail) || phonePattern.test(phoneEmail)) {
-                        setIsError(false);
-                        setGoNext(true);
-                    } else {
-                        setIsError(true);
-                    }
+                if(emailPattern.test(phoneEmail) || phonePattern.test(phoneEmail)) {
+                    setIsError(false);
+                    setGoNext(true);
+                } else {
+                    setIsError(true);
+                }
                 }}>Продовжити</button>
             </div>
         </div>
     );
 }
 
-const LoginPassword: React.FunctionComponent<{password: string, setPassword: React.Dispatch<React.SetStateAction<string>>}> = ({password, setPassword}) => {
+const LoginPassword: React.FunctionComponent<{password: string,
+    setPassword: React.Dispatch<React.SetStateAction<string>>,
+    setGoNext: React.Dispatch<React.SetStateAction<boolean>>}> = ({password, setPassword, setGoNext}) => {
 
     return (
         <div className={classes.formBlock}>
-            <h2>Ввійти</h2>
-            <label htmlFor="passwordInput">Пароль</label>
-            <input placeholder="Пароль" id="passwordInput" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            <button type="submit">Продовжити</button>
+            <div className={classes.cardWrapper}>
+                <h2 className={classes.formHeader}>Ввійти</h2>
+                <div className={classes.formGroup}>
+                    <label htmlFor="passwordInput">Пароль</label>
+                    <input className={classes.formInput} placeholder="Пароль" id="passwordInput" type="password" value={password}
+                           onChange={(e) => setPassword(e.target.value)}/>
+                </div>
+                <button className={classes.formSubmit} type="submit">Продовжити</button>
+            </div>
+            <div className={classes.otherBlock}>
+                <button className={`${classes.returnButton} ${classes.buttonLink}`} onClick={() => setGoNext(false)}>Повернутись</button>
+            </div>
+            <div className={classes.otherBlock}>
+                <span>Немає аккаунту?</span>
+                <button className={classes.buttonLink}>Створити новий аккаунт</button>
+            </div>
         </div>
+
     );
 }
 
