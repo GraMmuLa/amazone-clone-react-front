@@ -1,6 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import IDiscount from "../../interfaces/IDiscount";
-import ICategoryImage from "../../interfaces/ICategoryImage";
 
 export const discountAPI = createApi({
     reducerPath: "discountAPI",
@@ -20,7 +19,14 @@ export const discountAPI = createApi({
             }),
             providesTags: ['Discount']
         }),
-        add: build.mutation<void, IDiscount>({
+        fetchByProductColorId: build.query<IDiscount, number>({
+            query: (productColorId: number) => ({
+                url: "/productColor",
+                params: {productColorId: productColorId}
+            }),
+            providesTags: ['Discount']
+        }),
+        add: build.mutation<IDiscount, IDiscount>({
             query: (discount: IDiscount) =>  ({
                 url: "",
                 method: "POST",

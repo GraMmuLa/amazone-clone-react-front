@@ -20,12 +20,27 @@ export const subcategoryAPI = createApi({
             }),
             providesTags: ['Subcategory']
         }),
-        add: build.mutation<void, ISubcategory>({
+        add: build.mutation<ISubcategory, ISubcategory>({
             query: (subcategory: ISubcategory) =>  ({
                 url: "",
                 method: "POST",
                 body: subcategory
             }),
+            invalidatesTags: ['Subcategory']
+        }),
+        addWithImage: build.mutation<ISubcategory, {file: File, subcategory: ISubcategory}>({
+            query: (data) => {
+                const body = new FormData();
+                body.append("Content-Type", data.file.type);
+                body.append("file", data.file);
+
+                return ({
+                    url: "/withImage",
+                    method: "POST",
+                    body,
+                    params: {name: data.subcategory.name, categoryId: data.subcategory.categoryId}
+                });
+            },
             invalidatesTags: ['Subcategory']
         }),
         delete: build.mutation<void, number>({

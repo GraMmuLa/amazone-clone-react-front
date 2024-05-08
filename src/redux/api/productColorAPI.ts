@@ -1,6 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import IProductColor from "../../interfaces/IProductColor";
-import IProduct from "../../interfaces/IProduct";
 
 export const productColorAPI = createApi({
     reducerPath: "productColorAPI",
@@ -13,6 +12,13 @@ export const productColorAPI = createApi({
             }),
             providesTags: ['ProductColor']
         }),
+        fetchAllByProductId: build.query<IProductColor[], number>({
+            query: (productId: number) => ({
+                url: "/product",
+                params: {productId}
+            }),
+            providesTags: ['ProductColor']
+        }),
         fetchById: build.query<IProductColor, number>({
             query: (id: number) => ({
                 url: "",
@@ -20,12 +26,29 @@ export const productColorAPI = createApi({
             }),
             providesTags: ['ProductColor']
         }),
-        add: build.mutation<void, IProductColor>({
+        add: build.mutation<IProductColor, IProductColor>({
             query: (productColor: IProductColor) =>  ({
                 url: "",
                 method: "POST",
                 body: productColor
             }),
+            invalidatesTags: ['ProductColor']
+        }),
+        addWithImage: build.mutation<IProductColor, {files: File[], productColor: IProductColor}>({
+            query: (data) => {
+                const body = new FormData();
+                body.append("Content-Type", data.files[0].type);
+                for(const file of data.files)
+                    body.append("files", file);
+
+                return ({
+                    url: "/withImage",
+                    method: "POST",
+                    body,
+                    params: {price: data.productColor.price, colorId: data.productColor.colorId, productId: data.productColor.productId},
+                    formData: true
+                })
+            },
             invalidatesTags: ['ProductColor']
         }),
         delete: build.mutation<void, number>({

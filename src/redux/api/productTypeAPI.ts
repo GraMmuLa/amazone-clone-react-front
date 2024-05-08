@@ -20,7 +20,7 @@ export const productTypeAPI = createApi({
             }),
             providesTags: ['ProductType']
         }),
-        add: build.mutation<void, IProductType>({
+        add: build.mutation<IProductType, IProductType>({
             query: (productType: IProductType) =>  ({
                 url: "",
                 method: "POST",

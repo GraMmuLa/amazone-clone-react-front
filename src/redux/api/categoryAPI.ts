@@ -19,12 +19,27 @@ export const categoryAPI = createApi({
             }),
             providesTags: ['Category']
         }),
-        add: build.mutation<void, ICategory>({
+        add: build.mutation<ICategory, ICategory>({
             query: (category: ICategory) => ({
                 url: "",
                 method: "POST",
                 body: category,
             }),
+            invalidatesTags: ['Category']
+        }),
+        addWithImage: build.mutation<ICategory, {file: File, category: ICategory}>({
+           query: (data) => {
+               const body = new FormData();
+               body.append("Content-Type", data.file.type);
+               body.append("file", data.file);
+               return ({
+                   url: "/withImage",
+                   method: "POST",
+                   body,
+                   params: {categoryName: data.category.name},
+                   formData: true
+               });
+           },
             invalidatesTags: ['Category']
         }),
         delete: build.mutation<void, number>({

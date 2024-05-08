@@ -1,9 +1,9 @@
 import HeaderBasketList from "./HeaderBasketList";
 import styles from "./HeaderBasket.module.css";
-import headerBasketImg from "../../../imgs/header/basket.svg"
+import headerBasketImg from "../../../../imgs/header/basket.svg"
 import React from "react";
-import IProduct from "../../../interfaces/IProduct";
-import {productAPI} from "../../../redux/api/productAPI";
+import IProduct from "../../../../interfaces/IProduct";
+import {productAPI} from "../../../../redux/api/productAPI";
 
 const HeaderBasket: React.FunctionComponent = () => {
 

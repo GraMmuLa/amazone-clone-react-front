@@ -27,7 +27,7 @@ export const discountTypeAPI = createApi({
             }),
             providesTags: ['DiscountType']
         }),
-        add: build.mutation<void, IDiscountType>({
+        add: build.mutation<IDiscountType, IDiscountType>({
             query: (discountType: IDiscountType) =>  ({
                 url: "",
                 method: "POST",

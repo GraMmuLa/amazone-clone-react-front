@@ -2,7 +2,7 @@ import HeaderSearch from "./HeaderSearch";
 import HeaderBasket from "./headerBasket/HeaderBasket";
 import HeaderMenu from "./HeaderMenu";
 import styles from "./Header.module.css";
-import image from "../../logo.svg";
+import image from "../../../logo.svg";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
