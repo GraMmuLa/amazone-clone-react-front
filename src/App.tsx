@@ -14,7 +14,7 @@ import Register from "./components/auth/register/Register";
 import BecomeSeller from "./components/becomeSeller/BecomeSeller";
 
 //! Problems
-//todo Пи error емейла в последующем исправлении и переходе ошибка появляеться и в пароле
+//todo При error емейла в последующем исправлении и переходе ошибка появляеться и в пароле
 //todo Error пороля появляеться вне блока formBlock
 
 //?(Не обязательно) Из-за того что блок регистрации большой рядовому посетителю сайта не будет видно ошибкку. Возможные решения: ScrollToTop при ошибке, изменение рассположения ошибки.

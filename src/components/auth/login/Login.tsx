@@ -46,7 +46,6 @@ const Login: React.FunctionComponent = () => {
         }
     }
 
-
     return (
         <form onSubmit={handleSubmit}>
             {!goNext
