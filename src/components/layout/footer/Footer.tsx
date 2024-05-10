@@ -55,7 +55,7 @@ const Footer: React.FunctionComponent = () => {
         <footer className={styles.footer}>
             <div className={styles.footer__container}>
                 <div className={styles.footer__body}>
-                    {footerMenuItems.map(footerMenuItem => <FooterColumn label={footerMenuItem.label} links={footerMenuItem.links} />)}
+                    {footerMenuItems.map(footerMenuItem => <FooterColumn key={footerMenuItem.label} label={footerMenuItem.label} links={footerMenuItem.links} />)}
                 </div>
                 <div className={styles.footer__bottom}>
                     <div className={styles.footer__links}>

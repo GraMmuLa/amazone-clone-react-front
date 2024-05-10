@@ -29,10 +29,43 @@ import AddDiscountType from "./addPages/AddDiscountType";
 import AddDiscount from "./addPages/AddDiscount";
 import AddProductColorSize from "./addPages/AddProductColorSize";
 import ProductColorSizeTable from "./tables/ProductColorSizeTable";
+import {categoryImageAPI} from "../../redux/api/categoryImageAPI";
+import {categoryAPI} from "../../redux/api/categoryAPI";
+import {colorAPI} from "../../redux/api/colorAPI";
+import {discountAPI} from "../../redux/api/discountAPI";
+import {subcategoryAPI} from "../../redux/api/subcategoryAPI";
+import {productTypeAPI} from "../../redux/api/productTypeAPI";
+import {productAPI} from "../../redux/api/productAPI";
+import {productColorAPI} from "../../redux/api/productColorAPI";
+import {discountTypeAPI} from "../../redux/api/discountTypeAPI";
+import {productReviewAPI} from "../../redux/api/productReviewAPI";
+import {productSizeAPI} from "../../redux/api/productSizeAPI";
+import {productColorSizeAPI} from "../../redux/api/productColorSizeAPI";
+import {productDetailKeyAPI} from "../../redux/api/productDetailKeyAPI";
+import {productDetailValueAPI} from "../../redux/api/productDetailValueAPI";
+import {subcategoryImageAPI} from "../../redux/api/subcategoryImageAPI";
+import {productColorImageAPI} from "../../redux/api/productColorImageAPI";
 
 const AdminPage: React.FunctionComponent = () => {
 
     const itemsPerPage = 5;
+
+    const [fetchCategoryImages, {data: categoryImages}] = categoryImageAPI.useLazyFetchAllQuery();
+    const [fetchColors, {data: colors}] = colorAPI.useLazyFetchAllQuery();
+    const [fetchDiscounts, {data: discounts}] = discountAPI.useLazyFetchAllQuery();
+    const [fetchSubcategories, {data: subcategories}] = subcategoryAPI.useLazyFetchAllQuery();
+    const [fetchProductTypes, {data: productTypes}] = productTypeAPI.useLazyFetchAllQuery();
+    const [fetchProducts, {data: products}] = productAPI.useLazyFetchAllQuery();
+    const [fetchProductColors, {data: productColors}] = productColorAPI.useLazyFetchAllQuery();
+    const [fetchDiscountTypes, {data: discountTypes}] = discountTypeAPI.useLazyFetchAllQuery();
+    const [fetchProductReviews, {data: productReviews}] = productReviewAPI.useLazyFetchAllQuery();
+    const [fetchProductSizes, {data: productSizes}] = productSizeAPI.useLazyFetchAllQuery();
+    const [fetchProductColorSizes, {data: productColorSizes}] = productColorSizeAPI.useLazyFetchAllQuery();
+    const [fetchProductDetailKeys, {data: productDetailKeys}] = productDetailKeyAPI.useLazyFetchAllQuery();
+    const [fetchProductDetailValues, {data: productDetailValues}] = productDetailValueAPI.useLazyFetchAllQuery();
+    const [fetchSubcategoryImages, {data: subcategoryImages}] = subcategoryImageAPI.useLazyFetchAllQuery();
+    const [fetchProductColorImages, {data: productColorImages}] = productColorImageAPI.useLazyFetchAllQuery();
+    const {data: categories} = categoryAPI.useFetchAllQuery();
 
     return (
         <Tabs className={classes.adminTabs}>
@@ -40,127 +73,127 @@ const AdminPage: React.FunctionComponent = () => {
                 <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Категорії
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchSubcategories()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Підкатегорії
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchProductTypes()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Типи продукту
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchProducts()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Продукти
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchColors()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Колір
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchProductColors()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Колір продукту
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchDiscountTypes()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Тип знижки
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchDiscounts()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Знижки
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchProductReviews()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Відгуки
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchProductSizes()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Розміри
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchProductColorSizes()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Розмір + Колір продукту
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchProductDetailKeys()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Ключі деталей продукту
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchProductDetailValues()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Значення деталей продукту
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchCategoryImages()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Картинки категорій
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchSubcategoryImages()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Картинки підкатегорій
                 </Tab>
-                <Tab selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchProductColorImages()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Картинки кольору продукту
                 </Tab>
             </TabList>
 
             <TabPanel>
                 <AddCategory />
-                <CategoryTable itemsPerPage={itemsPerPage} />
+                {categories && <CategoryTable categories={categories} itemsPerPage={itemsPerPage} /> }
             </TabPanel>
 
             <TabPanel>
                 <AddSubcategory />
-                <SubcategoryTable itemsPerPage={itemsPerPage} />
+                {subcategories && <SubcategoryTable subcategories={subcategories} itemsPerPage={itemsPerPage} /> }
             </TabPanel>
 
             <TabPanel>
                 <AddProductType />
-                <ProductTypeTable itemsPerPage={itemsPerPage} />
+                {productTypes && <ProductTypeTable productTypes={productTypes} itemsPerPage={itemsPerPage} />}
             </TabPanel>
 
             <TabPanel>
                 <AddProduct />
-                <ProductTable itemsPerPage={itemsPerPage} />
+                {products && <ProductTable products={products} itemsPerPage={itemsPerPage} /> }
             </TabPanel>
 
             <TabPanel>
                 <AddColor />
-                <ColorTable itemsPerPage={itemsPerPage} />
+                {colors && <ColorTable colors={colors} itemsPerPage={itemsPerPage} />}
             </TabPanel>
 
             <TabPanel>
                 <AddProductColor />
-                <ProductColorTable itemsPerPage={itemsPerPage} />
+                {productColors && <ProductColorTable productColors={productColors} itemsPerPage={itemsPerPage} /> }
             </TabPanel>
 
             <TabPanel>
                 <AddDiscountType />
-                <DiscountTypeTable itemsPerPage={itemsPerPage} />
+                {discountTypes && <DiscountTypeTable discountTypes={discountTypes} itemsPerPage={itemsPerPage} />}
             </TabPanel>
 
             <TabPanel>
                 <AddDiscount />
-                <DiscountTable itemsPerPage={itemsPerPage} />
+                {discounts && <DiscountTable discounts={discounts} itemsPerPage={itemsPerPage} />}
             </TabPanel>
 
             <TabPanel>
-                <ProductReviewTable itemsPerPage={itemsPerPage} />
+                {productReviews && <ProductReviewTable productReviews={productReviews} itemsPerPage={itemsPerPage} />}
             </TabPanel>
 
             <TabPanel>
                 <AddProductSize />
-                <ProductSizeTable itemsPerPage={itemsPerPage} />
+                {productSizes && <ProductSizeTable productSizes={productSizes} itemsPerPage={itemsPerPage} />}
             </TabPanel>
 
             <TabPanel>
                 <AddProductColorSize />
-                <ProductColorSizeTable itemsPerPage={itemsPerPage} />
+                {productColorSizes && <ProductColorSizeTable productColorSizes={productColorSizes} itemsPerPage={itemsPerPage} />}
             </TabPanel>
 
             <TabPanel>
                 <AddProductDetailKey />
-                <ProductDetailKeyTable itemsPerPage={itemsPerPage} />
+                {productDetailKeys && <ProductDetailKeyTable productDetailKeys={productDetailKeys} itemsPerPage={itemsPerPage} />}
             </TabPanel>
 
             <TabPanel>
                 <AddProductDetailValue />
-                <ProductDetailValueTable itemsPerPage={itemsPerPage} />
+                {productDetailValues && <ProductDetailValueTable productDetailValues={productDetailValues} itemsPerPage={itemsPerPage} />}
             </TabPanel>
 
             <TabPanel>
-                <CategoryImageTable itemsPerPage={itemsPerPage} />
+                {categoryImages && <CategoryImageTable categoryImages={categoryImages} itemsPerPage={itemsPerPage} /> }
             </TabPanel>
 
             <TabPanel>
-                <SubcategoryImageTable itemsPerPage={itemsPerPage} />
+                {subcategoryImages && <SubcategoryImageTable subcategoryImages={subcategoryImages} itemsPerPage={itemsPerPage} />}
             </TabPanel>
 
             <TabPanel>
-                <ProductColorImageTable itemsPerPage={itemsPerPage} />
+                {productColorImages && <ProductColorImageTable productColorImages={productColorImages} itemsPerPage={itemsPerPage} />}
             </TabPanel>
         </Tabs>
     );

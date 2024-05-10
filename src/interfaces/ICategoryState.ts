@@ -1,5 +1,5 @@
 import ICategory from "./ICategory";
 
-export default interface ICategoryState {
+export default interface ICategoryState{
     categories: ICategory[]
 }

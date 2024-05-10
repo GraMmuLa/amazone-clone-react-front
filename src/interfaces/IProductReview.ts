@@ -1,7 +1,8 @@
-export default interface IProductReview {
-    id?: number,
+import IEntity from "./IEntity";
+
+export default interface IProductReview extends IEntity {
     mark: number,
     username: string,
-    review_text: string,
+    reviewText: string,
     productId: number
 }

@@ -2,8 +2,9 @@ import React, {useState} from "react";
 import {Button, Table} from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import classes from "./AdminPage.module.css";
+import IEntity from "../../interfaces/IEntity";
 
-const AdminTable: React.FunctionComponent<{items: {id?: number, [key: string]: any}[], itemsPerPage: number, deleteMutation: (id: number) => void}> = ({items, itemsPerPage, deleteMutation}) => {
+const AdminTable: React.FunctionComponent<{items: IEntity[], itemsPerPage: number, deleteMutation: (id: number) => void}> = ({items, itemsPerPage, deleteMutation}) => {
 
     const [itemOffset, setItemOffset] = useState(0);
 
@@ -36,7 +37,6 @@ const AdminTable: React.FunctionComponent<{items: {id?: number, [key: string]: a
                             else if(typeof value === "string" && value.length > 255)
                                 return (<td><img src={`data:image/jpg;base64,${value}`} alt="Image"/></td>);
                             return <td>{value}</td>;
-
                         })}
                         <td><Button variant="danger" onClick={(e)=>deleteMutation(currentItem.id!)}>Delete</Button></td>
                     </tr>

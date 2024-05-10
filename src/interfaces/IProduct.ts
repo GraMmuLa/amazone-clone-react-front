@@ -1,9 +1,9 @@
-export default interface IProduct {
-    id?: number,
+import IEntity from "./IEntity";
+
+export default interface IProduct extends IEntity {
     name: string,
     description: string,
     productTypeId: number,
-    mainImageId?: number,
     productColorsIds?: number[],
     productReviewsIds?: number[],
     productDetailValuesIds?: number[]

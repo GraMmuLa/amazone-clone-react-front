@@ -8,7 +8,7 @@ const FooterColumn: React.FunctionComponent<{ links: string[], label: string }> 
          <div className={styles.footer__label}>{label}</div>
          <nav className={styles.footer__menuBod}>
             <ul className="footer__menuList">
-               {links.map((link: string) => <li className={styles.footer__menuItem}><a href="" className="footer__menuLink">{link}</a></li>)}
+               {links.map((link: string) => <li key={link} className={styles.footer__menuItem}><a href="" className="footer__menuLink">{link}</a></li>)}
             </ul>
          </nav>
       </div>

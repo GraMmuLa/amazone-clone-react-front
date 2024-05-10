@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { emailPattern, invalidPasswordPattern, phonePattern } from "../patterns";
 import { authAPI } from "../../../redux/api/authAPI";
-import { useNavigate } from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import { userSlice } from "../../../redux/slices/userSlice";
 import { useAppDispatch } from "../../../redux/hooks/useAppDispatch";
 import { useAppSelector } from "../../../redux/hooks/useAppSelector";
@@ -114,7 +114,7 @@ const Register: React.FunctionComponent = () => {
             </div>
             <div className={classes.otherBlock}>
                 <span>Вже є аккаунт?</span>
-                <a href='' className={classes.buttonLink}>Увійти</a>
+                <NavLink to="/login" className={classes.buttonLink}>Увійти</NavLink>
             </div>
         </div>
     );

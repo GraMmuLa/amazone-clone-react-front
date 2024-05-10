@@ -1,5 +1,6 @@
-export default interface IUser {
-    id?: number,
+import IEntity from "./IEntity";
+
+export default interface IUser extends IEntity {
     username: string,
     firstname: string,
     middlename?: string,
@@ -7,5 +8,6 @@ export default interface IUser {
     email: string,
     phone: string,
     roleName: string,
+    favouriteProductColorIds?: number[],
     isLogged?: boolean
 }

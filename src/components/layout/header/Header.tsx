@@ -4,8 +4,14 @@ import HeaderMenu from "./HeaderMenu";
 import styles from "./Header.module.css";
 import image from "../../../logo.svg";
 import { NavLink } from "react-router-dom";
+import React from "react";
+import {userSlice} from "../../../redux/slices/userSlice";
+import {useAppSelector} from "../../../redux/hooks/useAppSelector";
 
-const Header = () => {
+const Header: React.FunctionComponent = () => {
+
+    const {isLogged} = useAppSelector(state=>state.user);
+
     return (
         <header className={styles.header}>
             <div className={`${styles.header__container} __containerMax`}>
@@ -14,7 +20,7 @@ const Header = () => {
                         <NavLink to="/" className={styles.header__logo}><img src={image} alt="logo" /></NavLink>
                     </div>
                     <HeaderSearch />
-                    <HeaderBasket />
+                    {isLogged && <HeaderBasket />}
                 </div>
                 <HeaderMenu />
             </div>

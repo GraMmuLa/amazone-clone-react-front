@@ -1,5 +1,6 @@
-export default interface ICategoryImage {
-    id?: number,
+import IEntity from "./IEntity";
+
+export default interface ICategoryImage extends IEntity {
     data: File,
     categoryId: number
 }

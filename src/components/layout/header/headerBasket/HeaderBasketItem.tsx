@@ -5,37 +5,43 @@ import {productColorAPI} from "../../../../redux/api/productColorAPI";
 import {colorAPI} from "../../../../redux/api/colorAPI";
 import IProductColor from "../../../../interfaces/IProductColor";
 import {productColorImageAPI} from "../../../../redux/api/productColorImageAPI";
+import {productAPI} from "../../../../redux/api/productAPI";
 
-const HeaderBasketItem: React.FunctionComponent<{ product: IProduct }> = ({ product }) => {
+const HeaderBasketItem: React.FunctionComponent<{ productColorId: number }> = ({ productColorId }) => {
 
     const [isChecked, setIsChecked] = useState(true);
 
-    const {data: productColor} = productColorAPI.useFetchByIdQuery(product.productColorsIds![0]);
+    const {data: productColor} = productColorAPI.useFetchByIdQuery(productColorId);
 
     const handleCheckboxChange = () => {
         setIsChecked(!isChecked);
     }
 
     return (
-        <div className={styles.basketBody__item}>
-            <div className={styles.basketBodyItem__checkboxBlock}>
-                <input checked={isChecked} onChange={handleCheckboxChange} id={`${product.id}`} type="checkbox" />
-                <label className={styles.basketBodyItem__label} htmlFor={`${product.id}`}></label>
-            </div>
-            {productColor && productColor.mainImageId && <MainImage mainImageId={productColor.mainImageId}/>}
-            {productColor && <HeaderBasketContent productColor={productColor} productName={product.name}/>}
-        </div>
+        <>
+            {
+                productColor &&
+                <div className={styles.basketBody__item}>
+                    <div className={styles.basketBodyItem__checkboxBlock}>
+                        <input checked={isChecked} onChange={handleCheckboxChange} id={`${productColor.id}`} type="checkbox"/>
+                        <label className={styles.basketBodyItem__label} htmlFor={`${productColor.id}`}></label>
+                    </div>
+                    {productColor.mainImageId && <MainImage mainImageId={productColor.mainImageId}/>}
+                    {<HeaderBasketContent productColor={productColor} productId={productColor.productId}/>}
+                </div>
+            }
+        </>
     );
 }
 
-const MainImage: React.FunctionComponent<{mainImageId: number}> = ({mainImageId}) => {
+const MainImage: React.FunctionComponent<{ mainImageId: number }> = ({mainImageId}) => {
 
     const {data: mainImage} = productColorImageAPI.useFetchByIdQuery(mainImageId);
 
     return (
         <div className={styles.basketBodyItem__image}>
             <a href="#">
-                { mainImage &&
+                {mainImage &&
                     <picture>
                         <source srcSet={`data:image/jpg;base64,${mainImage.data}`} type="image/jpg"/>
                         <img src={`data:image/jpg;base64,${mainImage.data}`}
@@ -49,9 +55,10 @@ const MainImage: React.FunctionComponent<{mainImageId: number}> = ({mainImageId}
 
 const HeaderBasketContent: React.FunctionComponent<{
     productColor: IProductColor,
-    productName: string
-}> = ({productColor, productName}) => {
+    productId: number
+}> = ({productColor, productId}) => {
 
+    const {data: product} = productAPI.useFetchByIdQuery(productId);
     const {data: color, isLoading} = colorAPI.useFetchByProductColorIdQuery(productColor.id!);
 
     return (
@@ -61,9 +68,7 @@ const HeaderBasketContent: React.FunctionComponent<{
                 <div className={styles.basketBodyItem__content}>
                     <div className={styles.basketBodyItem__body}>
                         {productColor && <div className={styles.basketBodyItem__price}>{productColor.price} грн</div>}
-                        <div className={styles.basketBodyItem__text}>
-                            {productName}
-                        </div>
+                        {product && <div className={styles.basketBodyItem__text}>{product.name}</div>}
                         {color && <div className={styles.basketBodyItem__info}>{`Колір: ${color.color}`}</div>}
                     </div>
                 </div>

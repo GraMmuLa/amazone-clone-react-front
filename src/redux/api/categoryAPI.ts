@@ -14,7 +14,7 @@ export const categoryAPI = createApi({
         }),
         fetchById: build.query<ICategory, number>({
             query: (id: number) => ({
-                url: "/",
+                url: "",
                 params: {id: id},
             }),
             providesTags: ['Category']

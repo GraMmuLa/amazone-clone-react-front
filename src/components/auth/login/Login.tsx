@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { authAPI } from "../../../redux/api/authAPI";
 import { invalidPasswordPattern } from "../patterns";
 import { emailPattern } from "../patterns"
 import { phonePattern } from "../patterns"
 import { useAppDispatch } from "../../../redux/hooks/useAppDispatch";
 import { userSlice } from "../../../redux/slices/userSlice";
-import { useNavigate } from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import classes from "../Auth.module.css"
 
 const Login: React.FunctionComponent = () => {
 
-    const [isError, setIsError] = useState<boolean>(false);
 
     const dispatch = useAppDispatch();
     const { init } = userSlice.actions;
@@ -23,6 +22,8 @@ const Login: React.FunctionComponent = () => {
 
     const [loginByEmail] = authAPI.useLoginByEmailMutation();
     const [loginByPhone] = authAPI.useLoginByPhoneMutation();
+
+    const [isError, setIsError] = useState<boolean>(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -46,7 +47,6 @@ const Login: React.FunctionComponent = () => {
         }
     }
 
-
     return (
         <form onSubmit={handleSubmit}>
             {!goNext
@@ -54,8 +54,7 @@ const Login: React.FunctionComponent = () => {
                 <LoginEmail phoneEmail={phoneEmail} setPhoneEmail={setPhoneEmail} goNext={goNext} setGoNext={setGoNext} />
                 :
                 <>
-                    {isError && <div className={classes.error}>Введіть коректний пароль</div>}
-                    <LoginPassword password={password} setPassword={setPassword} setGoNext={setGoNext} />
+                    <LoginPassword password={password} setPassword={setPassword} setGoNext={setGoNext} isError={isError} setIsError={setIsError} />
                 </>
             }
         </form>
@@ -69,12 +68,12 @@ const LoginEmail: React.FunctionComponent<{
     setGoNext: React.Dispatch<React.SetStateAction<boolean>>
 }> = ({ phoneEmail, setPhoneEmail, goNext, setGoNext }) => {
 
-    const [isError, setIsError] = useState<boolean>(false);
+    const [isErrorEmail, setIsErrorEmail] = useState<boolean>(false);
 
     return (
         <div className={classes.formBlock}>
             <div className={classes.cardWrapper}>
-                {isError && <div className={classes.error}>Введіть правильний телефон або email.</div>}
+                {isErrorEmail && <div className={classes.error}>Введіть правильний телефон або email.</div>}
                 <h2 className={classes.formHeader}>Ввійти</h2>
                 <div className={classes.formBody}>
                     <div className={classes.formGroup}>
@@ -84,10 +83,10 @@ const LoginEmail: React.FunctionComponent<{
                 </div>
                 <button className={classes.formSubmit} onClick={(e) => {
                     if (emailPattern.test(phoneEmail) || phonePattern.test(phoneEmail)) {
-                        setIsError(false);
+                        setIsErrorEmail(false);
                         setGoNext(true);
                     } else {
-                        setIsError(true);
+                        setIsErrorEmail(true);
                     }
                 }}>Продовжити</button>
             </div>
@@ -102,12 +101,19 @@ const LoginEmail: React.FunctionComponent<{
 const LoginPassword: React.FunctionComponent<{
     password: string,
     setPassword: React.Dispatch<React.SetStateAction<string>>,
-    setGoNext: React.Dispatch<React.SetStateAction<boolean>>
-}> = ({ password, setPassword, setGoNext }) => {
+    setGoNext: React.Dispatch<React.SetStateAction<boolean>>,
+    isError: boolean,
+    setIsError: React.Dispatch<React.SetStateAction<boolean>>
+}> = ({ password, setPassword, setGoNext, isError, setIsError }) => {
+
+    useEffect(() => {
+        setIsError(false);
+    }, []);
 
     return (
         <div className={classes.formBlock}>
             <div className={classes.cardWrapper}>
+                {isError && <div className={classes.error}>Введіть коректний пароль</div>}
                 <h2 className={classes.formHeader}>Ввійти</h2>
                 <div className={classes.formBody}>
                     <div className={classes.formGroup}>
@@ -121,7 +127,7 @@ const LoginPassword: React.FunctionComponent<{
             <button className={classes.returnButton} onClick={() => setGoNext(false)}>{'<-'}</button>
             <div className={classes.otherBlock}>
                 <span>Немає аккаунту?</span>
-                <a href="" className={classes.buttonLink}>Створити новий аккаунт</a>
+                <NavLink to="/register" className={classes.buttonLink}>Створити новий аккаунт</NavLink>
             </div>
         </div>
 

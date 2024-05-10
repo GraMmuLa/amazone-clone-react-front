@@ -22,7 +22,7 @@ const AddDiscount: React.FunctionComponent = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if(price && period && productColorId && discountTypeId) {
-            addDiscount({price: price, period: period, productColorId: productColorId, discountTypeId: discountTypeId});
+            addDiscount({price: price, period: period.valueOf(), productColorId: productColorId, discountTypeId: discountTypeId});
             setPrice(undefined);
             setPeriod(undefined);
             setProductColorId(undefined);

@@ -1,13 +1,13 @@
-import styles from "./ProductsPageBodyCard.module.css";
-import IProduct from "../../interfaces/IProduct";
+import styles from "./BodyCard.module.css";
+import IProduct from "../../../../interfaces/IProduct";
 import React from "react";
-import IProductColor from "../../interfaces/IProductColor";
-import {productAPI} from "../../redux/api/productAPI";
-import {productColorAPI} from "../../redux/api/productColorAPI";
-import {productColorImageAPI} from "../../redux/api/productColorImageAPI";
-import {discountAPI} from "../../redux/api/discountAPI";
+import IProductColor from "../../../../interfaces/IProductColor";
+import {productAPI} from "../../../../redux/api/productAPI";
+import {productColorAPI} from "../../../../redux/api/productColorAPI";
+import {productColorImageAPI} from "../../../../redux/api/productColorImageAPI";
+import {discountAPI} from "../../../../redux/api/discountAPI";
 
-const ProductsPageBodyCard: React.FunctionComponent<{ product: IProduct}> = ({ product }) => {
+const BodyCard: React.FunctionComponent<{ product: IProduct}> = ({ product }) => {
 
     const {data: productColor} = productColorAPI.useFetchByIdQuery(product.productColorsIds![0]);
 
@@ -61,4 +61,4 @@ const DiscountBlock: React.FunctionComponent<{productColor: IProductColor, disco
     );
 }
 
-export default ProductsPageBodyCard;
+export default BodyCard;

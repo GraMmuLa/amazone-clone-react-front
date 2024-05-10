@@ -1,5 +1,5 @@
 import Aside from "./aside/Aside";
-import ProductsPageBody from "./ProductsPageBody";
+import Body from "./body/Body";
 import Offers from "./offers/Offers";
 import Select from "./select/Select";
 import ProductsPagePagination from "./ProductsPagePagination";
@@ -15,7 +15,7 @@ const ProductsPage = () => {
                 <Select selected={selected} setSelected={setSelected} />
                 <div className={styles.main__wrapper}>
                     <Aside />
-                    <ProductsPageBody />
+                    <Body />
                 </div>
                 <ProductsPagePagination />
             </div>

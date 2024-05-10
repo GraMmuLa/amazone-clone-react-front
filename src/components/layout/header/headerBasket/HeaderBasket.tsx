@@ -4,27 +4,25 @@ import headerBasketImg from "../../../../imgs/header/basket.svg"
 import React from "react";
 import IProduct from "../../../../interfaces/IProduct";
 import {productAPI} from "../../../../redux/api/productAPI";
+import {useSelector} from "react-redux";
+import {useAppSelector} from "../../../../redux/hooks/useAppSelector";
 
 const HeaderBasket: React.FunctionComponent = () => {
 
-    const {data: products, isLoading} = productAPI.useFetchAllQuery();
+    const {favouriteProductColorIds} = useAppSelector(state=>state.user);
 
     return (
         <div className={styles.header__basketWrapper}>
             <a href="" className={styles.header__basketBlock}>
                 <img src={headerBasketImg} alt="basket" />
-                { isLoading ?
-                    <div>Loading...</div> :
-                    products && <div className={styles.header__value}>{products.length}</div>}
+                {favouriteProductColorIds && <div className={styles.header__value}>{favouriteProductColorIds.length}</div> }
             </a>
             <div className={styles.basketBody}>
 
-                { isLoading ?
-                    <div>Loading...</div> :
-                    products &&
+                {favouriteProductColorIds &&
                     <>
-                        <div className={styles.basketBody__count}>Ваші товари: <span>{products.length}</span></div>
-                        <HeaderBasketList products={products}/>
+                        <div className={styles.basketBody__count}>Ваші товари: <span>{favouriteProductColorIds.length}</span></div>
+                        <HeaderBasketList productColorIds={favouriteProductColorIds}/>
                     </>
                 }
             </div>
