@@ -1,5 +1,6 @@
 import HeaderSearch from "./HeaderSearch";
 import HeaderBasket from "./headerBasket/HeaderBasket";
+import User from "./user/User";
 import HeaderMenu from "./HeaderMenu";
 import styles from "./Header.module.css";
 import image from "../../../logo.svg";
@@ -17,6 +18,7 @@ const Header = () => {
                     <HeaderBasket />
                 </div>
                 <HeaderMenu />
+                <User />
             </div>
         </header>
     );

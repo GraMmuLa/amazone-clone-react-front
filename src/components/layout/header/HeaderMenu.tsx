@@ -1,22 +1,18 @@
 import styles from "./HeaderMenu.module.css";
 import arrowImg from "../../../imgs/arrow.svg"
-import React from "react";
-import {NavLink} from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-const HeaderMenu = () => {
+const HeaderMenu: React.FunctionComponent = () => {
+    const handleClick = () => {
+        document.body.classList.toggle("userOpen")
+    }
+
     return (
         <nav className={styles.menu}>
             <ul className={styles.menu__list}>
-                <li className={styles.menu__item}>
-                    <a href="" className={styles.menu__link}>Всі<span><img src={arrowImg} alt="arrow" /></span></a>
-                    <ul className={styles.menu__subList}>
-                        <li className={styles.menu__subItem}>
-                            <a href="" className={styles.menu__subLink}>lorem 1</a>
-                        </li>
-                        <li className={styles.menu__subItem}>
-                            <a href="" className={styles.menu__subLink}>lorem 2</a>
-                        </li>
-                    </ul>
+                <li id="userOpen" onClick={handleClick} className={styles.menu__item}>
+                    <button className={styles.menu__link}>Всі<span><img src={arrowImg} alt="arrow" /></span></button>
                 </li>
                 <li className={styles.menu__item}><NavLink to="/todaysOffers" className={styles.menu__link}>Сьогоднішні пропозиції</NavLink></li>
                 <li className={styles.menu__item}><a href="" className={styles.menu__link}>Купити знову</a></li>
