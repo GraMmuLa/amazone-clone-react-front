@@ -2,15 +2,14 @@
    position: fixed;
    top: 0;
    left: 0;
+   transform: translate(-100%, 0);
    min-width: 366px;
    height: 100vh;
    padding: 20px;
    background-color: #fff;
    overflow: auto;
    box-shadow: 5px 0 30px #00000062;
-   opacity: 0;
-   visibility: hidden;
-   transition: .3s;
+   transition: 0.3s ease 0s;
 }
 
 .user__top {
@@ -72,14 +71,14 @@
    flex-direction: column;
 }
 
-.user__regAction a {
+.user__regAction button {
    display: block;
    width: 100%;
    text-align: left;
    font-size: 24px;
 }
 
-.user__regAction a:not(:last-child) {
+.user__regAction button:not(:last-child) {
    margin-bottom: 10px;
    padding-bottom: 10px;
    border-bottom: 1px solid #000;
@@ -110,7 +109,7 @@
 }
 
 .user__link {
-   display: flex;
+   display: inline-flex;
    align-items: center;
    gap: 17px;
 }

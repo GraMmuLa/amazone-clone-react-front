@@ -59,6 +59,7 @@
 .accordion__body {
    padding: 0.5rem 0 0 4.0625rem;
    opacity: 0;
+   visibility: hidden;
    transition: all 0.3s ease 0s;
 }
 
@@ -86,6 +87,7 @@
    height: 1.25rem;
    border: 0.125rem solid #858585;
    border-radius: 50%;
+   transition: 0.2s ease 0s;
 }
 
 .checkbox__label::after {
@@ -101,6 +103,7 @@
    background-color: #fff;
    border-radius: 50%;
    opacity: 0;
+   transition: 0.2s ease 0s;
 }
 
 input[type=checkbox]:checked+.checkbox__label::before {

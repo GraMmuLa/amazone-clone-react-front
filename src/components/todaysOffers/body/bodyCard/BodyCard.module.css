@@ -3,11 +3,23 @@
    flex-direction: column;
 }
 
-.bodyMain__imageLink {
+.bodyMain__image a {
+   position: relative;
    display: block;
    aspect-ratio: 250/350;
    background-color: #a0a0a0;
+   overflow: hidden;
 }
+
+.bodyMain__image img {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
 
 .bodyMain__image:not(:last-child) {
    margin-bottom: 0.625rem;
