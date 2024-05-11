@@ -42,11 +42,6 @@ code {
   border: 3px solid #000;
 }
 
-body.userOpen {
-  overflow: hidden;
-}
-
 body.userOpen #user {
-  opacity: 1;
-  visibility: visible;
+  transform: translate(0, 0);
 }

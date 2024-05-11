@@ -2,14 +2,14 @@
    position: fixed;
    top: 0;
    left: 0;
+   transform: translate(-100%, 0);
    min-width: 366px;
    height: 100vh;
    padding: 20px;
    background-color: #fff;
    overflow: auto;
    box-shadow: 5px 0 30px #00000062;
-   opacity: 0;
-   visibility: hidden;
+   transition: 0.3s ease 0s;
 }
 
 .user__top {
@@ -109,7 +109,7 @@
 }
 
 .user__link {
-   display: flex;
+   display: inline-flex;
    align-items: center;
    gap: 17px;
 }

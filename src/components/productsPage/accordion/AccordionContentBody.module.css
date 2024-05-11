@@ -15,6 +15,7 @@
    height: 1.25rem;
    border: 0.125rem solid #858585;
    border-radius: 50%;
+   transition: 0.2s ease 0s;
 }
 
 .bodyAccordion__item label::after {
@@ -30,6 +31,7 @@
    background-color: #fff;
    border-radius: 50%;
    opacity: 0;
+   transition: 0.2s ease 0s;
 }
 
 .bodyAccordion__item:not(:last-child) {
