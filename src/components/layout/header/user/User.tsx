@@ -1,22 +1,27 @@
 import styles from "./User.module.css";
 import arrow from "../../../../imgs/arrow.svg"
 import React from "react";
+import {useAppSelector} from "../../../../redux/hooks/useAppSelector";
+import {NavLink} from "react-router-dom";
 
 const User: React.FunctionComponent = () => {
+
+    const {isLogged, username} = useAppSelector(state=>state.user);
+
    return (
       <div id="user" className={styles.user}>
          <div className={styles.user__top}>
-            {1 ? (
+            {isLogged ? (
                <>
                   <div className={styles.user__ava}><img src="" alt="avatar" /></div>
-                  <div className={styles.user__name}>Kateryna_syrai</div>
+                  <div className={styles.user__name}>{username}</div>
                </>
             ) : (
                <>
                   <div className={styles.user__regAva}><img src="" alt="reg avatar" /></div>
                   <div className={styles.user__regAction}>
-                     <button className={styles.user__login}>Вхід</button>
-                     <button className={styles.user__register}>Зареєструватися</button>
+                     <NavLink to="/login" className={styles.user__login}>Вхід</NavLink>
+                     <NavLink to="/register" className={styles.user__register}>Зареєструватися</NavLink>
                   </div>
                </>
             )}

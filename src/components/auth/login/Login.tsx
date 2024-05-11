@@ -92,7 +92,7 @@ const LoginEmail: React.FunctionComponent<{
             </div>
             <div className={classes.otherBlock}>
                 <span>Немає аккаунту?</span>
-                <a href="" className={classes.buttonLink}>Створити новий аккаунт</a>
+                <NavLink to="/register" className={classes.buttonLink}>Створити новий аккаунт</NavLink>
             </div>
         </div>
     );

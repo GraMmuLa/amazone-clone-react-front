@@ -1,4 +1,9 @@
-.recommendations__items {
+.productList {
+   padding-top: 30px;
+   margin-bottom: 80px;
+}
+
+.productList__items {
    display: -ms-grid;
    display: grid;
    gap: 2.75rem;

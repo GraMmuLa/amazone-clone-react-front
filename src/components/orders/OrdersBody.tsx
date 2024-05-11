@@ -5,8 +5,13 @@ import OrderAgain from "./orderAgain/OrderAgain";
 import NotBeenSent from "./notBeenSent/NotBeenSent";
 import CanceledOrders from "./canceledOrders/CanceledOrders";
 import styles from "./OrdersBody.module.css";
+import React from "react";
+import {useParams} from "react-router";
 
-const OrdersBody = () => {
+const OrdersBody: React.FunctionComponent = () => {
+
+   const {defaultIndex} = useParams();
+
    return (
       <div className={styles.ordersBody}>
          <div className="ordersBody__container">
@@ -14,7 +19,7 @@ const OrdersBody = () => {
                <h2 className={styles.ordersBody__title}>Ваші замовлення</h2>
                <OrdersSearch />
             </div>
-            <Tabs className={styles.ordersBodyTabs}>
+            <Tabs defaultIndex={defaultIndex ? parseInt(defaultIndex) : 0} className={styles.ordersBodyTabs}>
                <TabList className={styles.ordersBodyTabList}>
                   <Tab className={styles.ordersBodyTab} selectedClassName={styles._active}>
                      <button>Замовлення</button>

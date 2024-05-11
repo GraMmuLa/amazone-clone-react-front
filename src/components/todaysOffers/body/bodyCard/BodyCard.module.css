@@ -3,7 +3,7 @@
    flex-direction: column;
 }
 
-.bodyMain__image a {
+.bodyMain__imageLink {
    display: block;
    aspect-ratio: 250/350;
    background-color: #a0a0a0;

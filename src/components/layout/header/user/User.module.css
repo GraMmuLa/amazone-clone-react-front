@@ -10,6 +10,7 @@
    box-shadow: 5px 0 30px #00000062;
    opacity: 0;
    visibility: hidden;
+   transition: .3s;
 }
 
 .user__top {
@@ -71,14 +72,14 @@
    flex-direction: column;
 }
 
-.user__regAction button {
+.user__regAction a {
    display: block;
    width: 100%;
    text-align: left;
    font-size: 24px;
 }
 
-.user__regAction button:not(:last-child) {
+.user__regAction a:not(:last-child) {
    margin-bottom: 10px;
    padding-bottom: 10px;
    border-bottom: 1px solid #000;

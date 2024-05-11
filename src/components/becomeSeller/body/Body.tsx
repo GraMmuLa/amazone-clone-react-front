@@ -1,5 +1,6 @@
 import styles from "./body.module.css";
 import image from "../../../imgs/register/image1.png"
+import {NavLink} from "react-router-dom";
 
 const Body = () => {
    return (
@@ -10,7 +11,7 @@ const Body = () => {
                <div className={styles.registerBody__text}>
                   <p>Станьте одним із наших довірених продавців</p>
                </div>
-               <a href="" className={styles.registerBody__btn}>Зареєструватись</a>
+               <NavLink to="/registerSeller" className={styles.registerBody__btn}>Зареєструватись</NavLink>
             </div>
             <div className={styles.registerBody__image}>
                <img src={image} alt="" />

@@ -12,13 +12,15 @@ const auth_token = sessionStorage.getItem("auth_token");
 
 if(auth_token !== null) {
     const decoded: IDecodedJwtToken = jwtDecode(auth_token);
-    var expDate=new Date('1970-01-01T00:00:00Z');
+    let expDate=new Date('1970-01-01T00:00:00Z');
     expDate.setUTCSeconds(decoded.exp);
+    console.log(decoded.favouriteProductColorIds);
     if(expDate < new Date()) {
         sessionStorage.removeItem("auth_token");
     }
     else {
         initialState = {
+            id: decoded.id,
             username: decoded.iss,
             firstname: decoded.firstname,
             middlename: decoded.middlename,
@@ -27,6 +29,7 @@ if(auth_token !== null) {
             phone: decoded.phone,
             roleName: decoded.roleName,
             favouriteProductColorIds: decoded.favouriteProductColorIds,
+            createdAt: decoded.createdAt,
             isLogged: true
         }
     }
@@ -40,6 +43,7 @@ export const userSlice = createSlice({
             try {
                 const token = action.payload.token;
                 const decoded: IDecodedJwtToken = jwtDecode(token);
+                state.id = decoded.id;
                 state.username = decoded.iss;
                 state.firstname = decoded.firstname;
                 state.middlename = decoded.middlename;
@@ -48,7 +52,10 @@ export const userSlice = createSlice({
                 state.phone = decoded.phone;
                 state.roleName = decoded.roleName;
                 state.favouriteProductColorIds = decoded.favouriteProductColorIds;
+                state.createdAt = decoded.createdAt;
                 state.isLogged = true;
+
+                sessionStorage.setItem("auth_token", token);
             } catch (e) {
                 console.log("Invalid token");
             }

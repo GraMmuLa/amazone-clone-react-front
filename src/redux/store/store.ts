@@ -17,6 +17,7 @@ import {productDetailKeyAPI} from "../api/productDetailKeyAPI";
 import {colorAPI} from "../api/colorAPI";
 import {productColorSizeAPI} from "../api/productColorSizeAPI";
 import {authAPI} from "../api/authAPI";
+import {userAPI} from "../api/userAPI";
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -36,7 +37,8 @@ const rootReducer = combineReducers({
     [productDetailValueAPI.reducerPath]: productDetailValueAPI.reducer,
     [colorAPI.reducerPath]: colorAPI.reducer,
     [productColorSizeAPI.reducerPath]: productColorSizeAPI.reducer,
-    [authAPI.reducerPath]: authAPI.reducer
+    [authAPI.reducerPath]: authAPI.reducer,
+    [userAPI.reducerPath]: userAPI.reducer
 });
 
 
@@ -62,6 +64,7 @@ const setupStore = () => {
                 .concat(colorAPI.middleware)
                 .concat(productColorSizeAPI.middleware)
                 .concat(authAPI.middleware)
+                .concat(userAPI.middleware)
     });
 }
 

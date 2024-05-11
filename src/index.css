@@ -42,9 +42,9 @@ code {
   border: 3px solid #000;
 }
 
-body.userOpen {
-  overflow: hidden;
-}
+/*body.userOpen {*/
+/*  overflow: hidden;*/
+/*}*/
 
 body.userOpen #user {
   opacity: 1;

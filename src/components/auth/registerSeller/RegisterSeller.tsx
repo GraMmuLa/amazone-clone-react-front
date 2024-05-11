@@ -1,80 +1,126 @@
-import styles from "./RegisterSeller.module.css";
-import { productAPI } from "../../../redux/api/productAPI";
-import { useParams } from "react-router";
 import { withMask } from 'use-mask-input';
-import React, { useState } from 'react';
-
-const isValidEmail = (email: string) => {
-   const re =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-   return re.test(String(email).toLowerCase());
-}
+import React, { useEffect, useState } from 'react';
+import { emailPattern, invalidPasswordPattern } from "../patterns";
+import { authAPI } from "../../../redux/api/authAPI";
+import { useNavigate } from "react-router-dom";
+import { userSlice } from "../../../redux/slices/userSlice";
+import { useAppDispatch } from "../../../redux/hooks/useAppDispatch";
+import { useAppSelector } from "../../../redux/hooks/useAppSelector";
+import styles from "./RegisterSeller.module.css";
 
 const RegisterSeller: React.FunctionComponent = () => {
-   const [name, setName] = useState("");
-   const [lastName, setLastName] = useState("");
-   const [email, setEmail] = useState("");
-   const [tel, setTel] = useState("");
+   const [register, { data: jwtResponse }] = authAPI.useRegisterMutation();
+
+   const [username, setUsername] = useState<string>("");
+   const [firstname, setFirstname] = useState<string>("");
+   const [surname, setSurname] = useState<string>("");
+   const [email, setEmail] = useState<string>("");
+   const [phone, setPhone] = useState<string>("");
+   const [password, setPassword] = useState<string>("");
+   const [passwordRepeat, setPasswordRepeat] = useState<string>("");
+   const [isError, setIsError] = useState<boolean>(false);
+
+   const navigate = useNavigate();
+
+   const dispatch = useAppDispatch();
+   const { isLogged } = useAppSelector(state => state.user);
+   const { init } = userSlice.actions;
+
+   useEffect(() => {
+      if (isLogged)
+         navigate("/");
+   }, [isLogged]);
 
    const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
-      if (name === "") {
-         console.log('error username');
+      if (!emailPattern.test(email) ||
+         // !phonePattern.test(phone) ||
+         invalidPasswordPattern.test(password) ||
+         password !== passwordRepeat ||
+         username.length < 4 ||
+         firstname.length === 0 ||
+         surname.length === 0) {
+         setIsError(true);
+         return;
       }
-      if (lastName === "") {
-         console.log('error last name');
-      }
-      if (email === "" || !isValidEmail(email)) {
-         console.log('error email');
-      }
-      if (tel === "") {
-         console.log('error tel');
-      }
+      register({
+         username: username,
+         firstname: firstname,
+         surname: surname,
+         email: email,
+         phone: phone,
+         password: password,
+         roleName: "Seller"
+      });
    };
 
+   if (jwtResponse) {
+      dispatch(init(jwtResponse));
+      sessionStorage.setItem("auth_token", `Bearer ${jwtResponse.token}`);
+   }
+
    return (
-      <form action="" onSubmit={handleSubmit}>
-         <div>
-            <div className="formItem">
-               <label htmlFor="">Ім’я</label>
-               <input id="username" type="text" onChange={(e) => setName(e.target.value)} />
-            </div>
-            <div className="formItem">
-               <label htmlFor="">Фамілія</label>
-               <input id="lastName" type="text" onChange={(e) => setLastName(e.target.value)} />
-            </div>
-            <div className="formItem">
-               <label htmlFor="">По-батькові</label>
-               <input type="text" />
-            </div>
-            <div className="formItem">
-               <label htmlFor="">Пошта</label>
-               <input id="email" type="text" onChange={(e) => setEmail(e.target.value)} />
-            </div>
-            <div className="formItem">
-               <label htmlFor="">Номер телефону</label>
-               <div>
-                  <span>+380</span>
-                  <input id="tel" type="text" ref={withMask('999-99-99-99')} onChange={(e) => setTel(e.target.value)} />
+      <div className={styles.sellerRegist}>
+         <div className="sellerRegist__container">
+            <h2 className={styles.sellerRegist__title}>Реєстрація продавця</h2>
+            <form action="" onSubmit={handleSubmit}>
+               {isError && <div className={styles.error}>Введіть коректні дані</div>}
+               <div className={styles.sellerRegist__formBody}>
+                  <div className={styles.formItemWrapper}>
+                     <div className={styles.formItem}>
+                        <label htmlFor="sellerRegistUsername">Назва магазину</label>
+                        <input id="sellerRegistUsername" type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Назва магазину" />
+                     </div>
+                  </div>
+                  <div className={styles.formItemWrapper}>
+                     <div className={styles.formItem}>
+                        <label htmlFor="sellerRegistFirstname">Ім’я</label>
+                        <input id="sellerRegistFirstname" type="text" onChange={(e) => setFirstname(e.target.value)} placeholder="Ім’я" />
+                     </div>
+                     <div className={styles.formItem}>
+                        <label htmlFor="sellerRegistSurname">Фамілія</label>
+                        <input id="sellerRegistSurname" type="text" onChange={(e) => setSurname(e.target.value)} placeholder="Фамілія" />
+                     </div>
+                     <div className={styles.formItem}>
+                        <label htmlFor="sellerRegistMiddleName">По-батькові</label>
+                        <input id="sellerRegistMiddleName" type="text" placeholder="По-батькові" />
+                     </div>
+                  </div>
+                  <div className={styles.formItemWrapper}>
+                     <div className={styles.formItem}>
+                        <label htmlFor="sellerRegistEmail">Емейл</label>
+                        <input id="sellerRegistEmail" type="text" onChange={(e) => setEmail(e.target.value)} placeholder="Емейл" />
+                     </div>
+                     <div className={styles.formItem}>
+                        <label htmlFor="sellerRegistPhone">Номер телефону</label>
+                        <div className={styles.sellerRegist__phone}>
+                           <span>+380</span>
+                           <input id="sellerRegistPhone" type="text" ref={withMask('999-99-99-99')} onChange={(e) => setPhone(e.target.value)} placeholder="000-00-00-00" />
+                        </div>
+                     </div>
+                  </div>
+                  <div className={styles.formItemWrapper}>
+                     <div className={styles.formItem}>
+                        <label htmlFor="sellerRegistPassword">Пароль</label>
+                        <input id="sellerRegistPassword" type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Пароль" />
+                     </div>
+                     <div className={styles.formItem}>
+                        <label htmlFor="sellerRegistPasswordRepeat">Повторіть пароль</label>
+                        <input type="password" id="sellerRegistPasswordRepeat" onChange={(e) => setPasswordRepeat(e.target.value)} placeholder="Повторіть пароль" />
+                     </div>
+                  </div>
                </div>
-            </div>
+               <div className={styles.sellerRegist__checkboxBlock}>
+                  <input className={styles.formCheckBox} type="checkbox" id="sellerRegistCheckBoxInput" />
+                  <label className={styles.formLabel} htmlFor="sellerRegistCheckBoxInput">
+                     Я підтверджую що всі введені данні коректні
+                  </label>
+               </div>
+               <button type="submit">Зареєструватись</button>
+            </form>
          </div>
-         <div>
-            <input id="confirm" type="checkbox" />
-            <label htmlFor="confirm">Я підтверджую що всі введені данні коректні</label>
-         </div>
-         <button type="submit">Зареєструватись</button>
-      </form>
+      </div>
    );
 }
 
 export default RegisterSeller;
-
-//       if (password === "" || password.length < 8) {
-//          console.log('error password');
-//       }
-
-//       <div className="formItem">
-//          <label htmlFor="">Пароль</label>
-//          <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-//       </div>

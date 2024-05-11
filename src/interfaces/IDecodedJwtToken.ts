@@ -2,6 +2,7 @@ export default interface IDecodedJwtToken {
     iss: string;
     iat: number;
     exp: number;
+    id: number;
     firstname: string;
     middlename?: string;
     surname: string;
@@ -9,4 +10,5 @@ export default interface IDecodedJwtToken {
     phone: string;
     roleName: string;
     favouriteProductColorIds: number[];
+    createdAt: number;
 }

@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import {productColorImageAPI} from "../../../redux/api/productColorImageAPI";
-import AdminTable from "../AdminTable";
 import {Button, Table} from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import classes from "../AdminPage.module.css";
 import IProductColorImage from "../../../interfaces/IProductColorImage";
+import paginationClasses from "../../pagination/Pagination.module.css";
+import arrow from "../../../imgs/arrow.svg";
 
 const ProductColorImageTable: React.FunctionComponent<{productColorImages: IProductColorImage[], itemsPerPage: number}> = ({productColorImages, itemsPerPage}) => {
 
@@ -46,16 +47,19 @@ const ProductColorImageTable: React.FunctionComponent<{productColorImages: IProd
                         </tbody>
                     </Table>
                     <ReactPaginate
-                        containerClassName={classes.pageContainer}
+                        containerClassName={paginationClasses.pagination}
                         breakLabel="..."
+                        previousLabel={<img className={paginationClasses.arrowLeftImage} src={arrow} alt="arrow left"/>}
+                        nextLabel={<img className={paginationClasses.arrowRightImage} src={arrow} alt="arrow right"/>}
+                        previousClassName={paginationClasses.arrow}
+                        nextClassName={paginationClasses.arrow}
+                        disabledClassName={paginationClasses.disabled}
+                        breakClassName={paginationClasses.disabled}
                         onPageChange={handlePageClick}
-                        previousClassName={classes.pageNextPrevious}
-                        nextClassName={classes.pageNextPrevious}
                         pageRangeDisplayed={5}
                         pageCount={pageCount}
-                        pageClassName={classes.pageItem}
-                        pageLinkClassName={classes.pageButton}
-                        activeLinkClassName={classes.pageButtonActive}
+                        pageClassName={paginationClasses.paginationItem}
+                        activeClassName={paginationClasses.active}
                         renderOnZeroPageCount={null}
                         marginPagesDisplayed={3}
                     />

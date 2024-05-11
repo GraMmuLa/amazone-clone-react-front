@@ -17,7 +17,7 @@ const ProductInfoMain: React.FunctionComponent<{ productColor: IProductColor }> 
     return (
         <div className={styles.productInfoMain}>
             <div className={styles.productInfoMain__price}>
-                <h2>Ціна:</h2><span>{productColor.price}</span>
+                <h2>Ціна:</h2><span>{productColor.price} грн</span>
             </div>
             <div className={`${styles.productInfoMain__sizes} productInfoMain__sizes`}>
                 <h2>Розмір:</h2>

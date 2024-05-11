@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import {productReviewAPI} from "../../../redux/api/productReviewAPI";
 import {discountAPI} from "../../../redux/api/discountAPI";
-import AdminTable from "../AdminTable";
 import {Button, Table} from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import classes from "../AdminPage.module.css";
 import IDiscount from "../../../interfaces/IDiscount";
+import paginationClasses from "../../pagination/Pagination.module.css";
+import arrow from "../../../imgs/arrow.svg";
 
 const DiscountTable: React.FunctionComponent<{discounts: IDiscount[], itemsPerPage: number}> = ({discounts, itemsPerPage}) => {
 
@@ -49,16 +50,19 @@ const DiscountTable: React.FunctionComponent<{discounts: IDiscount[], itemsPerPa
                         </tbody>
                     </Table>
                     <ReactPaginate
-                        containerClassName={classes.pageContainer}
+                        containerClassName={paginationClasses.pagination}
                         breakLabel="..."
+                        previousLabel={<img className={paginationClasses.arrowLeftImage} src={arrow} alt="arrow left"/>}
+                        nextLabel={<img className={paginationClasses.arrowRightImage} src={arrow} alt="arrow right"/>}
+                        previousClassName={paginationClasses.arrow}
+                        nextClassName={paginationClasses.arrow}
+                        disabledClassName={paginationClasses.disabled}
+                        breakClassName={paginationClasses.disabled}
                         onPageChange={handlePageClick}
-                        previousClassName={classes.pageNextPrevious}
-                        nextClassName={classes.pageNextPrevious}
                         pageRangeDisplayed={5}
                         pageCount={pageCount}
-                        pageClassName={classes.pageItem}
-                        pageLinkClassName={classes.pageButton}
-                        activeLinkClassName={classes.pageButtonActive}
+                        pageClassName={paginationClasses.paginationItem}
+                        activeClassName={paginationClasses.active}
                         renderOnZeroPageCount={null}
                         marginPagesDisplayed={3}
                     />
