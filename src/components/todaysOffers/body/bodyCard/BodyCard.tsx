@@ -2,78 +2,60 @@ import styles from "./BodyCard.module.css";
 import IProduct from "../../../../interfaces/IProduct";
 import React from "react";
 import IProductColor from "../../../../interfaces/IProductColor";
-import {productColorAPI} from "../../../../redux/api/productColorAPI";
-import {productColorImageAPI} from "../../../../redux/api/productColorImageAPI";
-import {discountAPI} from "../../../../redux/api/discountAPI";
-import {NavLink} from "react-router-dom";
+import { productAPI } from "../../../../redux/api/productAPI";
+import { productColorAPI } from "../../../../redux/api/productColorAPI";
+import { productColorImageAPI } from "../../../../redux/api/productColorImageAPI";
+import { discountAPI } from "../../../../redux/api/discountAPI";
 
-const BodyCard: React.FunctionComponent<{ product: IProduct}> = ({ product }) => {
+const BodyCard: React.FunctionComponent<{ product: IProduct }> = ({ product }) => {
 
-    const {data: productColor} = productColorAPI.useFetchByIdQuery(product.productColorsIds![0]);
+    const { data: productColor } = productColorAPI.useFetchByIdQuery(product.productColorsIds![0]);
 
     return (
-        <>
-        {productColor &&
         <div className={styles.bodyMain__item}>
-            {productColor.id &&
-            <>
-                {productColor.mainImageId &&
-                    <MainImage productColorId={productColor.id} mainImageId={productColor.mainImageId}/>
-                }
-                <NavLink to="/" className={styles.bodyMain__title}>
-                    {product.name}
-                </NavLink>
-            </>
-            }
-            { productColor.discountId ?
-                <div className={`${styles.bodyMain__price} ${styles.discount}`}>
-                    {productColor.discountId && <DiscountBlock price={productColor.price} discountId={productColor.discountId}/>}
-                </div> :
-                <span>{productColor.price} грн</span>
+            {productColor && productColor.mainImageId && <MainImage mainImageId={productColor.mainImageId} />}
+            <a href="" className={styles.bodyMain__title}>
+                {product.name}
+            </a>
+            {productColor && <div
+                className={`${styles.bodyMain__price} ${productColor.discountId && styles.discount}`}>
+                {productColor.price} грн
+                {productColor.discountId && <DiscountBlock productColor={productColor} discountId={productColor.discountId} />}
+            </div>
             }
         </div>
-        }
-    </>
     );
 }
 
-const MainImage: React.FunctionComponent<{ mainImageId: number, productColorId: number }> = ({
-                                                                                                 mainImageId,
-                                                                                                 productColorId
-                                                                                             }) => {
+const MainImage: React.FunctionComponent<{ mainImageId: number }> = ({ mainImageId }) => {
 
-    const {data: mainImage} = productColorImageAPI.useFetchByIdQuery(mainImageId);
+    const { data: mainImage } = productColorImageAPI.useFetchByIdQuery(mainImageId);
 
     return (
         <div className={styles.bodyMain__image}>
-            {mainImage && <NavLink className={styles.bodyMain__imageLink} to={`/productPage/${productColorId}`}>
+            {mainImage && <a href="">
                 <picture>
-                    <source srcSet={'data:image/jpg;base64,' + mainImage.data} type="image/jpg"/>
-                    <img src={'data:image/jpg;base64,' + mainImage.data} alt="image1"/>
+                    <source srcSet={'data:image/jpg;base64,' + mainImage.data} type="image/jpg" />
+                    <img src={'data:image/jpg;base64,' + mainImage.data} alt="image1" />
                 </picture>
-            </NavLink>
-            }
+            </a>}
         </div>
     )
 }
 
-const DiscountBlock: React.FunctionComponent<{price: number, discountId: number}> = ({price, discountId}) => {
+const DiscountBlock: React.FunctionComponent<{ productColor: IProductColor, discountId: number }> = ({ productColor, discountId }) => {
 
-    const {data: discount} = discountAPI.useFetchByIdQuery(discountId);
+    const { data: discount } = discountAPI.useFetchByIdQuery(discountId);
 
     const getDiscountPercent = () => {
-        if(discount)
-            return Math.round(discount.price / (price / 100));
+        if (discount)
+            return Math.round(discount.price / (productColor.price / 100));
     }
+
 
     return (
         <>
-            {discount &&
-                <>
-                    {price} грн
-                    <span>{`-${getDiscountPercent()}%`}</span>
-                </>
-            }
+            {discount && <span>{`-${getDiscountPercent()}%`}</span>}
         </>
     );
 }
