@@ -13,6 +13,29 @@
    padding-bottom: 4.375rem;
 }
 
+.naviMain__item {
+   font-size: 1.375rem;
+   font-weight: 500;
+   padding: 0.625rem 1.25rem;
+   border-radius: 0.625rem;
+   border: 0.0625rem solid #000;
+   transition: 0.3s ease 0s;
+}
+
+.naviMain__item:hover {
+   background-color: #d7d7d7;
+   text-decoration: none;
+}
+
+.naviMain__item.disabled {
+   pointer-events: none;
+   opacity: 0.4;
+}
+
+.naviMain__item.active {
+   border: 2px solid #000;
+}
+
 .naviMain__arrowLeft {
    display: flex;
    align-items: center;
@@ -28,23 +51,6 @@
    max-width: 20px;
    max-height: 10px;
    rotate: 90deg;
-}
-
-.naviMain__item {
-   font-size: 1.375rem;
-   font-weight: 500;
-   padding: 0.625rem 1.25rem;
-   border-radius: 0.625rem;
-   border: 0.0625rem solid #000;
-}
-
-.naviMain__item.disabled {
-   pointer-events: none;
-   opacity: 0.4;
-}
-
-.naviMain__item.active {
-   border: 2px solid #000;
 }
 
 .naviMain__arrowRight {

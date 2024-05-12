@@ -4,7 +4,7 @@ import styles from "./ProductsPagePagination.module.css";
 const ProductsPagePagination = () => {
    return (
       <nav className={styles.naviMain}>
-         <a href="" className={styles.naviMain__arrowLeft}>
+         <a href="" className={`${styles.naviMain__item} ${styles.naviMain__arrowLeft}`}>
             <img src={arrow} alt="arrow left" />
          </a>
          <a href="" className={`${styles.naviMain__item} ${styles.active}`}>
@@ -22,7 +22,7 @@ const ProductsPagePagination = () => {
          <a href="" className={styles.naviMain__item}>
             5
          </a>
-         <a href="" className={styles.naviMain__arrowRight}>
+         <a href="" className={`${styles.naviMain__item} ${styles.naviMain__arrowRight}`}>
             <img src={arrow} alt="arrow right" />
          </a>
       </nav>

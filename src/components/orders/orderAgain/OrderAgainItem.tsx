@@ -1,21 +1,21 @@
 import styles from "./OrderAgainItem.module.css";
 
-const OrderAgainItem: React.FunctionComponent<{ name: string, price: number, image: string }> = ({ name, price, image }) => {
+const OrderAgainItem: React.FunctionComponent<{ name: string, price: number, discount: boolean, image: string }> = ({ name, price, discount, image }) => {
    return (
-      <div className="orderAgainItem">
-         <div className="orderAgainItem__body">
-            <div className="orderAgainItem__image">
-               <img src={image} alt={image} />
+      <div className={styles.orderAgainItem}>
+         <div className={styles.orderAgainItem__body}>
+            <div className={styles.orderAgainItem__image}>
+               <a href=""><img src={image} alt={image} /></a>
             </div>
-            <div className="orderAgainItem__content">
-               <div className="orderAgainItem__title">{name}</div>
-               <div className="orderAgainItem__price">{price} грн</div>
-               <button className="orderAgainItem__btn">Замовити знову</button>
+            <div className={styles.orderAgainItem__content}>
+               <a href="" className={styles.orderAgainItem__title}>{name}</a>
+               <div className={`${styles.orderAgainItem__price} ${discount ? `${styles._discount}` : ''}`}>{price} грн</div>
+               <button className={styles.orderAgainItem__btn}>Додати до кошика</button>
             </div>
          </div>
-         <div className="orderAgainItem__action">
-            <button className="orderAgainItem__details">Деталі замовлення</button>
-            <button className="orderAgainItem__sendReview">Написати відгук</button>
+         <div className={styles.orderAgainItem__action}>
+            <a href="" className={styles.orderAgainItem__details}>Деталі замовлення</a>
+            <a href="" className={styles.orderAgainItem__sendReview}>Написати відгук</a>
          </div>
       </div>
    );
