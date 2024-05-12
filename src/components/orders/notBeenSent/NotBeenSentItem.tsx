@@ -1,20 +1,20 @@
 import styles from "./NotBeenSentItem.module.css";
 
-const NotBeenSentItem: React.FunctionComponent<{ name: string, price: number, image: string }> = ({ name, price, image }) => {
+const NotBeenSentItem: React.FunctionComponent<{ name: string, price: number, discount: boolean, image: string }> = ({ name, price, image, discount }) => {
    return (
-      <div className="notBeenSentItem">
-         <div className="notBeenSentItem__body">
-            <div className="notBeenSentItem__image">
-               <img src={image} alt={image} />
+      <div className={styles.notBeenSentItem}>
+         <div className={styles.notBeenSentItem__body}>
+            <div className={styles.notBeenSentItem__image}>
+               <a href=""><img src={image} alt={image} /></a>
             </div>
-            <div className="notBeenSentItem__content">
-               <div className="notBeenSentItem__title">{name}</div>
-               <div className="notBeenSentItem__price">{price} грн</div>
-               <button className="notBeenSentItem__btn">Додати до кошика</button>
+            <div className={styles.notBeenSentItem__content}>
+               <a href="" className={styles.notBeenSentItem__title}>{name}</a>
+               <div className={`${styles.notBeenSentItem__price} ${discount ? `${styles._discount}` : ''}`}>{price} грн</div>
+               <button className={styles.notBeenSentItem__btn}>Додати до кошика</button>
             </div>
          </div>
-         <div className="notBeenSentItem__action">
-            <button className="notBeenSentItem__details">Деталі замовлення</button>
+         <div className={styles.notBeenSentItem__action}>
+            <a href="" className={styles.notBeenSentItem__details}>Деталі замовлення</a>
          </div>
       </div>
    );

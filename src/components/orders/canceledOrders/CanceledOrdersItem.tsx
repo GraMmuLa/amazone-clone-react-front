@@ -1,20 +1,20 @@
 import styles from "./CanceledOrdersItem.module.css";
 
-const CanceledOrdersItem: React.FunctionComponent<{ name: string, price: number, image: string }> = ({ name, price, image }) => {
+const CanceledOrdersItem: React.FunctionComponent<{ name: string, price: number, discount: boolean, image: string }> = ({ name, price, discount, image }) => {
    return (
-      <div className="canceledOrdersItem">
-         <div className="canceledOrdersItem__body">
-            <div className="canceledOrdersItem__image">
-               <img src={image} alt={image} />
+      <div className={styles.canceledOrdersItem}>
+         <div className={styles.canceledOrdersItem__body}>
+            <div className={styles.canceledOrdersItem__image}>
+               <a href=""><img src={image} alt={image} /></a>
             </div>
-            <div className="canceledOrdersItem__content">
-               <div className="canceledOrdersItem__title">{name}</div>
-               <div className="canceledOrdersItem__price">{price} грн</div>
-               <button className="canceledOrdersItem__btn">Додати до кошика</button>
+            <div className={styles.canceledOrdersItem__content}>
+               <a href="" className={styles.canceledOrdersItem__title}>{name}</a>
+               <div className={`${styles.canceledOrdersItem__price} ${discount ? `${styles._discount}` : ''}`}>{price} грн</div>
+               <button className={styles.canceledOrdersItem__btn}>Додати до кошика</button>
             </div>
          </div>
-         <div className="canceledOrdersItem__action">
-            <button className="canceledOrdersItem__details">Деталі замовлення</button>
+         <div className={styles.canceledOrdersItem__action}>
+            <a href="" className={styles.canceledOrdersItem__details}>Деталі замовлення</a>
          </div>
       </div>
    );

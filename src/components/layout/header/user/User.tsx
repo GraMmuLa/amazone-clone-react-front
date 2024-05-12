@@ -1,12 +1,12 @@
 import styles from "./User.module.css";
 import arrow from "../../../../imgs/arrow.svg"
 import React from "react";
-import {useAppSelector} from "../../../../redux/hooks/useAppSelector";
-import {NavLink} from "react-router-dom";
+import { useAppSelector } from "../../../../redux/hooks/useAppSelector";
+import { NavLink } from "react-router-dom";
 
 const User: React.FunctionComponent = () => {
 
-    const {isLogged, username} = useAppSelector(state=>state.user);
+   const { isLogged, username } = useAppSelector(state => state.user);
 
    return (
       <div id="user" className={styles.user}>
@@ -14,7 +14,10 @@ const User: React.FunctionComponent = () => {
             {isLogged ? (
                <>
                   <div className={styles.user__ava}><img src="" alt="avatar" /></div>
-                  <div className={styles.user__name}>{username}</div>
+                  <div className={styles.user__regAction}>
+                     <div className={styles.user__name}>{username}уаощтпцщт</div>
+                     <button className={styles.user__leave}>Вийти</button>
+                  </div>
                </>
             ) : (
                <>

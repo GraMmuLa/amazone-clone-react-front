@@ -40,4 +40,9 @@
    background-color: #000;
    border-radius: 0 50pc 50pc 0;
    padding: 0.5rem 0.8125rem;
+   transition: 0.3s ease 0s;
+}
+
+.form .button:hover {
+   background-color: #646464;
 }
