@@ -4,12 +4,11 @@ import OffersItem from "./OffersItem";
 import {categoryAPI} from "../../../redux/api/categoryAPI";
 import allProducts from "../../../imgs/offers/allProducts.png"
 import {NavLink} from "react-router-dom";
+import ICategory from "../../../interfaces/ICategory";
 
-const Offers: React.FunctionComponent<{ title: string }> = ({ title }) => {
+const Offers: React.FunctionComponent<{categories: ICategory[], title: string }> = ({categories, title }) => {
 
-   const {data: categories} = categoryAPI.useFetchAllQuery();
-
-   return (
+    return (
       <section className={styles.offers}>
          <div className={styles.offers__container}>
             <h1 className={styles.offers__title}>{title}</h1>

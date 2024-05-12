@@ -59,10 +59,20 @@ export const userSlice = createSlice({
             } catch (e) {
                 console.log("Invalid token");
             }
+        },
+        logout(state: IUser, action: PayloadAction<void>) {
+            state.username="";
+            state.firstname="";
+            state.surname="";
+            state.email="";
+            state.phone="";
+            state.roleName="";
+            state.isLogged=false;
+            sessionStorage.removeItem("auth_token");
         }
     }
 });
 
-export const {init} = userSlice.actions;
+export const {init, logout} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -3,10 +3,19 @@ import arrow from "../../../../imgs/arrow.svg"
 import React from "react";
 import { useAppSelector } from "../../../../redux/hooks/useAppSelector";
 import { NavLink } from "react-router-dom";
+import {useAppDispatch} from "../../../../redux/hooks/useAppDispatch";
+import {userSlice} from "../../../../redux/slices/userSlice";
 
 const User: React.FunctionComponent = () => {
 
    const { isLogged, username } = useAppSelector(state => state.user);
+
+   const dispatch = useAppDispatch();
+   const {logout} = userSlice.actions;
+
+    const handleOnLogout = () => {
+        dispatch(logout());
+    }
 
    return (
       <div id="user" className={styles.user}>
@@ -15,8 +24,8 @@ const User: React.FunctionComponent = () => {
                <>
                   <div className={styles.user__ava}><img src="" alt="avatar" /></div>
                   <div className={styles.user__regAction}>
-                     <div className={styles.user__name}>{username}уаощтпцщт</div>
-                     <button className={styles.user__leave}>Вийти</button>
+                     <div className={styles.user__name}>{username}</div>
+                     <button onClick={handleOnLogout} className={styles.user__leave}>Вийти</button>
                   </div>
                </>
             ) : (

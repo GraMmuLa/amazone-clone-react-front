@@ -1,6 +1,7 @@
 import styles from "./Preloader.module.css";
 import logo from "../../imgs/minLogo.svg"
 import loader from "../../imgs/loader.svg"
+import React from "react";
 
 
 const Preloader: React.FunctionComponent = () => {

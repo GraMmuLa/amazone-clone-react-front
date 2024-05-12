@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import Accordion from "../accordion/Accordion";
 import styles from "./Aside.module.css";
 import { subcategoryAPI } from "../../../redux/api/subcategoryAPI";
+import ISubcategory from "../../../interfaces/ISubcategory";
 
 
-const Aside: React.FunctionComponent = () => {
-
-   const { data: subcategories } = subcategoryAPI.useFetchAllQuery();
+const Aside: React.FunctionComponent<{subcategories: ISubcategory[]}> = ({subcategories}) => {
 
    const [selectedProductsItem, setSelectedProductsItem] = useState('asideAllProducts');
    const [selectedPrice, setSelectedPrice] = useState('asidePriceProducts1');

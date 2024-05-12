@@ -4,17 +4,30 @@ import classes from "./MainPage.module.css"
 import { Wrapper } from "../layout/wrapper/Wrapper";
 import OtherDiscounts from "./discounts/otherDiscounts/OtherDiscounts";
 import DayDiscount from "./discounts/dayDiscount/DayDiscount";
-import React from "react";
+import React, {useEffect, useState} from "react";
+import {subcategoryAPI} from "../../redux/api/subcategoryAPI";
+import {discountTypeAPI} from "../../redux/api/discountTypeAPI";
+import {Discounts} from "../../enums/discounts";
+import Preloader from "../preloader/Preloader";
 
 const MainPage: React.FunctionComponent = () => {
+
+    const {data: subcategories, isLoading: isLoadingSubcategories} = subcategoryAPI.useFetchAllQuery();
+    const {data: discountTypes, isLoading: isLoadingDiscountTypes} = discountTypeAPI.useFetchExceptDiscountTypeNameQuery(Discounts.dayDiscount);
+
     return (
         <>
-            <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night"/>
-            <Wrapper>
-                <SubcategoryList/>
-                <DayDiscount/>
-                <OtherDiscounts/>
-            </Wrapper>
+            {isLoadingSubcategories || isLoadingDiscountTypes ?
+                <Preloader/> :
+                <>
+                    <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night"/>
+                    <Wrapper>
+                        {subcategories && <SubcategoryList subcategories={subcategories}/>}
+                        <DayDiscount/>
+                        {discountTypes && <OtherDiscounts discountTypes={discountTypes}/>}
+                    </Wrapper>
+                </>
+            }
         </>
     );
 }
