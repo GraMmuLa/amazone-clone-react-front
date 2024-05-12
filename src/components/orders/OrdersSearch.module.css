@@ -27,4 +27,9 @@
    padding: 0.4rem 0.8125rem;
    border: 0.125rem solid #000;
    border-left: none;
+   transition: 0.3s ease 0s;
+}
+
+.ordersSearch button:hover {
+   background-color: #d7d7d7;
 }

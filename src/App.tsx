@@ -14,12 +14,6 @@ import RegisterSeller from "./components/auth/registerSeller/RegisterSeller";
 import ProductsPage from "./components/todaysOffers/ProductsPage";
 import Login from "./components/auth/login/Login";
 
-//! Problems
-//todo При error емейла в последующем исправлении и переходе ошибка появляеться и в пароле
-//todo Error пороля появляеться вне блока formBlock
-
-//?(Не обязательно) Из-за того что блок регистрации большой рядовому посетителю сайта не будет видно ошибкку. Возможные решения: ScrollToTop при ошибке, изменение рассположения ошибки.
-
 function App() {
     return (
         <BrowserRouter>

@@ -10,6 +10,12 @@ const Order: React.FunctionComponent = () => {
          discount: true,
          image: 'image1',
       },
+      {
+         name: 'Жіночий кардиган-кімоно з квітковим принтом і пухкими рукавами, вільна повсякденна блузка з прикриттям',
+         price: 692.12,
+         discount: true,
+         image: 'image1',
+      },
    ] as any
    return (
       <div className={styles.order}>

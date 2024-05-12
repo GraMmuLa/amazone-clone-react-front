@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import Accordion from "../accordion/Accordion";
 import styles from "./Aside.module.css";
-import {subcategoryAPI} from "../../../redux/api/subcategoryAPI";
+import { subcategoryAPI } from "../../../redux/api/subcategoryAPI";
 
 
 const Aside: React.FunctionComponent = () => {
 
-   const {data: subcategories} = subcategoryAPI.useFetchAllQuery();
+   const { data: subcategories } = subcategoryAPI.useFetchAllQuery();
 
-   const [selectedDiscount, setSelectedDiscount] = useState('asideDiscountProducts1');
-   const [selectedPrice, setSelectedPrice] = useState('asidePriceProducts1');
    const [selectedProductsItem, setSelectedProductsItem] = useState('asideAllProducts');
+   const [selectedPrice, setSelectedPrice] = useState('asidePriceProducts1');
+   const [selectedDiscount, setSelectedDiscount] = useState('asideDiscountProducts1');
 
    return (
       <aside className={styles.aside}>
@@ -30,7 +30,7 @@ const Aside: React.FunctionComponent = () => {
          </div>
          <div className={styles.asideMain__sections}>
             <div className={styles.asideMain__sectionsLabel}>Розділи</div>
-            {subcategories && <Accordion accordionItems={subcategories} /> }
+            {subcategories && <Accordion accordionItems={subcategories} />}
          </div>
          <div className={`${styles.asidePrice} ${styles.asideMain__sections}`}>
             <div className={styles.asidePrice__label}>Ціна</div>

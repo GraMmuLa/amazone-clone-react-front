@@ -7,6 +7,7 @@ const NotBeenSent: React.FunctionComponent = () => {
       {
          name: 'Жіночий кардиган-кімоно з квітковим принтом і пухкими рукавами, вільна повсякденна блузка з прикриттям',
          price: 692.12,
+         discount: true,
          image: 'image1',
       },
    ] as any
