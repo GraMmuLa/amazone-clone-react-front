@@ -5,17 +5,19 @@ import {productColorAPI} from "../../redux/api/productColorAPI";
 import {discountAPI} from "../../redux/api/discountAPI";
 import {productColorImageAPI} from "../../redux/api/productColorImageAPI";
 import {NavLink} from "react-router-dom";
+import {productAPI} from "../../redux/api/productAPI";
+import IProductColor from "../../interfaces/IProductColor";
 
-const ProductItem: React.FunctionComponent<{ product: IProduct }> = ({ product }) => {
+const ProductItem: React.FunctionComponent<{ productColor: IProductColor }> = ({ productColor }) => {
 
-    const {data: productColor} = productColorAPI.useFetchByIdQuery(product.productColorsIds![0]);
+    const {data: product} = productAPI.useFetchByIdQuery(productColor.productId);
 
     return (
       <div className={styles.productItem}>
           {productColor && productColor.id && productColor.mainImageId &&
               <MainImage mainImageId={productColor.mainImageId} productColorId={productColor.id}/>}
 
-          {productColor && productColor.id &&
+          {product && productColor && productColor.id &&
               <NavLink to={`/productPage/${productColor.id}`} className={styles.productItem__title}>
                   {product.name}
               </NavLink>

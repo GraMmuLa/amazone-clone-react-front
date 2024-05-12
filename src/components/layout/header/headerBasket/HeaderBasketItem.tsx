@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./HeaderBasketItem.module.css";
-import IProduct from "../../../../interfaces/IProduct";
 import {productColorAPI} from "../../../../redux/api/productColorAPI";
 import {colorAPI} from "../../../../redux/api/colorAPI";
 import IProductColor from "../../../../interfaces/IProductColor";

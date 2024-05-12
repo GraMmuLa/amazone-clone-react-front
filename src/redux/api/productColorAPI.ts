@@ -6,9 +6,10 @@ export const productColorAPI = createApi({
     baseQuery: fetchBaseQuery({baseUrl: "http://localhost:8081/productColor"}),
     tagTypes: ['ProductColor'],
     endpoints: (build) => ({
-        fetchAll: build.query<IProductColor[], void>({
-            query: () => ({
-                url: "/all"
+        fetchAll: build.query<IProductColor[], { sortBy?: string }>({
+            query: (filters) => ({
+                url: "/all",
+                params: filters
             }),
             providesTags: ['ProductColor']
         }),

@@ -85,7 +85,7 @@ const AdminPage: React.FunctionComponent = () => {
                 <Tab onClick={()=>fetchColors()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Колір
                 </Tab>
-                <Tab onClick={()=>fetchProductColors()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                <Tab onClick={()=>fetchProductColors({})} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Колір продукту
                 </Tab>
                 <Tab onClick={()=>fetchDiscountTypes()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>

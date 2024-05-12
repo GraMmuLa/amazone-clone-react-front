@@ -1,18 +1,16 @@
 import styles from "./ProductList.module.css";
 import React from "react";
-import {productAPI} from "../../redux/api/productAPI";
 import ProductItem from "./ProductItem";
+import IProductColor from "../../interfaces/IProductColor";
 
-const ProductList: React.FunctionComponent = () => {
-
-    const {data: products} = productAPI.useFetchAllQuery();
+const ProductList: React.FunctionComponent<{productColors: IProductColor[]}> = ({productColors}) => {
 
     return (
         <>
             <div className={styles.productList}>
-                {products &&
+                {productColors &&
                     <div className={styles.productList__items}>
-                        {products.map(product => <ProductItem key={product.id} product={product}/>)}
+                        {productColors.map(productColor => <ProductItem key={productColor.id} productColor={productColor}/>)}
                     </div>
                 }
             </div>
