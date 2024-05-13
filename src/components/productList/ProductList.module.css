@@ -1,3 +1,9 @@
+.productList__container {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
 .productList {
    padding-top: 30px;
    margin-bottom: 80px;
@@ -8,4 +14,8 @@
    display: grid;
    gap: 2.75rem;
    grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+}
+
+.productList__pagination {
+   align-self: flex-end;
 }
