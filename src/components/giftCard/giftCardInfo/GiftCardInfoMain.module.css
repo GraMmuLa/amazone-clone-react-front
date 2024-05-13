@@ -1,0 +1,187 @@
+.giftCardInfoMain {}
+
+
+.giftCardInfoMain h2 {
+   font-size: 32px;
+   font-weight: 500;
+   line-height: 1.2;
+}
+
+.giftCardInfoMain__price {
+   font-size: 32px;
+   font-weight: 500;
+   line-height: 1.2;
+   display: flex;
+   gap: 30px;
+   margin-bottom: 30px;
+}
+
+.giftCardInfoMain__design {
+   margin-bottom: 40px;
+}
+
+.giftCardInfoMain__designWrapper {
+   display: flex;
+   align-items: end;
+   gap: 20px;
+   margin-bottom: 30px;
+}
+
+.giftCardInfoMain__designWrapper span {
+   font-size: 30px;
+   line-height: 1.1;
+}
+
+.giftCardInfoMain__design ul {
+   max-width: 700px;
+   display: flex;
+   gap: 20px;
+   flex-wrap: wrap;
+}
+
+.giftCardInfoMain__design li {
+   overflow: hidden;
+   flex: 0 0 100px;
+   width: 100px;
+   aspect-ratio: 100/60;
+   background-color: #c6c6c6;
+}
+
+.giftCardInfoMain__design a {
+   display: inline-block;
+   position: relative;
+   width: 100%;
+   height: 100%;
+}
+
+.giftCardInfoMain__design img {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   -o-object-fit: cover;
+   object-fit: cover;
+}
+
+.giftCardInfoMain__cost {
+   margin-bottom: 30px;
+}
+
+.giftCardInfoMain__costWrapper {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+   margin-bottom: 20px;
+}
+
+.giftCardInfoMain__costWrapper input {
+   display: none;
+}
+
+.giftCardInfoMain__cost ul {
+   flex-wrap: wrap;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.giftCardInfoMain__cost li {
+   text-align: center;
+}
+
+.giftCardInfoMain__cost label {
+   text-align: center;
+   font-size: 24px;
+   line-height: 1.2;
+   font-weight: 500;
+   outline: 1px solid #000;
+   border: 1px solid transparent;
+   border-radius: 50pc;
+   padding: 3px 17px;
+   cursor: pointer;
+   transition: 0.3s ease 0s;
+}
+
+.giftCardInfoMain__cost input:checked+label {
+   background-color: #EAEAEA;
+   border: 1px solid #000;
+}
+
+.giftCardInfoMain__costYourAmount {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
+
+.giftCardInfoMain__costYourAmount h4 {
+   font-size: 24px;
+   font-weight: 500;
+}
+
+.giftCardInfoMain__costYourAmountBlock {
+   display: flex;
+   gap: 10px;
+   align-items: center;
+   border: 1px solid #000;
+   border-radius: 15px;
+   overflow: hidden;
+   padding: 5px 10px;
+   max-width: 160px;
+}
+
+.giftCardInfoMain__costYourAmountBlock input {
+   border: 0;
+   outline: 0;
+}
+
+.giftCardInfoMain__costYourAmountBlock span {
+   font-size: 24px;
+   font-weight: 500;
+}
+
+.sendMailGiftCard {}
+
+.sendMailGiftCard__items {}
+
+.sendMailGiftCard__item {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
+
+.sendMailGiftCard__item:not(:last-child) {
+   margin-bottom: 30px;
+}
+
+.sendMailGiftCard__item {}
+
+.sendMailGiftCard__item label {
+   text-wrap: nowrap;
+   font-size: 32px;
+   font-weight: 500;
+   align-self: start;
+}
+
+.sendMailGiftCard__item input {
+   border: 1px solid #000;
+   border-radius: 15px;
+   overflow: hidden;
+   font-size: 18px;
+   padding: 5px 10px;
+}
+
+.sendMailGiftCard__item input::placeholder {
+   color: #A8A8A8;
+}
+
+.sendMailGiftCard__item textarea {
+   width: 100%;
+   border: 1px solid #000;
+   border-radius: 15px;
+   overflow: hidden;
+   font-size: 18px;
+   padding: 5px 10px;
+   min-height: 180px;
+   padding: 20px;
+}

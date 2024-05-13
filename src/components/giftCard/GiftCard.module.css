@@ -1,0 +1,13 @@
+.giftCard__recommendations {
+   padding-top: 60px;
+   border-top: 1px solid #000
+}
+
+.giftCard__recommendationsTitle {
+   font-size: 32px;
+   font-weight: 500;
+}
+
+.giftCard__recommendationsTitle:not(:last-child) {
+   margin-bottom: 30px;
+}
