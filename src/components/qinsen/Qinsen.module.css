@@ -1,0 +1,42 @@
+.qinsen {}
+
+.qinsen__titleBanner {
+   position: relative;
+   width: 100%;
+   height: 390px;
+   overflow: hidden;
+}
+
+.qinsen__titleBanner img {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.qinsenContentImage {
+   margin-bottom: 20px;
+}
+
+.qinsenContentImage img {
+   max-width: 100%;
+}
+
+.qinsen__banner {
+   position: relative;
+   width: 100%;
+   height: 830px;
+   overflow: hidden;
+   margin-bottom: 40px;
+}
+
+.qinsen__banner img {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}

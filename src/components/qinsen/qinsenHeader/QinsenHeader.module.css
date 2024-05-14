@@ -1,0 +1,75 @@
+.qinsenHeader {
+   padding: 20px 0;
+}
+
+.qinsenHeader__containerMax {
+   display: flex;
+   align-items: end;
+   gap: 30px;
+}
+
+.qinsenHeader__logo img {
+   max-width: 100%;
+}
+
+.qinsenHeader__body {}
+
+.qinsenHeader__title {
+   margin-bottom: 30px;
+   color: #959595;
+}
+
+.qinsenHeader__menu {}
+
+.qinsenHeader__list {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: 30px;
+}
+
+.qinsenHeader__item {
+   position: relative;
+   transition: 0.3s ease 0s;
+}
+
+.qinsenHeader__item._active {
+   font-weight: 500;
+}
+
+.qinsenHeader__item._active .qinsenHeader__link::before {
+   content: '';
+   position: absolute;
+   bottom: -5px;
+   right: 0;
+   width: 100%;
+   height: 2px;
+   background-color: #A4A4A4;
+   transition: 0.3s ease 0s;
+}
+
+.qinsenHeader__link {
+   font-size: 32px;
+}
+
+.qinsenHeader__link:hover {
+   text-decoration: none;
+}
+
+.qinsenHeader__link::before {
+   content: '';
+   position: absolute;
+   bottom: -5px;
+   right: 0;
+   width: 0;
+   height: 2px;
+   background-color: #A4A4A4;
+   transition: 0.3s ease 0s;
+}
+
+.qinsenHeader__link:hover::before {
+   width: 100%;
+   left: 0;
+   right: auto;
+   text-decoration: none;
+}
