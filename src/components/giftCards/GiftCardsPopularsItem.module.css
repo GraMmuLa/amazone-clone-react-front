@@ -1,0 +1,55 @@
+.GiftCardsPopularsItem {}
+
+.GiftCardsPopularsItem__image {
+   position: relative;
+   overflow: hidden;
+   aspect-ratio: 250/160;
+   background-color: #e5e5e5;
+}
+
+.GiftCardsPopularsItem__image:hover img {
+   transform: scale(1.04);
+}
+
+.GiftCardsPopularsItem__image img {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: 0.3s ease 0s;
+}
+
+.GiftCardsPopularsItem__box {
+   margin-bottom: 10px;
+   padding: 25px 40px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 20px;
+   background-color: #F4F4F4;
+   box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.25);
+}
+
+.GiftCardsPopularsItem__block {
+   flex: 1 1 auto;
+   height: 50px;
+   background-color: #D9D9D9;
+   border-radius: 5px;
+}
+
+.GiftCardsPopularsItem__UAH {
+   font-size: 60px;
+}
+
+.GiftCardsPopularsItem__title {
+   display: inline-block;
+   font-size: 15px;
+   margin-bottom: 10px;
+}
+
+.GiftCardsPopularsItem__price {
+   font-size: 24px;
+   font-weight: 500;
+}

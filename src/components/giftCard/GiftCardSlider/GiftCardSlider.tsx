@@ -1,0 +1,111 @@
+import React, { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Thumbs } from 'swiper/modules';
+import 'swiper/css';
+import styles from "./GiftCardSlider.module.css";
+import { Swiper as SwiperType } from 'swiper';
+import IProductColorImage from "../../../interfaces/IProductColorImage";
+import { userAPI } from "../../../redux/api/userAPI";
+import { useAppSelector } from "../../../redux/hooks/useAppSelector";
+import { useParams } from "react-router";
+import { useAppDispatch } from "../../../redux/hooks/useAppDispatch";
+import { userSlice } from "../../../redux/slices/userSlice";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+//! =-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+import productImg1 from '../../../imgs/product/swiper1.jpg'
+import productImg2 from '../../../imgs/product/swiper2.jpg'
+import productImg3 from '../../../imgs/product/swiper3.jpg'
+import productImg4 from '../../../imgs/product/swiper4.jpg'
+import productImg5 from '../../../imgs/product/swiper5.jpg'
+//! =-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+//! const GiftCardSlider: React.FunctionComponent<{ productColorImages: IProductColorImage[] }> = ({ productColorImages }) => {
+const GiftCardSlider: React.FunctionComponent = () => {
+   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+
+   const [addFavouriteProductColor] = userAPI.useAddFavouriteProductColorMutation();
+   const [deleteFavouriteProductColor] = userAPI.useDeleteFavouriteProductColorMutation();
+
+   const { productColorId } = useParams();
+
+   const { id: userId, favouriteProductColorIds } = useAppSelector(state => state.user);
+   const dispatch = useAppDispatch();
+   const { init } = userSlice.actions;
+
+   const navigate = useNavigate();
+
+   const authToken = sessionStorage.getItem("auth_token");
+
+   const handleAddButtonClick = async () => {
+      if (authToken === null)
+         navigate("/")
+      else {
+         const decodedJwt = jwtDecode(authToken);
+         const validityFrom = decodedJwt.iat;
+         const validityTo = decodedJwt.exp;
+         if (productColorId && userId && validityFrom && validityTo) {
+            const jwtResponse = await addFavouriteProductColor({ userId, productColorId: parseInt(productColorId), validityFrom, validityTo }).unwrap();
+            dispatch(init(jwtResponse));
+         }
+      }
+   }
+
+   const handleDeleteButtonClick = async () => {
+      if (authToken === null)
+         navigate("/")
+      else {
+         const decodedJwt = jwtDecode(authToken);
+         const validityFrom = decodedJwt.iat;
+         const validityTo = decodedJwt.exp;
+         if (productColorId && userId && validityFrom && validityTo) {
+            const jwtResponse = await deleteFavouriteProductColor({ userId, productColorId: parseInt(productColorId), validityFrom, validityTo }).unwrap();
+            dispatch(init(jwtResponse));
+         }
+      }
+   }
+
+   const sliderImages = [
+      {
+         imageUrl: productImg1,
+      },
+      {
+         imageUrl: productImg2,
+      },
+      {
+         imageUrl: productImg3,
+      },
+      {
+         imageUrl: productImg4,
+      },
+      {
+         imageUrl: productImg5,
+      },
+   ]
+
+   return (
+      <div className={styles.giftCardSlider}>
+         <div>
+            <Swiper
+               id='mainGiftCardSlider'
+               className={styles.mainGiftCardSlider}
+               spaceBetween={50}
+               slidesPerView={1}
+               loop={true}
+            >
+               {sliderImages.map(sliderImage => <SwiperSlide><img src={sliderImage.imageUrl} alt={sliderImage.imageUrl} /></SwiperSlide>)}
+               {/* {productColorImages.map(productColorImage => <SwiperSlide key={productColorImage.id}><img src={`data:image/jpg;base64,${productColorImage.data}`} alt={`data:image/jpg;base64,${productColorImage.data}`} /></SwiperSlide>)} */}
+            </Swiper>
+            <button className={styles.giftCardSliderLink}>Додати до кошика</button>
+            {productColorId && favouriteProductColorIds &&
+               (favouriteProductColorIds.includes(parseInt(productColorId)) ?
+                  <button onClick={() => handleDeleteButtonClick()} className={styles.giftCardSliderLink}>Видалити з кошика</button> :
+                  <button onClick={() => handleAddButtonClick()} className={styles.giftCardSliderLink}>Додати до кошика</button>
+               )
+            }
+         </div>
+      </div>
+   );
+}
+
+export default GiftCardSlider;

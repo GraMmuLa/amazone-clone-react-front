@@ -28,6 +28,10 @@ code {
   cursor: pointer;
 }
 
+.subGiftCardSlider .swiper-slide {
+  cursor: pointer;
+}
+
 .swiper-slide-thumb-active {
   position: relative;
 }

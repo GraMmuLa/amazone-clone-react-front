@@ -1,0 +1,78 @@
+.giftCards {
+   padding-top: 30px;
+   padding-bottom: 100px;
+}
+
+.giftCards__block {
+   margin-bottom: 40px;
+}
+
+.giftCards__container {}
+
+.giftCards__tilte {
+   font-size: 40px;
+   font-weight: 500;
+   margin-bottom: 35px;
+}
+
+.giftCards__items {
+   display: flex;
+   justify-content: space-between;
+   gap: 30px;
+}
+
+.giftCards__item {
+   position: relative;
+   overflow: hidden;
+   width: 47%;
+   flex: 0 0 47%;
+   aspect-ratio: 680/500;
+}
+
+.giftCards__item img {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: 0.3s ease 0s;
+}
+
+.giftCards__item::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: #00000021;
+   z-index: 3;
+   pointer-events: none;
+   transition: 0.3s ease 0s;
+}
+
+.giftCards__item:hover::before {
+   opacity: 0;
+}
+
+.giftCards__item:hover img {
+   transform: scale(1.015);
+}
+
+.giftCardsInstructions {}
+
+.giftCardsInstructions__items {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 30px;
+}
+
+.giftCardsInstructions__item {
+   overflow: hidden;
+   border-radius: 15px;
+   box-shadow: 6px 7px 12px rgba(96, 96, 96, 0.25);
+}
+
+.giftCardsInstructions__item img {}

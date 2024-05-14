@@ -1,18 +1,15 @@
-.productSlider {
+.giftCardBlock {
+   padding-top: 30px;
+   border-top: 0.5px solid #000;
+   margin-bottom: 40px;
+}
+
+.giftCardBlock__wrapper {
    display: flex;
-   gap: 10px;
+   gap: 40px;
 }
 
-#subProductSlider {
-   width: 100px;
-   max-height: 690px;
-}
-
-#subProductSlider img {
-   max-width: 100%;
-}
-
-.productSliderLink {
+.giftCardLink {
    display: inline-block;
    width: 100%;
    font-size: 40px;
@@ -23,19 +20,21 @@
    text-align: center;
    border-radius: 50pc;
    margin-top: 50px;
+   transition: 0.3s ease 0s;
 }
 
-.productSliderLink:hover {
+.giftCardLink:hover {
    background-color: #646464;
 }
 
-.mainProductSlider {
+.giftCardBlock__cardImage {
    position: relative;
-   aspect-ratio: 650/850;
+   width: 650px;
+   aspect-ratio: 650/400;
    overflow: hidden;
 }
 
-.mainProductSlider img {
+.giftCardBlock__cardImage img {
    position: absolute;
    top: 0;
    left: 0;
