@@ -55,14 +55,14 @@ const AddProductColor: React.FunctionComponent = () => {
                 <Form.Group>
                     <Form.Label>Color id</Form.Label>
                     <Form.Select value={colorId ? colorId : 0} onChange={(e) => setColorId(parseInt(e.target.value))}>
-                        <option value={0}>Select Product Type</option>
+                        <option value={0}>Select Color</option>
                         {colors && colors.map(color => <option key={color.id} value={color.id}>{color.color}</option>)}
                     </Form.Select>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Product id</Form.Label>
                     <Form.Select value={productId ? productId : 0} onChange={(e) => setProductId(parseInt(e.target.value))}>
-                        <option value={0}>Select Product Type</option>
+                        <option value={0}>Select Product</option>
                         {products && products.map(product => <option key={product.id} value={product.id}>{product.name}</option>)}
                     </Form.Select>
                 </Form.Group>

@@ -13,7 +13,9 @@ import {subcategoryAPI} from "../../redux/api/subcategoryAPI";
 const ProductsPage = () => {
     const [selected, setSelected] = useState({title:"Сортувати по", value: ""});
 
-    const {data: productColors, isLoading: isLoadingProductColors} = productColorAPI.useFetchAllQuery({sortBy: selected.value});
+    const [priceFilter, setPriceFilter] = useState<{priceFrom: number, priceTo: number}>({priceFrom: 0, priceTo: 0});
+
+    const {data: productColors, isLoading: isLoadingProductColors} = productColorAPI.useFetchAllQuery({sortBy: selected.value, ...priceFilter});
 
     const {data: categories, isLoading: isLoadingCategories} = categoryAPI.useFetchAllQuery();
 
@@ -28,10 +30,9 @@ const ProductsPage = () => {
                     <div className={styles.main}>
                         <Select selected={selected} setSelected={setSelected}/>
                         <div className={styles.main__wrapper}>
-                            {subcategories && <Aside subcategories={subcategories}/>}
+                            {subcategories && <Aside priceFilter={priceFilter} setPriceFilter={setPriceFilter} subcategories={subcategories}/>}
                             {productColors && <Body productColors={productColors}/>}
                         </div>
-                        <ProductsPagePagination/>
                     </div>
                 </main>
             }

@@ -45,6 +45,7 @@ import {productDetailKeyAPI} from "../../redux/api/productDetailKeyAPI";
 import {productDetailValueAPI} from "../../redux/api/productDetailValueAPI";
 import {subcategoryImageAPI} from "../../redux/api/subcategoryImageAPI";
 import {productColorImageAPI} from "../../redux/api/productColorImageAPI";
+import SetMainImageProductColor from "./updatePages/SetMainImageProductColor";
 
 const AdminPage: React.FunctionComponent = () => {
 
@@ -147,6 +148,7 @@ const AdminPage: React.FunctionComponent = () => {
 
             <TabPanel>
                 <AddProductColor />
+                <SetMainImageProductColor/>
                 {productColors && <ProductColorTable productColors={productColors} itemsPerPage={itemsPerPage} /> }
             </TabPanel>
 

@@ -6,7 +6,7 @@ export const productColorAPI = createApi({
     baseQuery: fetchBaseQuery({baseUrl: "http://localhost:8081/productColor"}),
     tagTypes: ['ProductColor'],
     endpoints: (build) => ({
-        fetchAll: build.query<IProductColor[], { sortBy?: string }>({
+        fetchAll: build.query<IProductColor[], { sortBy?: string, priceFrom?: number, priceTo?: number }>({
             query: (filters) => ({
                 url: "/all",
                 params: filters
@@ -32,6 +32,14 @@ export const productColorAPI = createApi({
                 url: "",
                 method: "POST",
                 body: productColor
+            }),
+            invalidatesTags: ['ProductColor']
+        }),
+        setMainImage: build.mutation<void, { productColorId: number, productColorImageId: number }>({
+            query: (data) => ({
+                url: "/mainImage",
+                method: "POST",
+                params: data
             }),
             invalidatesTags: ['ProductColor']
         }),

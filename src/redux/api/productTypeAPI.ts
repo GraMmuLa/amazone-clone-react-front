@@ -13,6 +13,13 @@ export const productTypeAPI = createApi({
             }),
             providesTags: ['ProductType']
         }),
+        fetchAllBySubcategory: build.query<IProductType[], number>({
+            query: (subcategoryId) => ({
+                url: "/subcategory",
+                params: {subcategoryId: subcategoryId}
+            }),
+            providesTags: ['ProductType']
+        }),
         fetchById: build.query<IProductType, number>({
             query: (id: number) => ({
                 url: "",

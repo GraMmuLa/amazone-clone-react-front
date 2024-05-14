@@ -85,7 +85,7 @@ const ProductColorLink: React.FunctionComponent<{ productColorId: number }> = ({
     return (
         <>
             {productColor && productColor.mainImageId &&
-                <NavLink to={`/productPage/${productColorId}`}><MainImage mainImageId={productColor.mainImageId!} /></NavLink>
+                <NavLink to={`/productPage/${productColorId}`}><MainImage mainImageId={productColor.mainImageId} /></NavLink>
             }
         </>
     );
