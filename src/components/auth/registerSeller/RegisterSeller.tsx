@@ -95,7 +95,7 @@ const RegisterSeller: React.FunctionComponent = () => {
                         <label htmlFor="sellerRegistPhone">Номер телефону</label>
                         <div className={styles.sellerRegist__phone}>
                            <span>+380</span>
-                           <input id="sellerRegistPhone" type="text" ref={withMask('999-99-99-99')} onChange={(e) => setPhone(e.target.value)} placeholder="000-00-00-00" />
+                           <input id="sellerRegistPhone" type="text" ref={withMask('99-999-99-99')} onChange={(e) => setPhone(e.target.value)} placeholder="000-00-00-00" />
                         </div>
                      </div>
                   </div>

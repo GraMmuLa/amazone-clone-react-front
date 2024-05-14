@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./QinsenProductsItem.module.css";
+import styles from "./SellerPageProductsItem.module.css";
 
 
-const QinsenProductsItem: React.FunctionComponent<{ image: string, title: string, price: number, discount?: boolean }> = ({ image, title, price, discount }) => {
+const SellerPageProductsItem: React.FunctionComponent<{ image: string, title: string, price: number, discount?: boolean }> = ({ image, title, price, discount }) => {
 
    return (
       <div className={styles.qinsenProductsItem}>
@@ -15,4 +15,4 @@ const QinsenProductsItem: React.FunctionComponent<{ image: string, title: string
    );
 }
 
-export default QinsenProductsItem;
+export default SellerPageProductsItem;

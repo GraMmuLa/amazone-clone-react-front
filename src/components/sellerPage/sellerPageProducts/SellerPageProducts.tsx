@@ -1,9 +1,9 @@
 import React from "react";
-import QinsenProductsItems from "./QinsenProductsItems";
-import styles from "./QinsenProducts.module.css";
+import SellerPageProductsItems from "./SellerPageProductsItems";
+import styles from "./SellerPageProducts.module.css";
 
 
-const QinsenProducts: React.FunctionComponent = () => {
+const SellerPageProducts: React.FunctionComponent = () => {
 
    const products = [
       {
@@ -47,10 +47,10 @@ const QinsenProducts: React.FunctionComponent = () => {
    return (
       <div className={styles.qinsenProducts}>
          <div className="qinsenProducts__containerMax">
-            <QinsenProductsItems products={products} />
+            <SellerPageProductsItems products={products} />
          </div>
       </div>
    );
 }
 
-export default QinsenProducts;
+export default SellerPageProducts;

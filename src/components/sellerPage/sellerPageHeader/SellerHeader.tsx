@@ -1,7 +1,7 @@
-import styles from "./QinsenHeader.module.css";
+import styles from "./SellerHeader.module.css";
 import logo from "../../../imgs/qinsen/logo.svg";
 
-const QinsenHeader = () => {
+const SellerHeader = () => {
 
    return (
       <div className={styles.qinsenHeader}>
@@ -24,4 +24,4 @@ const QinsenHeader = () => {
    );
 }
 
-export default QinsenHeader;
+export default SellerHeader;

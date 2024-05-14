@@ -39,31 +39,52 @@ const Aside: React.FunctionComponent<{subcategories: ISubcategory[],
             <div className={styles.asidePrice__allPrices}>
                <ul className={styles.asidePrice__allPricesList}>
                   <li className={styles.asidePrice__allPricesItem}>
-                     <input type="radio" id="asidePriceProducts1" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts1'} onChange={() => setPriceFilter({priceFrom: 0, priceTo: 0})} />
+                     <input type="radio" id="asidePriceProducts1" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts1'} onChange={() => {
+                        setPriceFilter({priceFrom: 0, priceTo: 0});
+                        setSelectedPrice("asidePriceProducts1");
+                     }} />
                      <label htmlFor="asidePriceProducts1">Всі ціни</label>
                   </li>
                   <li className={styles.asidePrice__allPricesItem}>
-                     <input type="radio" id="asidePriceProducts2" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts2'} onChange={() => setPriceFilter({priceFrom: 0, priceTo: 200})} />
+                     <input type="radio" id="asidePriceProducts2" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts2'} onChange={() => {
+                        setPriceFilter({priceFrom: 0, priceTo: 200});
+                        setSelectedPrice("asidePriceProducts2");
+                     }} />
                      <label htmlFor="asidePriceProducts2">До 200 грн</label>
                   </li>
                   <li className={styles.asidePrice__allPricesItem}>
-                     <input type="radio" id="asidePriceProducts3" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts3'} onChange={() => setPriceFilter({priceFrom: 200, priceTo: 500})} />
+                     <input type="radio" id="asidePriceProducts3" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts3'} onChange={() => {
+                        setPriceFilter({priceFrom: 200, priceTo: 500});
+                        setSelectedPrice("asidePriceProducts3");
+                     }} />
                      <label htmlFor="asidePriceProducts3">Від 200 грн до 500 грн</label>
                   </li>
                   <li className={styles.asidePrice__allPricesItem}>
-                     <input type="radio" id="asidePriceProducts4" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts4'} onChange={() => setPriceFilter({priceFrom: 500, priceTo: 1000})} />
+                     <input type="radio" id="asidePriceProducts4" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts4'} onChange={() => {
+                        setPriceFilter({priceFrom: 500, priceTo: 1000});
+                        setSelectedPrice("asidePriceProducts4");
+                     }} />
                      <label htmlFor="asidePriceProducts4">Від 500 грн до 1000 грн</label>
                   </li>
                   <li className={styles.asidePrice__allPricesItem}>
-                     <input type="radio" id="asidePriceProducts5" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts5'} onChange={() => setPriceFilter({priceFrom: 1000, priceTo: 2000})} />
+                     <input type="radio" id="asidePriceProducts5" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts5'} onChange={() => {
+                        setPriceFilter({priceFrom: 1000, priceTo: 2000});
+                        setSelectedPrice("asidePriceProducts5");
+                     }} />
                      <label htmlFor="asidePriceProducts5">Від 1000 грн до 2000 грн</label>
                   </li>
                   <li className={styles.asidePrice__allPricesItem}>
-                     <input type="radio" id="asidePriceProducts6" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts6'} onChange={() => setPriceFilter({priceFrom: 2000, priceTo: 5000})} />
+                     <input type="radio" id="asidePriceProducts6" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts6'} onChange={() => {
+                        setPriceFilter({priceFrom: 2000, priceTo: 5000});
+                        setSelectedPrice("asidePriceProducts6");
+                     }} />
                      <label htmlFor="asidePriceProducts6">Від 2000 грн до 5000 грн</label>
                   </li>
                   <li className={styles.asidePrice__allPricesItem}>
-                     <input type="radio" id="asidePriceProducts7" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts7'} onChange={() => setPriceFilter({priceFrom: 5000, priceTo: 0})} />
+                     <input type="radio" id="asidePriceProducts7" name='asidePriceProducts' checked={selectedPrice === 'asidePriceProducts7'} onChange={() => {
+                        setPriceFilter({priceFrom: 5000, priceTo: 0});
+                        setSelectedPrice("asidePriceProducts7");
+                     }} />
                      <label htmlFor="asidePriceProducts7">Більше 5000 грн</label>
                   </li>
                </ul>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, {useState } from 'react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import { Thumbs } from 'swiper/modules';
 import 'swiper/css';
 import styles from "./ProductSlider.module.css";
@@ -71,7 +71,7 @@ const ProductColorSlider: React.FunctionComponent<{ productColorImages: IProduct
                 freeMode={true}
                 direction='vertical'
             >
-                {productColorImages.map(productColorImage => <SwiperSlide key={productColorImage.id}><img src={`data:image/jpg;base64,${productColorImage.data}`} alt={`data:image/jpg;base64,${productColorImage.data}`} /></SwiperSlide>)}
+                {productColorImages.map(productColorImage => <SwiperSlide key={productColorImage.id!}><img src={`data:image/jpg;base64,${productColorImage.data}`} alt="ProductColor" /></SwiperSlide>)}
             </Swiper>
             <div>
                 <Swiper
@@ -83,15 +83,16 @@ const ProductColorSlider: React.FunctionComponent<{ productColorImages: IProduct
                     slidesPerView={1}
                     loop={true}
                 >
-                    {productColorImages.map(productColorImage => <SwiperSlide key={productColorImage.id}><img src={`data:image/jpg;base64,${productColorImage.data}`} alt={`data:image/jpg;base64,${productColorImage.data}`} /></SwiperSlide>)}
+                    {productColorImages.map(productColorImage => <SwiperSlide key={productColorImage.id!}><img src={`data:image/jpg;base64,${productColorImage.data}`} alt="ProductColor" /></SwiperSlide>)}
                 </Swiper>
                 {productColorId && favouriteProductColorIds &&
                     (favouriteProductColorIds.includes(parseInt(productColorId)) ?
-                        <button onClick={() => handleDeleteButtonClick()} className={styles.productSliderLink}>Видалити з кошика</button> :
-                        <button onClick={() => handleAddButtonClick()} className={styles.productSliderLink}>Додати до кошика</button>
+                            <button onClick={() => handleDeleteButtonClick()} className={styles.productSliderLink}>Видалити з кошика</button> :
+                            <button onClick={() => handleAddButtonClick()} className={styles.productSliderLink}>Додати до кошика</button>
                     )
                 }
             </div>
+
         </div>
     );
 }

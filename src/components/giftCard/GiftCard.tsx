@@ -7,16 +7,13 @@ import { productColorAPI } from "../../redux/api/productColorAPI";
 
 const GiftCard: React.FunctionComponent = () => {
 
-   const { productColorId } = useParams<{ productColorId: any }>();
-   const { data: productColors } = productColorAPI.useFetchAllQuery({});
-
    return (
       <main className={styles.giftCard}>
          <GiftCardBlock />
          <div className={styles.giftCard__recommendations}>
             <div className="giftCard__containerMax">
                <h2 className={styles.giftCard__recommendationsTitle}>Клієнти також переглядали</h2>
-               {productColors && <ProductList productColors={productColors} />}
+               <ProductList />
             </div>
          </div>
       </main>

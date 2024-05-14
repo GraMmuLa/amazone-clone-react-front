@@ -5,20 +5,23 @@ import {productTypeAPI} from "../../../redux/api/productTypeAPI";
 import {subcategoryAPI} from "../../../redux/api/subcategoryAPI";
 import {ColorByProductColorId, ProductColorSelect} from "./AddDiscount";
 import {productColorAPI} from "../../../redux/api/productColorAPI";
+import {userAPI} from "../../../redux/api/userAPI";
 
 const AddProduct: React.FunctionComponent = () => {
     const [addMutation] = productAPI.useAddMutation();
     const {data: subcategories } = subcategoryAPI.useFetchAllQuery();
+    const {data: users } = userAPI.useFetchAllQuery();
 
     const [name, setName] = useState<string>();
     const [description, setDescription] = useState<string>();
     const [subcategoryId, setSubcategoryId] = useState<number>();
     const [productTypeId, setProductTypeId] = useState<number>();
+    const [userId, setUserId] = useState<number>();
 
     const addProduct = (e: React.FormEvent) => {
         e.preventDefault();
-        if(name && description && subcategoryId && productTypeId) {
-            addMutation({name, description, productTypeId});
+        if(name && description && subcategoryId && productTypeId && userId) {
+            addMutation({name, description, productTypeId, userId});
             setName(undefined);
             setDescription(undefined);
             setSubcategoryId(undefined);
@@ -47,6 +50,14 @@ const AddProduct: React.FunctionComponent = () => {
                     { subcategoryId &&
                         <ProductTypeSelect subcategoryId={subcategoryId} productTypeId={productTypeId} setProductTypeId={setProductTypeId}/>
                     }
+                </Form.Group>
+
+                <Form.Group>
+                    <Form.Label>User Id</Form.Label>
+                    <Form.Select value={userId ? userId : 0} onChange={(e) => setUserId(parseInt(e.target.value))}>
+                        <option value={0}>Select User</option>
+                        {users && users.map(user => <option key={user.id} value={user.id}>{user.username}</option>)}
+                    </Form.Select>
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit
