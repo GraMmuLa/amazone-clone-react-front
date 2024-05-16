@@ -12,7 +12,7 @@
 }
 
 .productItem__image:hover img {
-   transform: scale(1.06);
+   transform: scale(1.04);
 }
 
 .productItem__image img {
