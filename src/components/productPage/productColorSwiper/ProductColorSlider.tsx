@@ -1,6 +1,6 @@
-import React, {useState } from 'react';
+import React, {useState} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
-import { Thumbs } from 'swiper/modules';
+import { Thumbs } from 'swiper/modules'
 import 'swiper/css';
 import styles from "./ProductSlider.module.css";
 import { Swiper as SwiperType } from 'swiper';
@@ -12,6 +12,7 @@ import { useAppDispatch } from "../../../redux/hooks/useAppDispatch";
 import { userSlice } from "../../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import image from "../../../imgs/promNightBanner.jpg"
 
 const ProductColorSlider: React.FunctionComponent<{ productColorImages: IProductColorImage[] }> = ({ productColorImages }) => {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
@@ -57,6 +58,8 @@ const ProductColorSlider: React.FunctionComponent<{ productColorImages: IProduct
         }
     }
 
+    // @ts-ignore
+    // @ts-ignore
     return (
         <div className={styles.productSlider}>
             <Swiper
@@ -83,7 +86,7 @@ const ProductColorSlider: React.FunctionComponent<{ productColorImages: IProduct
                     slidesPerView={1}
                     loop={true}
                 >
-                    {productColorImages.map(productColorImage => <SwiperSlide key={productColorImage.id!}><img src={`data:image/jpg;base64,${productColorImage.data}`} alt="ProductColor" /></SwiperSlide>)}
+                    {productColorImages.map(productColorImage => <SwiperSlide key={productColorImage.id!}><span>.<img src={`data:image/jpg;base64,${productColorImage.data}`} alt="ProductColor" /></span></SwiperSlide>)}
                 </Swiper>
                 {productColorId && favouriteProductColorIds &&
                     (favouriteProductColorIds.includes(parseInt(productColorId)) ?
@@ -92,7 +95,6 @@ const ProductColorSlider: React.FunctionComponent<{ productColorImages: IProduct
                     )
                 }
             </div>
-
         </div>
     );
 }

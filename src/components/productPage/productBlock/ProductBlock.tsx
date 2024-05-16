@@ -26,9 +26,6 @@ const ProductColorImages: React.FunctionComponent<{ productColorId: number }> = 
 
     const { data: productColorImages, isSuccess } = productColorImageAPI.useFetchAllByProductColorIdQuery(productColorId);
 
-    if(isSuccess)
-        console.log(productColorImages)
-
     return (
         <>
             {productColorImages && <ProductColorSlider productColorImages={productColorImages} />}

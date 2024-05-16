@@ -9,6 +9,6 @@ export default interface IUser extends IEntity {
     phone: string,
     roleName: string,
     favouriteProductColorIds?: number[],
-    productIds?: number[],
+    bannerId?: number,
     isLogged?: boolean
 }

@@ -13,6 +13,13 @@ export const userAPI = createApi({
             }),
             providesTags: ['User']
         }),
+        fetchById: build.query<IUser, number>({
+            query: (id) => ({
+                url: "",
+                params: {id}
+            }),
+            providesTags: ['User']
+        }),
         addFavouriteProductColor: build.mutation<IJwtObject, {userId: number, productColorId: number, validityFrom: number, validityTo: number}>({
             query: (data) => ({
                 url: "/addFavouriteProductColor",

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Thumbs } from 'swiper/modules';
-import 'swiper/css';
+import 'swiper/less';
 import styles from "./GiftCardSlider.module.css";
 import { Swiper as SwiperType } from 'swiper';
 import IProductColorImage from "../../../interfaces/IProductColorImage";

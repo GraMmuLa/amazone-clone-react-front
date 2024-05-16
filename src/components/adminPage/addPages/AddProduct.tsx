@@ -26,6 +26,7 @@ const AddProduct: React.FunctionComponent = () => {
             setDescription(undefined);
             setSubcategoryId(undefined);
             setProductTypeId(undefined);
+            setUserId(undefined);
         }
     }
 

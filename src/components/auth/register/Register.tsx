@@ -6,10 +6,12 @@ import { userSlice } from "../../../redux/slices/userSlice";
 import { useAppDispatch } from "../../../redux/hooks/useAppDispatch";
 import { useAppSelector } from "../../../redux/hooks/useAppSelector";
 import classes from "../Auth.module.css"
+import styles from "../registerSeller/RegisterSeller.module.css";
+import {withMask} from "use-mask-input";
 
 const Register: React.FunctionComponent = () => {
 
-    const [register, { data: jwtResponse }] = authAPI.useRegisterMutation();
+    const [register] = authAPI.useRegisterMutation();
 
     const [username, setUsername] = useState<string>("");
     const [firstname, setFirstname] = useState<string>("");
@@ -18,6 +20,7 @@ const Register: React.FunctionComponent = () => {
     const [phone, setPhone] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [passwordRepeat, setPasswordRepeat] = useState<string>("");
+    const [isConfidential, setIsConfidential] = useState<boolean>(false);
     const [isError, setIsError] = useState<boolean>(false);
 
     const navigate = useNavigate();
@@ -31,32 +34,34 @@ const Register: React.FunctionComponent = () => {
             navigate("/");
     }, [isLogged]);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!emailPattern.test(email) ||
-            !phonePattern.test(phone) ||
+            !phonePattern.test("380"+phone) ||
             invalidPasswordPattern.test(password) ||
             password !== passwordRepeat ||
             username.length < 4 ||
             firstname.length === 0 ||
-            surname.length === 0) {
+            surname.length === 0 ||
+            !isConfidential) {
             setIsError(true);
             return;
         }
-        register({
+
+        const jwtResponse = await register({
             username: username,
             firstname: firstname,
             surname: surname,
             email: email,
-            phone: phone,
+            phone: "380"+phone,
             password: password,
             roleName: "Customer"
-        });
-    }
+        }).unwrap();
+        console.log(jwtResponse);
 
-    if (jwtResponse) {
         dispatch(init(jwtResponse));
         sessionStorage.setItem("auth_token", `Bearer ${jwtResponse.token}`);
+
     }
 
     return (
@@ -69,41 +74,44 @@ const Register: React.FunctionComponent = () => {
 
                         <div className={classes.formGroup}>
                             <label htmlFor="usernameInput">Ім'я користувача</label>
-                            <input className={classes.formInput} placeholder="Ім'я користувача" type="text"
-                                id="usernameInput" onChange={(e) => setUsername(e.target.value)} />
+                            <input value={username} className={classes.formInput} placeholder="Ім'я користувача" type="text"
+                                   id="usernameInput" onChange={(e) => setUsername(e.target.value)}/>
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="firstnameInput">Ім'я</label>
-                            <input className={classes.formInput} placeholder="Ім'я" type="text" id="firstnameInput"
-                                onChange={(e) => setFirstname(e.target.value)} />
+                            <input value={firstname} className={classes.formInput} placeholder="Ім'я" type="text" id="firstnameInput"
+                                   onChange={(e) => setFirstname(e.target.value)}/>
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="surname">Фамілія</label>
-                            <input className={classes.formInput} placeholder="Фамілія" type="text" id="nameInput"
-                                onChange={(e) => setSurname(e.target.value)} />
+                            <input value={surname} className={classes.formInput} placeholder="Фамілія" type="text" id="nameInput"
+                                   onChange={(e) => setSurname(e.target.value)}/>
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="emailInput">Емейл</label>
-                            <input className={classes.formInput} placeholder="Емейл" type="text" id="emailInput"
-                                onChange={(e) => setEmail(e.target.value)} />
+                            <input value={email} className={classes.formInput} placeholder="Емейл" type="text" id="emailInput"
+                                   onChange={(e) => setEmail(e.target.value)}/>
                         </div>
                         <div className={classes.formGroup}>
-                            <label htmlFor="phoneInput">Номер телефону</label>
-                            <input className={classes.formInput} placeholder="Номер телефону" type="text" id="phoneInput"
-                                onChange={(e) => setPhone(e.target.value)} />
+                            <label htmlFor="sellerRegistPhone">Номер телефону</label>
+                            <div className={styles.sellerRegist__phone}>
+                                <span>+380</span>
+                                <input className={classes.formInput} id="sellerRegistPhone" type="text" ref={withMask('-99-999-99-99')}
+                                       onChange={(e) => {setPhone(e.target.value)}} placeholder="-00-000-00-00"/>
+                            </div>
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="passwordInput">Пароль</label>
-                            <input className={classes.formInput} placeholder="Пароль" type="text" id="passwordInput"
-                                onChange={(e) => setPassword(e.target.value)} />
+                            <input value={password} className={classes.formInput} placeholder="Пароль" type="text" id="passwordInput"
+                                   onChange={(e) => setPassword(e.target.value)}/>
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="passwordRepeatInput">Повторіть пароль</label>
-                            <input className={classes.formInput} placeholder="Повторіть пароль" type="text"
-                                id="passwordRepeatInput" onChange={(e) => setPasswordRepeat(e.target.value)} />
+                            <input value={passwordRepeat} className={classes.formInput} placeholder="Повторіть пароль" type="text"
+                                   id="passwordRepeatInput" onChange={(e) => setPasswordRepeat(e.target.value)}/>
                         </div>
                         <div className={classes.formGroup}>
-                            <input className={classes.formCheckBox} type="checkbox" id="checkBoxInput" />
+                            <input onChange={()=>setIsConfidential(!isConfidential)} className={classes.formCheckBox} type="checkbox" id="checkBoxInput"/>
                             <label className={classes.formLabel} htmlFor="checkBoxInput">
                                 Я погоджуюсь з <a className={classes.formLink} href="#">Політикою конфеденційності</a>
                             </label>

@@ -20,11 +20,11 @@ export const categoryImageAPI = createApi({
             }),
             providesTags: ['CategoryImage']
         }),
-        add: build.mutation<ICategoryImage, { file: File, categoryId: number }>({
+        add: build.mutation<ICategoryImage, ICategoryImage>({
             query: (categoryImage) =>  {
                 const body = new FormData();
-                body.append("Content-Type", categoryImage.file.type);
-                body.append("file", categoryImage.file);
+                body.append("Content-Type", categoryImage.data.type);
+                body.append("file", categoryImage.data);
 
                 return {
                     url: "",

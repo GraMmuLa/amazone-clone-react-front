@@ -3,11 +3,11 @@ import {productReviewAPI} from "../../../redux/api/productReviewAPI";
 import {Button, Table} from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import classes from "../AdminPage.module.css";
-import IProductReview from "../../../interfaces/IProductReview";
+import IReview from "../../../interfaces/IReview";
 import paginationClasses from "../../pagination/Pagination.module.css";
 import arrow from "../../../imgs/arrow.svg";
 
-export const ProductReviewTable: React.FunctionComponent<{productReviews: IProductReview[], itemsPerPage: number}> = ({productReviews, itemsPerPage}) => {
+export const ProductReviewTable: React.FunctionComponent<{productReviews: IReview[], itemsPerPage: number}> = ({productReviews, itemsPerPage}) => {
 
     const [deleteProductReview] = productReviewAPI.useDeleteMutation();
 
@@ -38,7 +38,7 @@ export const ProductReviewTable: React.FunctionComponent<{productReviews: IProdu
                             <tr key={currentItem.id!}>
                                 <td>{currentItem.id!}</td>
                                 <td>{currentItem.mark}</td>
-                                <td>{currentItem.username}</td>
+                                <td>{currentItem.userId}</td>
                                 <td>{currentItem.reviewText}</td>
                                 <td>{currentItem.productId}</td>
                                 <td>{new Date(currentItem.createdAt!-7200000).toLocaleString('uk-UA')}</td>

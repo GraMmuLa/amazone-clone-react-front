@@ -1,18 +1,20 @@
 import { withMask } from 'use-mask-input';
 import React, { useEffect, useState } from 'react';
-import { emailPattern, invalidPasswordPattern } from "../patterns";
+import {emailPattern, invalidPasswordPattern, phonePattern} from "../patterns";
 import { authAPI } from "../../../redux/api/authAPI";
 import { useNavigate } from "react-router-dom";
 import { userSlice } from "../../../redux/slices/userSlice";
 import { useAppDispatch } from "../../../redux/hooks/useAppDispatch";
 import { useAppSelector } from "../../../redux/hooks/useAppSelector";
 import styles from "./RegisterSeller.module.css";
+import IJwtObject from "../../../interfaces/IJwtObject";
 
 const RegisterSeller: React.FunctionComponent = () => {
-   const [register, { data: jwtResponse }] = authAPI.useRegisterMutation();
+   const [register] = authAPI.useRegisterMutation();
 
    const [username, setUsername] = useState<string>("");
    const [firstname, setFirstname] = useState<string>("");
+   const [middlename, setMiddlename] = useState<string>("");
    const [surname, setSurname] = useState<string>("");
    const [email, setEmail] = useState<string>("");
    const [phone, setPhone] = useState<string>("");
@@ -31,33 +33,35 @@ const RegisterSeller: React.FunctionComponent = () => {
          navigate("/");
    }, [isLogged]);
 
-   const handleSubmit = (e: React.FormEvent) => {
+   const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       if (!emailPattern.test(email) ||
-         // !phonePattern.test(phone) ||
+         !phonePattern.test("+380"+phone) ||
          invalidPasswordPattern.test(password) ||
          password !== passwordRepeat ||
          username.length < 4 ||
          firstname.length === 0 ||
+         middlename.length === 0 ||
          surname.length === 0) {
+         console.log(
+             passwordRepeat);
          setIsError(true);
          return;
       }
-      register({
+      const jwtResponse = await register({
          username: username,
          firstname: firstname,
+         middlename: middlename,
          surname: surname,
          email: email,
-         phone: phone,
+         phone: "+380"+phone,
          password: password,
          roleName: "Seller"
-      });
-   };
+      }).unwrap();
 
-   if (jwtResponse) {
       dispatch(init(jwtResponse));
       sessionStorage.setItem("auth_token", `Bearer ${jwtResponse.token}`);
-   }
+   };
 
    return (
       <div className={styles.sellerRegist}>
@@ -75,38 +79,38 @@ const RegisterSeller: React.FunctionComponent = () => {
                   <div className={styles.formItemWrapper}>
                      <div className={styles.formItem}>
                         <label htmlFor="sellerRegistFirstname">Ім’я</label>
-                        <input id="sellerRegistFirstname" type="text" onChange={(e) => setFirstname(e.target.value)} placeholder="Ім’я" />
+                        <input value={firstname} id="sellerRegistFirstname" type="text" onChange={(e) => setFirstname(e.target.value)} placeholder="Ім’я" />
                      </div>
                      <div className={styles.formItem}>
                         <label htmlFor="sellerRegistSurname">Фамілія</label>
-                        <input id="sellerRegistSurname" type="text" onChange={(e) => setSurname(e.target.value)} placeholder="Фамілія" />
+                        <input value={surname} id="sellerRegistSurname" type="text" onChange={(e) => setSurname(e.target.value)} placeholder="Фамілія" />
                      </div>
                      <div className={styles.formItem}>
                         <label htmlFor="sellerRegistMiddleName">По-батькові</label>
-                        <input id="sellerRegistMiddleName" type="text" placeholder="По-батькові" />
+                        <input value={middlename} id="sellerRegistMiddleName" onChange={(e) => setMiddlename(e.target.value)} type="text" placeholder="По-батькові" />
                      </div>
                   </div>
                   <div className={styles.formItemWrapper}>
                      <div className={styles.formItem}>
                         <label htmlFor="sellerRegistEmail">Емейл</label>
-                        <input id="sellerRegistEmail" type="text" onChange={(e) => setEmail(e.target.value)} placeholder="Емейл" />
+                        <input value={email} id="sellerRegistEmail" type="text" onChange={(e) => setEmail(e.target.value)} placeholder="Емейл" />
                      </div>
                      <div className={styles.formItem}>
                         <label htmlFor="sellerRegistPhone">Номер телефону</label>
                         <div className={styles.sellerRegist__phone}>
                            <span>+380</span>
-                           <input id="sellerRegistPhone" type="text" ref={withMask('99-999-99-99')} onChange={(e) => setPhone(e.target.value)} placeholder="000-00-00-00" />
+                           <input value={phone} id="sellerRegistPhone" type="text" ref={withMask('-99-999-99-99')} onChange={(e) => setPhone(e.target.value)} placeholder="-00-000-00-00" />
                         </div>
                      </div>
                   </div>
                   <div className={styles.formItemWrapper}>
                      <div className={styles.formItem}>
                         <label htmlFor="sellerRegistPassword">Пароль</label>
-                        <input id="sellerRegistPassword" type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Пароль" />
+                        <input value={password} id="sellerRegistPassword" type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Пароль" />
                      </div>
                      <div className={styles.formItem}>
                         <label htmlFor="sellerRegistPasswordRepeat">Повторіть пароль</label>
-                        <input type="password" id="sellerRegistPasswordRepeat" onChange={(e) => setPasswordRepeat(e.target.value)} placeholder="Повторіть пароль" />
+                        <input value={passwordRepeat} type="password" id="sellerRegistPasswordRepeat" onChange={(e) => setPasswordRepeat(e.target.value)} placeholder="Повторіть пароль" />
                      </div>
                   </div>
                </div>

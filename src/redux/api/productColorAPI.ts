@@ -13,7 +13,7 @@ export const productColorAPI = createApi({
             }),
             providesTags: ['ProductColor']
         }),
-        fetchAllByProductId: build.query<IProductColor[], number>({
+        fetchAllByProduct: build.query<IProductColor[], number>({
             query: (productId: number) => ({
                 url: "/product",
                 params: {productId}

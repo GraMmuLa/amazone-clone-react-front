@@ -24,7 +24,7 @@ const Offers: React.FunctionComponent<{categories: ICategory[], title: string }>
                      <NavLink to="/" className={styles.itemOffers__title}>Всі продукти</NavLink>
                  </div>
                  {categories &&
-                     categories.map(category => <OffersItem categoryId={category.id!}/>)}
+                     categories.map(category => category.id && <OffersItem key={category.id} categoryId={category.id!}/>)}
              </div>
          </div>
       </section>
