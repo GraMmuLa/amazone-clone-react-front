@@ -49,3 +49,8 @@ code {
 body.userOpen #user {
   transform: translate(0, 0);
 }
+
+.preloader._active {
+  opacity: 1;
+  visibility: visible;
+}
