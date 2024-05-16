@@ -13,7 +13,7 @@ const ProductInfo: React.FunctionComponent<{ productColor: IProductColor }> = ({
 
     return (
         <div className={styles.productInfo}>
-            {product && <ProductInfoTop productName={product.name} />}
+            {product && <ProductInfoTop userId={product.userId} productName={product.name} />}
             <ProductInfoMain productColor={productColor} />
             {product && <ProductInfoBottom product={product} />}
         </div>

@@ -42,6 +42,7 @@ const ProductColorTable: React.FunctionComponent<{productColors: IProductColor[]
                                 <td>{currentItem.discountId && currentItem.discountId}</td>
                                 <td>{currentItem.productColorImageIds!.join(", ")}</td>
                                 <td>{currentItem.productSizeIds && currentItem.productSizeIds.join(", ")}</td>
+                                <td>{currentItem.favouritedUserIds ? "" : currentItem.favouritedUserIds}</td>
                                 <td>{currentItem.mainImageId!}</td>
                                 <td>{new Date(currentItem.createdAt!-7200000).toLocaleString('uk-UA')}</td>
                                 <td><Button variant="danger"

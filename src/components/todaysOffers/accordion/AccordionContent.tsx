@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import arrow from '../../../imgs/arrow.svg'
-import AccordionContentBody from './AccordionContentBody'
 import styles from "./AccordionContent.module.css";
 import {subcategoryAPI} from "../../../redux/api/subcategoryAPI";
+import AccordionContentBodyItem from "./AccordionContentBodyItem";
 
 const AccordionContent: React.FunctionComponent<{ subcategoryId: number }> = ({ subcategoryId }) => {
 
@@ -35,16 +35,20 @@ const AccordionContent: React.FunctionComponent<{ subcategoryId: number }> = ({ 
                 </div>
              </button>
           </div>
-          {subcategory && subcategory.productTypeIds &&
+          {subcategory && subcategory.id && subcategory.productTypeIds &&
               <>
               <div id='accordion__body'
                    className={`${styles.accordion__body} ${isOpen ? `${styles._open}` : `${styles}`}`}
                    style={{height: isOpen ? `${(20 + 8) * subcategory.productTypeIds.length + 15}px` : '0px'}}>
-                 <AccordionContentBody bodyItems={subcategory.productTypeIds}/>
+                 <div className="bodyAccordion__content">
+                    <div className="bodyAccordion__list">
+                       {subcategory.productTypeIds.map(productTypeId => <AccordionContentBodyItem key={productTypeId} itemId={productTypeId}/>)}
+                    </div>
+                 </div>
               </div>
               </>
-           }
-      </div>
+          }
+       </div>
    );
 }
 

@@ -5,6 +5,7 @@ import ReviewsItems from "./ReviewsItems";
 const Reviews = () => {
    const reviewsInfo = [
       {
+         id: 1,
          name: "a***7",
          date: "7 Jun,2023",
          review: 5,
@@ -12,9 +13,10 @@ const Reviews = () => {
          color: "сірий",
          size: "S",
          comment: "Товар якісний і зручний",
-         images: ["img/image1", "img/image2"]
+         images: [{id: 1, data: "img/image1"}, {id: 2, data: "img/image2"}]
       },
       {
+         id: 2,
          name: "u***4",
          date: "7 Jun,2023",
          review: 2.5,
@@ -22,7 +24,7 @@ const Reviews = () => {
          color: "сірий",
          size: "S",
          comment: "Якість продукту: для мене погано. Відповідність зображенням продукту: так. Опис запаху: поганий матеріал, не такий, як я очікував, тонкий і дешевий",
-         images: ["img/image3"]
+         images: [{id: 1, data: "img/image3"}]
       },
    ]
 

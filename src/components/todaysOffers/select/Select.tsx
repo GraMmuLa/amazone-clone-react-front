@@ -16,7 +16,7 @@ const Select: React.FunctionComponent<{ selected: { title: string, value: string
          title: "Спаданню ціни",
          value: "price_desc"
       }];
-   const [isOpen, setIsOpen] = useState(false);
+   const [isOpen, setIsOpen] = useState<boolean>(false);
    document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
       if (!target.closest("#main__select") && isOpen) {
@@ -29,7 +29,7 @@ const Select: React.FunctionComponent<{ selected: { title: string, value: string
             <button onClick={(e) => setIsOpen(!isOpen)} className={`${styles.main__selectButton} ${isOpen ? `${styles._open}` : `${styles}`}`}>{selected.title}<span><img src={arrow} alt="arrow" /></span></button>
             {isOpen && (
                 <div className={styles.main__selectBody}>
-                   {options.map((option) => <button key={selected.value} onClick={(e) => {
+                   {options.map((option) => <button key={option.value} onClick={(e) => {
                       setSelected(option);
                       setIsOpen(false)
                    }} className={styles.main__selectItem}>{option.title}</button>)}

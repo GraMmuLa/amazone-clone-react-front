@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import IProductSize from "../../interfaces/IProductSize";
-import IProductReview from "../../interfaces/IProductReview";
+import IReview from "../../interfaces/IReview";
 
 export const productSizeAPI = createApi({
     reducerPath: "productSizeAPI",

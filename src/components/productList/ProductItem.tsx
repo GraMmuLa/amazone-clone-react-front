@@ -24,7 +24,7 @@ const ProductItem: React.FunctionComponent<{ productColor: IProductColor }> = ({
           }
 
           {productColor && (productColor.discountId ?
-              <RecommendationsItemPrice discountId={productColor.discountId} price={productColor.price}/> :
+              <ProductItemPrice discountId={productColor.discountId} price={productColor.price}/> :
               <div className={styles.productItem__price}>
                   {productColor.price} грн
               </div>)
@@ -33,7 +33,7 @@ const ProductItem: React.FunctionComponent<{ productColor: IProductColor }> = ({
     );
 }
 
-const RecommendationsItemPrice: React.FunctionComponent<{ discountId: number, price: number }> = ({discountId, price}) => {
+const ProductItemPrice: React.FunctionComponent<{ discountId: number, price: number }> = ({discountId, price}) => {
     const {data: discount} = discountAPI.useFetchByIdQuery(discountId);
 
     const getDiscountPercent = (fullprice: number, discount: number) => {

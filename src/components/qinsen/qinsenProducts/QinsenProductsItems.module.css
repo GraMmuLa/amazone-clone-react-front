@@ -1,5 +1,0 @@
-.qinsenProductsItems {
-   display: grid;
-   gap: 30px;
-   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-}

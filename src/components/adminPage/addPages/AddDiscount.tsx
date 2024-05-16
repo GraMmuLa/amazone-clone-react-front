@@ -68,7 +68,7 @@ const AddDiscount: React.FunctionComponent = () => {
 
 export const ProductColorSelect: React.FunctionComponent<{productId: number, productColorId: number | undefined, setProductColorId: Dispatch<SetStateAction<number | undefined>>}> = ({productId, productColorId, setProductColorId}) => {
 
-    const {data: productColors} = productColorAPI.useFetchAllByProductIdQuery(productId);
+    const {data: productColors} = productColorAPI.useFetchAllByProductQuery(productId);
 
     return (
         <>

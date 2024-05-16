@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import IProductReview from "../../interfaces/IProductReview";
+import IReview from "../../interfaces/IReview";
 import IProductDetailValue from "../../interfaces/IProductDetailValue";
 
 export const productReviewAPI = createApi({
@@ -7,21 +7,21 @@ export const productReviewAPI = createApi({
     baseQuery: fetchBaseQuery({baseUrl: "http://localhost:8081/productReview"}),
     tagTypes: ['ProductReview'],
     endpoints: (build) => ({
-        fetchAll: build.query<IProductReview[], void>({
+        fetchAll: build.query<IReview[], void>({
             query: () => ({
                 url: "/all"
             }),
             providesTags: ['ProductReview']
         }),
-        fetchById: build.query<IProductReview, number>({
+        fetchById: build.query<IReview, number>({
             query: (id: number) => ({
                 url: "",
                 params: {id: id}
             }),
             providesTags: ['ProductReview']
         }),
-        add: build.mutation<IProductReview, IProductReview>({
-            query: (productReview: IProductReview) =>  ({
+        add: build.mutation<IReview, IReview>({
+            query: (productReview: IReview) =>  ({
                 url: "",
                 method: "POST",
                 body: productReview

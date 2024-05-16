@@ -39,6 +39,7 @@ const ProductTable: React.FunctionComponent<{products: IProduct[], itemsPerPage:
                                 <td>{currentItem.name}</td>
                                 <td>{currentItem.description}</td>
                                 <td>{currentItem.productTypeId}</td>
+                                <td>{currentItem.userId}</td>
                                 <td>{currentItem.productColorsIds && currentItem.productColorsIds.join(", ")}</td>
                                 <td>{currentItem.productReviewsIds && currentItem.productReviewsIds.join(", ")}</td>
                                 <td>{currentItem.productDetailValuesIds && currentItem.productDetailValuesIds.join(", ")}</td>

@@ -24,7 +24,7 @@ const ProductBlock: React.FunctionComponent<{ productColorId: number }> = ({ pro
 
 const ProductColorImages: React.FunctionComponent<{ productColorId: number }> = ({ productColorId }) => {
 
-    const { data: productColorImages } = productColorImageAPI.useFetchAllByProductColorIdQuery(productColorId);
+    const { data: productColorImages, isSuccess } = productColorImageAPI.useFetchAllByProductColorIdQuery(productColorId);
 
     return (
         <>

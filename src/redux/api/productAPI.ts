@@ -20,6 +20,12 @@ export const productAPI = createApi({
             }),
             providesTags: ['Product']
         }),
+        fetchAllByUser: build.query<IProduct[], number>({
+            query: (userId: number) => ({
+                url: "/user",
+                params: {userId}
+            })
+        }),
         fetchById: build.query<IProduct, number>({
             query: (id: number) => ({
                 url: "",

@@ -1,0 +1,49 @@
+.qinsenProductsItems {
+   display: grid;
+   gap: 30px;
+   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.qinsenProductsItem {}
+
+.qinsenProductsItem__image {
+   margin-bottom: 20px;
+   position: relative;
+   overflow: hidden;
+   aspect-ratio: 320/400;
+   background-color: #d6d6d6;
+}
+
+.qinsenProductsItem__image:hover img {
+   transform: scale(1.06);
+}
+
+.qinsenProductsItem__image img {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: 0.3s ease 0s;
+}
+
+.qinsenProductsItem__title {
+   text-align: center;
+   line-height: 1.2;
+   margin-bottom: 10px;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2;
+   overflow: hidden;
+}
+
+.qinsenProductsItem__price {
+   text-align: center;
+   font-size: 24px;
+   font-weight: 500;
+}
+
+.qinsenProductsItem__price._discount {
+   color: #FA6338;
+}

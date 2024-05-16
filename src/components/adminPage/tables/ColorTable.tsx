@@ -36,6 +36,7 @@ const ColorTable: React.FunctionComponent<{colors: IColor[], itemsPerPage: numbe
                             <tr key={currentItem.id!}>
                                 <td>{currentItem.id!}</td>
                                 <td>{currentItem.color}</td>
+                                <td>{currentItem.subcategoryId}</td>
                                 <td>{currentItem.productColorsIds!.join(", ")}</td>
                                 <td>{new Date(currentItem.createdAt! - 7200000).toLocaleString('uk-UA')}</td>
                                 <td><Button variant="danger"

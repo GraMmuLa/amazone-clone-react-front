@@ -9,15 +9,37 @@ import { NavLink } from "react-router-dom";
 import { productColorImageAPI } from "../../../redux/api/productColorImageAPI";
 import { productDetailValueAPI } from "../../../redux/api/productDetailValueAPI";
 import { productDetailKeyAPI } from "../../../redux/api/productDetailKeyAPI";
+import {discountAPI} from "../../../redux/api/discountAPI";
 
 const ProductInfoMain: React.FunctionComponent<{ productColor: IProductColor }> = ({ productColor }) => {
 
     const { data: product } = productAPI.useFetchByIdQuery(productColor.productId);
 
+    const Discount: React.FunctionComponent<{discountId: number}> = ({discountId}) => {
+        const {data: discount} = discountAPI.useFetchByIdQuery(discountId);
+
+        return (
+            <>
+                {discount &&
+                    <>
+                        <h2>Ціна:</h2>
+                        <span>{productColor.price-discount.price} грн</span>
+                    </>
+                }
+            </>
+        )
+    }
+
     return (
         <div className={styles.productInfoMain}>
             <div className={styles.productInfoMain__price}>
-                <h2>Ціна:</h2><span>{productColor.price} грн</span>
+                {productColor.discountId ?
+                    <Discount discountId={productColor.discountId}/> :
+                    <>
+                        <h2>Ціна:</h2>
+                        <span>{productColor.price} грн</span>
+                    </>
+                }
             </div>
             <div className={`${styles.productInfoMain__sizes} productInfoMain__sizes`}>
                 <h2>Розмір:</h2>
@@ -85,7 +107,7 @@ const ProductColorLink: React.FunctionComponent<{ productColorId: number }> = ({
     return (
         <>
             {productColor && productColor.mainImageId &&
-                <NavLink to={`/productPage/${productColorId}`}><MainImage mainImageId={productColor.mainImageId!} /></NavLink>
+                <NavLink to={`/productPage/${productColorId}`}><MainImage mainImageId={productColor.mainImageId} /></NavLink>
             }
         </>
     );

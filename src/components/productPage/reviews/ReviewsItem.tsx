@@ -3,7 +3,7 @@ import StarsRating from "../starsRating/StarsRating"
 import styles from "./ReviewsItem.module.css";
 
 
-const ReviewsItem: React.FunctionComponent<{ name: string, date: string, review: number, landing: boolean, color: string, size: string, comment: string, images: string[] }> = ({ name, date, review, landing, color, size, comment, images }) => {
+const ReviewsItem: React.FunctionComponent<{ name: string, date: string, review: number, landing: boolean, color: string, size: string, comment: string, images: {id: number, data: string}[] }> = ({ name, date, review, landing, color, size, comment, images }) => {
    return (
       <div className={styles.reviewsItem} >
          <div className={styles.reviewsItem__top}>
@@ -26,7 +26,7 @@ const ReviewsItem: React.FunctionComponent<{ name: string, date: string, review:
          </div>
          <div className={styles.reviewsItem__comment}>{comment}</div>
          <div className={styles.reviewsItem__imageBlock}>
-            {images.map(image => <div className={styles.reviewsItem__image}><button><img src={image} alt={image} /></button></div>)}
+            {images.map(image => <div key={image.id} className={styles.reviewsItem__image}><button><img src={image.data} alt={image.data} /></button></div>)}
          </div>
       </div>
    );
