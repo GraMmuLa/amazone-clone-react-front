@@ -6,7 +6,7 @@ import React from "react";
 
 const Preloader: React.FunctionComponent = () => {
    return (
-      <div className={styles.preloader}>
+      <div className={`${styles.preloader} preloader`}>
          <div className={styles.preloader__content}>
             <div className={styles.preloader__image}><img src={logo} alt="logo" /></div>
             <div className={styles.preloader__loader}><img src={loader} alt="spin" /></div>

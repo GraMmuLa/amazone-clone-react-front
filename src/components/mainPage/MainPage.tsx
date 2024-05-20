@@ -12,24 +12,28 @@ import { Discounts } from "../../enums/discounts";
 import Preloader from "../preloader/Preloader";
 
 const MainPage: React.FunctionComponent = () => {
-
     const { data: subcategories, isLoading: isLoadingSubcategories } = subcategoryAPI.useFetchAllQuery();
     const { data: discountTypes, isLoading: isLoadingDiscountTypes } = discountTypeAPI.useFetchExceptDiscountTypeNameQuery(Discounts.dayDiscount);
 
+    useEffect(() => {
+        const preloader = document.querySelector('.preloader');
+        if (isLoadingSubcategories || isLoadingDiscountTypes) {
+            preloader?.classList.add("_active");
+        } else {
+            preloader?.classList.remove("_active");
+        }
+    }, [isLoadingSubcategories, isLoadingDiscountTypes]);
+
     return (
         <>
-            {isLoadingSubcategories || isLoadingDiscountTypes ?
-                <Preloader /> :
-                <>
-                    <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night" />
-                    <Wrapper>
-                        {subcategories && <SubcategoryList subcategories={subcategories} />}
-                        <DayDiscount />
-                        {/*{discountTypes && <OtherDiscounts discountTypes={discountTypes} />}*/}
-                        <Recomendations />
-                    </Wrapper>
-                </>
-            }
+            <Preloader />
+            <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night" />
+            <Wrapper>
+                {subcategories && <SubcategoryList subcategories={subcategories} />}
+                <DayDiscount />
+                {discountTypes && <OtherDiscounts discountTypes={discountTypes} />}
+                <Recomendations />
+            </Wrapper>
         </>
     );
 }

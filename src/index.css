@@ -32,20 +32,51 @@ code {
   cursor: pointer;
 }
 
-.swiper-slide-thumb-active {
-  position: relative;
-}
-
-.swiper-slide-thumb-active::before {
+.subProductSlide::before {
   content: '';
   position: absolute;
+  display: block;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 2;
   border: 3px solid #000;
+  transition: 0.3s ease 0s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.swiper-slide-thumb-active::before {
+  opacity: 1;
+  visibility: visible;
 }
 
 body.userOpen #user {
   transform: translate(0, 0);
+}
+
+.preloader._active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.productInfoMain__colorItem::before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  border: 3px solid #000;
+  transition: 0.3s ease 0s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.productInfoMain__colorItem.active::before {
+  opacity: 1;
+  visibility: visible;
 }
