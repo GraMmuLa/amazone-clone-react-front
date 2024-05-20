@@ -60,7 +60,7 @@ const ProductInfoMain: React.FunctionComponent<{ productColor: IProductColor }> 
                 <h2 className={styles.productInfoMain__detailsTitle}>Деталі продукту</h2>
                 <div className={styles.productInfoMain__detailsItems}>
                     {product && product.productDetailValuesIds &&
-                        product.productDetailValuesIds.map(productDetailValueId => <DetailItem productDetailValueId={productDetailValueId} />)}
+                        product.productDetailValuesIds.map(productDetailValueId => <DetailItem key={productDetailValueId} productDetailValueId={productDetailValueId} />)}
                 </div>
             </div>
         </div>

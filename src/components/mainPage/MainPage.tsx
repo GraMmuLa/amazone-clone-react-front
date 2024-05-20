@@ -25,7 +25,7 @@ const MainPage: React.FunctionComponent = () => {
                     <Wrapper>
                         {subcategories && <SubcategoryList subcategories={subcategories} />}
                         <DayDiscount />
-                        {discountTypes && <OtherDiscounts discountTypes={discountTypes} />}
+                        {/*{discountTypes && <OtherDiscounts discountTypes={discountTypes} />}*/}
                         <Recomendations />
                     </Wrapper>
                 </>

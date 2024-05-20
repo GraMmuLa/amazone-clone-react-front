@@ -5,6 +5,7 @@ import {productColorImageAPI} from "../../../../redux/api/productColorImageAPI";
 import {discountAPI} from "../../../../redux/api/discountAPI";
 import {productColorAPI} from "../../../../redux/api/productColorAPI";
 import IProductColor from "../../../../interfaces/IProductColor";
+import {NavLink} from "react-router-dom";
 
 const DayDiscountItem: React.FunctionComponent<{dayDiscount: IProduct}> = ({dayDiscount}) => {
 
@@ -30,7 +31,7 @@ const Image: React.FunctionComponent<{productColor: IProductColor}> = ({productC
 
     return (
         <>
-            {productColorImage && <img src={'data:image/jpg;base64,' + productColorImage.data} alt="Product Image" className={classes.dayDiscountItem__img}/> }
+            {productColor.id && productColorImage && <NavLink to={`productPage/${productColor.id}`}><img src={'data:image/jpg;base64,' + productColorImage.data} alt="Product Image" className={classes.dayDiscountItem__img}/></NavLink> }
         </>
     );
 }

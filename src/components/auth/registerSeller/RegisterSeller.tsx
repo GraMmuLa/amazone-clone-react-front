@@ -20,6 +20,7 @@ const RegisterSeller: React.FunctionComponent = () => {
    const [phone, setPhone] = useState<string>("");
    const [password, setPassword] = useState<string>("");
    const [passwordRepeat, setPasswordRepeat] = useState<string>("");
+   const [isConfidential, setIsConfidential] = useState<boolean>(false);
    const [isError, setIsError] = useState<boolean>(false);
 
    const navigate = useNavigate();
@@ -42,9 +43,8 @@ const RegisterSeller: React.FunctionComponent = () => {
          username.length < 4 ||
          firstname.length === 0 ||
          middlename.length === 0 ||
-         surname.length === 0) {
-         console.log(
-             passwordRepeat);
+         surname.length === 0 ||
+         !isConfidential) {
          setIsError(true);
          return;
       }
@@ -115,7 +115,8 @@ const RegisterSeller: React.FunctionComponent = () => {
                   </div>
                </div>
                <div className={styles.sellerRegist__checkboxBlock}>
-                  <input className={styles.formCheckBox} type="checkbox" id="sellerRegistCheckBoxInput" />
+                  <input className={styles.formCheckBox} type="checkbox" id="sellerRegistCheckBoxInput"
+                     onChange={()=>setIsConfidential(!isConfidential)}/>
                   <label className={styles.formLabel} htmlFor="sellerRegistCheckBoxInput">
                      Я підтверджую що всі введені данні коректні
                   </label>

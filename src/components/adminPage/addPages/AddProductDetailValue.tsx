@@ -27,7 +27,7 @@ const AddProductDetailValue: React.FunctionComponent = () => {
         <Container>
             <Form onSubmit={(e) => addProductDetailKey(e)}>
                 <Form.Group>
-                    <Form.Label>Product Detail Key name</Form.Label>
+                    <Form.Label>Product Detail Value</Form.Label>
                     <Form.Control value={value ? value : ""} type="text" onChange={(e) => setValue(e.target.value)}/>
                 </Form.Group>
                 <Form.Group>

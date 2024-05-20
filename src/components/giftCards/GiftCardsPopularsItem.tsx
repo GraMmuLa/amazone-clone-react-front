@@ -1,4 +1,5 @@
 import styles from "./GiftCardsPopularsItem.module.css";
+import React from "react";
 
 
 const GiftCardsPopularsItem: React.FunctionComponent<{ image: string, title: string, price: number }> = ({ image, title, price }) => {

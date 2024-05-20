@@ -18,8 +18,9 @@ const OtherDiscounts: React.FunctionComponent<{discountTypes: IDiscountType[]}> 
                 }
             </TabList>
             {discountTypes.map(discountType => (
-                <TabPanel>
-                    { discountType.id && <OtherDiscountsList key={discountType.id} discountType={discountType}/> }
+                discountType.id &&
+                <TabPanel  key={discountType.id}>
+                    <OtherDiscountsList discountType={discountType}/>
                 </TabPanel>
             ))}
 
