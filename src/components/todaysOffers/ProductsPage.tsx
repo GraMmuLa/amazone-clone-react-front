@@ -21,21 +21,28 @@ const ProductsPage = () => {
 
     const { data: subcategories, isLoading: isLoadingSubcategories } = subcategoryAPI.useFetchAllQuery();
 
+    useEffect(() => {
+        const preloader = document.querySelector('.preloader');
+        if (isLoadingProductColors || isLoadingCategories || isLoadingSubcategories) {
+            preloader?.classList.add("_active");
+        } else {
+            preloader?.classList.remove("_active");
+        }
+    }, [isLoadingProductColors, isLoadingCategories, isLoadingSubcategories]);
+
     return (
         <>
-            {isLoadingProductColors || isLoadingCategories || isLoadingSubcategories ?
-                <Preloader/> :
-                <main className={styles.page}>
-                    {categories && <Offers categories={categories} title='Сьогоднішні пропозиції'/>}
-                    <div className={styles.main}>
-                        <Select selected={selected} setSelected={setSelected}/>
-                        <div className={styles.main__wrapper}>
-                            {subcategories && <Aside priceFilter={priceFilter} setPriceFilter={setPriceFilter} subcategories={subcategories}/>}
-                            {productColors && <Body productColors={productColors}/>}
-                        </div>
+            <Preloader/>
+            <main className={styles.page}>
+                {categories && <Offers categories={categories} title='Сьогоднішні пропозиції'/>}
+                <div className={styles.main}>
+                    <Select selected={selected} setSelected={setSelected}/>
+                    <div className={styles.main__wrapper}>
+                        {subcategories && <Aside priceFilter={priceFilter} setPriceFilter={setPriceFilter} subcategories={subcategories}/>}
+                        {productColors && <Body productColors={productColors}/>}
                     </div>
-                </main>
-            }
+                </div>
+            </main>
         </>
     );
 }

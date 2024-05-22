@@ -32,7 +32,6 @@ const MainPage: React.FunctionComponent = () => {
                 {subcategories && <SubcategoryList subcategories={subcategories} />}
                 <DayDiscount />
                 {discountTypes && <OtherDiscounts discountTypes={discountTypes} />}
-                <Recomendations />
             </Wrapper>
         </>
     );
