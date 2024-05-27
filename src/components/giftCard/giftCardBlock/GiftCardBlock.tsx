@@ -1,18 +1,37 @@
-import GiftCardSlider from "../GiftCardSlider/GiftCardSlider";
 import GiftCardInfo from "../giftCardInfo/GiftCardInfo";
 import styles from "./GiftCardBlock.module.css";
-import React from "react";
-import cardImage from "../../../imgs/giftCard/giftCard1.svg"
-import { productAPI } from "../../../redux/api/productAPI";
-import { productColorAPI } from "../../../redux/api/productColorAPI";
-import { productColorImageAPI } from "../../../redux/api/productColorImageAPI";
+import React, {useEffect} from "react";
 import {productCardDesignImageAPI} from "../../../redux/api/productCardDesignImageAPI";
 import {productCardDesignAPI} from "../../../redux/api/productCardDesignAPI";
+import {productCardAPI} from "../../../redux/api/productCardAPI";
+import {useAppSelector} from "../../../redux/hooks/useAppSelector";
+import {useAppDispatch} from "../../../redux/hooks/useAppDispatch";
+import {productCardSlice} from "../../../redux/slices/productCardSlice";
 
-// const GiftCardBlock: React.FunctionComponent<{ productColorId: number }> = ({ productColorId }) => {
 const GiftCardBlock: React.FunctionComponent<{productCardDesignId: number}> = ({productCardDesignId}) => {
 
    const { data: productCardDesign } = productCardDesignAPI.useFetchByIdQuery(productCardDesignId);
+
+   const dispatch = useAppDispatch();
+   const {setProductCardDesignId} = productCardSlice.actions;
+
+   useEffect(() => {
+      dispatch(setProductCardDesignId(productCardDesignId));
+   }, [productCardDesignId]);
+
+   const [addProductCard] = productCardAPI.useAddMutation();
+
+   const productCard = useAppSelector(state=>state.productCard);
+
+   const handleButton = async (e: React.MouseEvent) => {
+      if(productCard &&
+          productCard.price &&
+          productCard.fromWho &&
+          productCard.email &&
+          productCard.productCardDesignId) {
+         const result = await addProductCard(productCard).unwrap();
+      }
+   }
 
    const Image: React.FunctionComponent<{imageId: number}> = ({imageId}) => {
 
@@ -38,7 +57,7 @@ const GiftCardBlock: React.FunctionComponent<{productCardDesignId: number}> = ({
                     <div className={styles.giftCardBlock__cardImageWrapper}>
                        { productCardDesign.productCardDesignImageId &&
                            <Image imageId={productCardDesign.productCardDesignImageId}/> }
-                       <button className={styles.giftCardLink}>Замовити</button>
+                       <button className={styles.giftCardLink} onClick={(e)=>handleButton(e)}>Замовити</button>
                     </div>
                     <GiftCardInfo/>
                  </div>

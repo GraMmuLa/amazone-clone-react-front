@@ -1,6 +1,7 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import userReducer from "../slices/userSlice"
 import filterReducer from "../slices/filterSlice"
+import productCardReducer from "../slices/productCardSlice"
 import {categoryAPI} from "../api/categoryAPI";
 import {categoryImageAPI} from "../api/categoryImageAPI";
 import {subcategoryAPI} from "../api/subcategoryAPI";
@@ -22,10 +23,12 @@ import {userAPI} from "../api/userAPI";
 import {bannerAPI} from "../api/bannerAPI";
 import {productCardDesignAPI} from "../api/productCardDesignAPI";
 import {productCardDesignImageAPI} from "../api/productCardDesignImageAPI";
+import {productCardAPI} from "../api/productCardAPI";
 
 const rootReducer = combineReducers({
     user: userReducer,
     filter: filterReducer,
+    productCard: productCardReducer,
     [categoryAPI.reducerPath]: categoryAPI.reducer,
     [categoryImageAPI.reducerPath]: categoryImageAPI.reducer,
     [subcategoryAPI.reducerPath]: subcategoryAPI.reducer,
@@ -45,6 +48,7 @@ const rootReducer = combineReducers({
     [authAPI.reducerPath]: authAPI.reducer,
     [userAPI.reducerPath]: userAPI.reducer,
     [bannerAPI.reducerPath]: bannerAPI.reducer,
+    [productCardAPI.reducerPath]: productCardAPI.reducer,
     [productCardDesignAPI.reducerPath]: productCardDesignAPI.reducer,
     [productCardDesignImageAPI.reducerPath]: productCardDesignImageAPI.reducer
 });
@@ -74,6 +78,7 @@ const setupStore = () => {
                 .concat(authAPI.middleware)
                 .concat(userAPI.middleware)
                 .concat(bannerAPI.middleware)
+                .concat(productCardAPI.middleware)
                 .concat(productCardDesignAPI.middleware)
                 .concat(productCardDesignImageAPI.middleware)
     });

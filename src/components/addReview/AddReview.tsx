@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import ProductList from "../productList/ProductList";
 import StarsRating from "../productPage/starsRating/StarsRating";
 import styles from "./AddReview.module.css";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { productColorAPI } from "../../redux/api/productColorAPI";
 
 const AddReview: React.FunctionComponent = () => {
@@ -12,10 +12,17 @@ const AddReview: React.FunctionComponent = () => {
    const [quality, setQuality] = useState<string>("");
    const [priceRatio, setPriceRatio] = useState<string>("");
    const [deliverySpeed, setDeliverySpeed] = useState<string>("");
+   const [files, setFiles] = useState<File[]>([]);
 
    let qualityNum = +quality;
    let priceRatioNum = +priceRatio;
    let deliverySpeedNum = +deliverySpeed;
+
+   const addImage = (e: React.ChangeEvent) => {
+      const target = (e.target as HTMLInputElement)
+      if (target.files != null)
+         setFiles([...files, target.files[0]]);
+   }
 
    return (
       <main className={styles.addReview}>
@@ -88,7 +95,12 @@ const AddReview: React.FunctionComponent = () => {
                   </div>
                   <div className={styles.addReview__addImage}>
                      <label htmlFor="addReview__addImageLabel">Додайте фото до вашого відгуку</label>
-                     <input id="addReview__addImageInput" accept=".png, .jpg, .svg, .webp" type='file' name="addReviewAddImage" />
+                     {files.map(file=> {
+                        return (
+                            <img key={file.name} src={URL.createObjectURL(file)} alt={"review item"}/>
+                        );
+                     })}
+                     <input onChange={(e) => addImage(e)} id="addReview__addImageInput" accept=".png, .jpg, .svg, .webp" type='file' name="addReviewAddImage" />
                   </div>
                   <div className={styles.addReview__addComment}>
                      <label htmlFor="addReview__addComment">Коментар до відгуку</label>
