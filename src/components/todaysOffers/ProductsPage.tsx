@@ -9,17 +9,24 @@ import {productColorAPI} from "../../redux/api/productColorAPI";
 import Preloader from "../preloader/Preloader";
 import {categoryAPI} from "../../redux/api/categoryAPI";
 import {subcategoryAPI} from "../../redux/api/subcategoryAPI";
+import {useAppSelector} from "../../redux/hooks/useAppSelector";
 
 const ProductsPage = () => {
-    const [selected, setSelected] = useState({title:"Сортувати по", value: ""});
+    const filter = useAppSelector(state=>state.filter);
 
-    const [priceFilter, setPriceFilter] = useState<{priceFrom: number, priceTo: number}>({priceFrom: 0, priceTo: 0});
+    // let { data: productColors, isLoading: isLoadingProductColors} = productColorAPI.useFetchAllQuery(filter);
 
-    const {data: productColors, isLoading: isLoadingProductColors} = productColorAPI.useFetchAllQuery({sortBy: selected.value, ...priceFilter});
+    const [fetchProductColors, {data: productColors, isLoading: isLoadingProductColors}] = productColorAPI.useLazyFetchAllQuery();
 
-    const {data: categories, isLoading: isLoadingCategories} = categoryAPI.useFetchAllQuery();
+    const [fetchCategories, { data: categories, isLoading: isLoadingCategories}] = categoryAPI.useLazyFetchAllQuery();
 
-    const { data: subcategories, isLoading: isLoadingSubcategories } = subcategoryAPI.useFetchAllQuery();
+    const [fetchSubcategories, { data: subcategories, isLoading: isLoadingSubcategories }] = subcategoryAPI.useLazyFetchAllQuery();
+
+    useEffect(() => {
+        fetchProductColors(filter);
+        fetchCategories();
+        fetchSubcategories();
+    }, [filter]);
 
     useEffect(() => {
         const preloader = document.querySelector('.preloader');
@@ -36,9 +43,9 @@ const ProductsPage = () => {
             <main className={styles.page}>
                 {categories && <Offers categories={categories} title='Сьогоднішні пропозиції'/>}
                 <div className={styles.main}>
-                    <Select selected={selected} setSelected={setSelected}/>
+                    <Select/>
                     <div className={styles.main__wrapper}>
-                        {subcategories && <Aside priceFilter={priceFilter} setPriceFilter={setPriceFilter} subcategories={subcategories}/>}
+                        {subcategories && <Aside subcategories={subcategories}/>}
                         {productColors && <Body productColors={productColors}/>}
                     </div>
                 </div>

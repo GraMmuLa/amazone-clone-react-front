@@ -4,7 +4,9 @@ import ProductItem from "./ProductItem";
 import {productColorAPI} from "../../redux/api/productColorAPI";
 import IProductColor from "../../interfaces/IProductColor";
 
-const ProductList: React.FunctionComponent<{productColors: IProductColor[]}> = ({productColors}) => {
+const ProductList: React.FunctionComponent<{itemsCount: number}> = ({ itemsCount}) => {
+
+    const {data: productColors} = productColorAPI.useFetchAllQuery({quantity: itemsCount});
 
     return (
         <>
@@ -15,8 +17,6 @@ const ProductList: React.FunctionComponent<{productColors: IProductColor[]}> = (
                             <div className={styles.productList__items}>
                                 {productColors.map(productColor => <ProductItem key={productColor.id}
                                                                               productColor={productColor}/>)}
-                            </div>
-                            <div className={styles.productList__pagination}>
                             </div>
                         </div>
 

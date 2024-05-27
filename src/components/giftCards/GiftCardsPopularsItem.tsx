@@ -1,22 +1,50 @@
 import styles from "./GiftCardsPopularsItem.module.css";
 import React from "react";
+import IProductCardDesign from "../../interfaces/IProductCardDesign";
+import {productCardDesignImageAPI} from "../../redux/api/productCardDesignImageAPI";
+import {NavLink} from "react-router-dom";
 
 
-const GiftCardsPopularsItem: React.FunctionComponent<{ image: string, title: string, price: number }> = ({ image, title, price }) => {
+const GiftCardsPopularsItem: React.FunctionComponent<{ productCardDesign: IProductCardDesign }> = ({ productCardDesign }) => {
 
-   return (
-      <div className={styles.GiftCardsPopularsItem}>
-         <div className={styles.GiftCardsPopularsItem__image}>
-            <a href=""><img src={image} alt="gift card" /></a>
-         </div>
-         <div className={styles.GiftCardsPopularsItem__box}>
-            <div className={styles.GiftCardsPopularsItem__block}></div>
-            <div className={styles.GiftCardsPopularsItem__UAH}>₴</div>
-         </div>
-         <a href="" className={styles.GiftCardsPopularsItem__title}>{title}</a>
-         <div className={styles.GiftCardsPopularsItem__price}>{price} грн</div>
-      </div>
-   );
+    const Image: React.FunctionComponent<{imageId: number}> = ({imageId}) => {
+
+        const {data: image} = productCardDesignImageAPI.useFetchByIdQuery(imageId);
+
+        return (
+            <>
+                {image &&
+                    <div className={styles.giftCardsPopularsItem__image}>
+                        <NavLink to={`/giftCard/${productCardDesign.id}`}>
+                            <img src={`data:image/jpg;base64,${image.data}`} alt="gift card"/>
+                        </NavLink>
+                    </div>
+                }
+            </>
+
+        );
+    }
+
+    return (
+        <>
+            {productCardDesign.id &&
+                <div className={styles.giftCardsPopularsItem}>
+                    {productCardDesign.productCardDesignImageId &&
+                        <Image imageId={productCardDesign.productCardDesignImageId}/>}
+                    <div className={styles.giftCardsPopularsItem__box}>
+                        <div className={styles.giftCardsPopularsItem__block}></div>
+                        <div className={styles.giftCardsPopularsItem__UAH}>₴</div>
+                    </div>
+
+                    <NavLink to={`/giftCard/${productCardDesign.id}`} className={styles.giftCardsPopularsItem__title}>
+                        {productCardDesign.name}
+                    </NavLink>
+
+                    <div className={styles.giftCardsPopularsItem__price}>50 грн</div>
+                </div>
+            }
+        </>
+    );
 }
 
 export default GiftCardsPopularsItem;

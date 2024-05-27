@@ -1,42 +1,23 @@
-import GiftCardsPopularsItems from "./GiftCardsPopularsItems";
 import styles from "./GiftCardsPopulars.module.css";
 import React from "react";
+import {productCardDesignAPI} from "../../redux/api/productCardDesignAPI";
+import GiftCardsPopularsItem from "./GiftCardsPopularsItem";
 
 
 const GiftCardsPopulars: React.FunctionComponent = () => {
-   const products = [
-      {
-         image: 'img1',
-         title: 'Електронна подарункова карта',
-         price: 50,
-      },
-      {
-         image: 'img2',
-         title: 'Електронна подарункова карта',
-         price: 50,
-      },
-      {
-         image: 'img3',
-         title: 'Електронна подарункова карта',
-         price: 50,
-      },
-      {
-         image: 'img4',
-         title: 'Електронна подарункова карта',
-         price: 50,
-      },
-      {
-         image: 'img5',
-         title: 'Електронна подарункова карта',
-         price: 50,
-      },
-   ]
+
+   const {data: productCardDesigns} = productCardDesignAPI.useFetchAllQuery();
 
    return (
       <div className={styles.giftCardsPopulars}>
          <div className="giftCardsPopulars__container">
             <h3 className={styles.giftCardsPopulars__title}>Найпопулярніші</h3>
-            <GiftCardsPopularsItems products={products} />
+            { productCardDesigns &&
+                <div className={styles.giftCardsPopularsItems}>
+                   {productCardDesigns.map(productCardDesign => <GiftCardsPopularsItem
+                       productCardDesign={productCardDesign}/>)}
+                </div>
+            }
          </div>
       </div>
    );

@@ -34,7 +34,7 @@ function App() {
                         <Route path="/orders/:defaultIndex?" element={<Orders />} />
                         <Route path="/sellerPage/:sellerId" element={<SellerPage />} />
                         <Route path="/giftCards" element={<GiftCards />} />
-                        <Route path="/giftCard" element={<GiftCard />} />
+                        <Route path="/giftCard/:id" element={<GiftCard />} />
                     </Route>
                 </Routes>
             </ScrollToTop>
