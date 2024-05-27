@@ -1,0 +1,35 @@
+.thankForFeedback {
+   padding: 100px 0 200px 0;
+}
+
+.thankForFeedback__container {}
+
+.thankForFeedback__body {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   gap: 40px;
+}
+
+.thankForFeedback__image {}
+
+.thankForFeedback__title {
+   font-size: 48px;
+   font-weight: 500;
+}
+
+.thankForFeedback__button {
+   font-size: 24px;
+   padding: 15px 30px;
+   color: #fff;
+   background-color: #000;
+   border-radius: 50pc;
+   transition: 0.3s ease 0s;
+
+}
+
+.thankForFeedback__button:hover {
+   text-decoration: none;
+   background-color: #646464;
+}

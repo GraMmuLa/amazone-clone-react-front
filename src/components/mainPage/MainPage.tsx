@@ -9,9 +9,10 @@ import { subcategoryAPI } from "../../redux/api/subcategoryAPI";
 import { discountTypeAPI } from "../../redux/api/discountTypeAPI";
 import { Discounts } from "../../enums/discounts";
 import Preloader from "../preloader/Preloader";
+import Recomendations from "./recomendations/Recomendations";
 
 const MainPage: React.FunctionComponent = () => {
-    const [fetchSubcategories, {data: subcategories, isLoading: isLoadingSubcategories}] = subcategoryAPI.useLazyFetchAllQuery();
+    const [fetchSubcategories, { data: subcategories, isLoading: isLoadingSubcategories }] = subcategoryAPI.useLazyFetchAllQuery();
     const [fetchDiscountTypes, { data: discountTypes, isLoading: isLoadingDiscountTypes }] = discountTypeAPI.useLazyFetchExceptDiscountTypeNameQuery();
 
     useEffect(() => {
@@ -31,12 +32,15 @@ const MainPage: React.FunctionComponent = () => {
     return (
         <>
             <Preloader />
-            <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night" />
-            <Wrapper>
-                {subcategories && <SubcategoryList subcategories={subcategories} />}
-                <DayDiscount />
-                {discountTypes && <OtherDiscounts discountTypes={discountTypes} />}
-            </Wrapper>
+            <main>
+                <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night" />
+                <Wrapper>
+                    {subcategories && <SubcategoryList subcategories={subcategories} />}
+                    <DayDiscount />
+                    {discountTypes && <OtherDiscounts discountTypes={discountTypes} />}
+                    <Recomendations />
+                </Wrapper>
+            </main>
         </>
     );
 }

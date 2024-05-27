@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { emailPattern, invalidPasswordPattern, phonePattern } from "../patterns";
 import { authAPI } from "../../../redux/api/authAPI";
-import {NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { userSlice } from "../../../redux/slices/userSlice";
 import { useAppDispatch } from "../../../redux/hooks/useAppDispatch";
 import { useAppSelector } from "../../../redux/hooks/useAppSelector";
 import classes from "../Auth.module.css"
 import styles from "../registerSeller/RegisterSeller.module.css";
-import {withMask} from "use-mask-input";
+import { withMask } from "use-mask-input";
 
 const Register: React.FunctionComponent = () => {
 
@@ -37,7 +37,7 @@ const Register: React.FunctionComponent = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!emailPattern.test(email) ||
-            !phonePattern.test("380"+phone) ||
+            !phonePattern.test("380" + phone) ||
             invalidPasswordPattern.test(password) ||
             password !== passwordRepeat ||
             username.length < 4 ||
@@ -53,7 +53,7 @@ const Register: React.FunctionComponent = () => {
             firstname: firstname,
             surname: surname,
             email: email,
-            phone: "380"+phone,
+            phone: "380" + phone,
             password: password,
             roleName: "Customer"
         }).unwrap();
@@ -65,7 +65,7 @@ const Register: React.FunctionComponent = () => {
     }
 
     return (
-        <div className={classes.formBlock}>
+        <main className={classes.formBlock}>
             <div className={classes.cardWrapper}>
                 {isError && <div className={classes.error}>Введіть коректні дані</div>}
                 <form onSubmit={handleSubmit}>
@@ -75,43 +75,43 @@ const Register: React.FunctionComponent = () => {
                         <div className={classes.formGroup}>
                             <label htmlFor="usernameInput">Ім'я користувача</label>
                             <input value={username} className={classes.formInput} placeholder="Ім'я користувача" type="text"
-                                   id="usernameInput" onChange={(e) => setUsername(e.target.value)}/>
+                                id="usernameInput" onChange={(e) => setUsername(e.target.value)} />
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="firstnameInput">Ім'я</label>
                             <input value={firstname} className={classes.formInput} placeholder="Ім'я" type="text" id="firstnameInput"
-                                   onChange={(e) => setFirstname(e.target.value)}/>
+                                onChange={(e) => setFirstname(e.target.value)} />
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="surname">Фамілія</label>
                             <input value={surname} className={classes.formInput} placeholder="Фамілія" type="text" id="nameInput"
-                                   onChange={(e) => setSurname(e.target.value)}/>
+                                onChange={(e) => setSurname(e.target.value)} />
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="emailInput">Емейл</label>
                             <input value={email} className={classes.formInput} placeholder="Емейл" type="text" id="emailInput"
-                                   onChange={(e) => setEmail(e.target.value)}/>
+                                onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="sellerRegistPhone">Номер телефону</label>
                             <div className={styles.sellerRegist__phone}>
                                 <span>+380</span>
                                 <input className={classes.formInput} id="sellerRegistPhone" type="text" ref={withMask('-99-999-99-99')}
-                                       onChange={(e) => {setPhone(e.target.value)}} placeholder="-00-000-00-00"/>
+                                    onChange={(e) => { setPhone(e.target.value) }} placeholder="-00-000-00-00" />
                             </div>
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="passwordInput">Пароль</label>
                             <input value={password} className={classes.formInput} placeholder="Пароль" type="text" id="passwordInput"
-                                   onChange={(e) => setPassword(e.target.value)}/>
+                                onChange={(e) => setPassword(e.target.value)} />
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="passwordRepeatInput">Повторіть пароль</label>
                             <input value={passwordRepeat} className={classes.formInput} placeholder="Повторіть пароль" type="text"
-                                   id="passwordRepeatInput" onChange={(e) => setPasswordRepeat(e.target.value)}/>
+                                id="passwordRepeatInput" onChange={(e) => setPasswordRepeat(e.target.value)} />
                         </div>
                         <div className={classes.formGroup}>
-                            <input onChange={()=>setIsConfidential(!isConfidential)} className={classes.formCheckBox} type="checkbox" id="checkBoxInput"/>
+                            <input onChange={() => setIsConfidential(!isConfidential)} className={classes.formCheckBox} type="checkbox" id="checkBoxInput" />
                             <label className={classes.formLabel} htmlFor="checkBoxInput">
                                 Я погоджуюсь з <a className={classes.formLink} href="#">Політикою конфеденційності</a>
                             </label>
@@ -124,7 +124,7 @@ const Register: React.FunctionComponent = () => {
                 <span>Вже є аккаунт?</span>
                 <NavLink to="/login" className={classes.buttonLink}>Увійти</NavLink>
             </div>
-        </div>
+        </main>
     );
 };
 

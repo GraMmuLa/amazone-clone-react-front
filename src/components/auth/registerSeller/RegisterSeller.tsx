@@ -1,6 +1,6 @@
 import { withMask } from 'use-mask-input';
 import React, { useEffect, useState } from 'react';
-import {emailPattern, invalidPasswordPattern, phonePattern} from "../patterns";
+import { emailPattern, invalidPasswordPattern, phonePattern } from "../patterns";
 import { authAPI } from "../../../redux/api/authAPI";
 import { useNavigate } from "react-router-dom";
 import { userSlice } from "../../../redux/slices/userSlice";
@@ -37,7 +37,7 @@ const RegisterSeller: React.FunctionComponent = () => {
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       if (!emailPattern.test(email) ||
-         !phonePattern.test("+380"+phone) ||
+         !phonePattern.test("+380" + phone) ||
          invalidPasswordPattern.test(password) ||
          password !== passwordRepeat ||
          username.length < 4 ||
@@ -54,7 +54,7 @@ const RegisterSeller: React.FunctionComponent = () => {
          middlename: middlename,
          surname: surname,
          email: email,
-         phone: "+380"+phone,
+         phone: "+380" + phone,
          password: password,
          roleName: "Seller"
       }).unwrap();
@@ -64,7 +64,7 @@ const RegisterSeller: React.FunctionComponent = () => {
    };
 
    return (
-      <div className={styles.sellerRegist}>
+      <main className={styles.sellerRegist}>
          <div className="sellerRegist__container">
             <h2 className={styles.sellerRegist__title}>Реєстрація продавця</h2>
             <form action="" onSubmit={handleSubmit}>
@@ -116,7 +116,7 @@ const RegisterSeller: React.FunctionComponent = () => {
                </div>
                <div className={styles.sellerRegist__checkboxBlock}>
                   <input className={styles.formCheckBox} type="checkbox" id="sellerRegistCheckBoxInput"
-                     onChange={()=>setIsConfidential(!isConfidential)}/>
+                     onChange={() => setIsConfidential(!isConfidential)} />
                   <label className={styles.formLabel} htmlFor="sellerRegistCheckBoxInput">
                      Я підтверджую що всі введені данні коректні
                   </label>
@@ -124,7 +124,7 @@ const RegisterSeller: React.FunctionComponent = () => {
                <button type="submit">Зареєструватись</button>
             </form>
          </div>
-      </div>
+      </main>
    );
 }
 

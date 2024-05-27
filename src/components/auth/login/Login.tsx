@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { authAPI } from "../../../redux/api/authAPI";
 import { invalidPasswordPattern } from "../patterns";
 import { emailPattern } from "../patterns"
 import { phonePattern } from "../patterns"
 import { useAppDispatch } from "../../../redux/hooks/useAppDispatch";
 import { userSlice } from "../../../redux/slices/userSlice";
-import {NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import classes from "../Auth.module.css"
 
 const Login: React.FunctionComponent = () => {
@@ -48,16 +48,18 @@ const Login: React.FunctionComponent = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            {!goNext
-                ?
-                <LoginEmail phoneEmail={phoneEmail} setPhoneEmail={setPhoneEmail} goNext={goNext} setGoNext={setGoNext} />
-                :
-                <>
-                    <LoginPassword password={password} setPassword={setPassword} setGoNext={setGoNext} isError={isError} setIsError={setIsError} />
-                </>
-            }
-        </form>
+        <main>
+            <form onSubmit={handleSubmit}>
+                {!goNext
+                    ?
+                    <LoginEmail phoneEmail={phoneEmail} setPhoneEmail={setPhoneEmail} goNext={goNext} setGoNext={setGoNext} />
+                    :
+                    <>
+                        <LoginPassword password={password} setPassword={setPassword} setGoNext={setGoNext} isError={isError} setIsError={setIsError} />
+                    </>
+                }
+            </form>
+        </main>
     );
 }
 

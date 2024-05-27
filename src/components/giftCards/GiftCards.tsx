@@ -10,7 +10,7 @@ import step3 from "../../imgs/giftCards/step3.svg"
 const GiftCards = () => {
 
    return (
-      <div className={styles.giftCards}>
+      <main className={styles.giftCards}>
          <div className={styles.giftCards__block}>
             <div className={styles.giftCards__container}>
                <h2 className={styles.giftCards__tilte}>Подарункові карти</h2>
@@ -30,7 +30,7 @@ const GiftCards = () => {
                </div>
             </div>
          </div>
-      </div>
+      </main>
    );
 }
 

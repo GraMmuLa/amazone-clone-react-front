@@ -1,0 +1,53 @@
+.recomendations {
+   padding: 100px 0;
+}
+
+.recomendations__title {
+   font-size: 72px;
+   font-weight: 500;
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+.recomendations__body {}
+
+.ordersBodyTabs {}
+
+.ordersBodyTabList {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 50px;
+}
+
+.ordersBodyTab {
+   font-size: 24px;
+   color: #959595;
+   transition: 0.3s ease 0s;
+}
+
+.ordersBodyTab button {
+   position: relative;
+   font-weight: 500;
+}
+
+.ordersBodyTab button::before {
+   content: '';
+   position: absolute;
+   bottom: -5px;
+   right: 0;
+   width: 0;
+   height: 3px;
+   background-color: #959595;
+   transition: 0.3s ease 0s;
+}
+
+.ordersBodyTab:hover button::before {
+   width: 100%;
+   left: 0;
+}
+
+.ordersBodyTab._active {
+   color: #000;
+   pointer-events: none;
+}
