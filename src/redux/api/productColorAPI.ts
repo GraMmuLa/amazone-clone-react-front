@@ -1,16 +1,31 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import IProductColor from "../../interfaces/IProductColor";
+import IFilterState from "../../interfaces/IFilterState";
 
 export const productColorAPI = createApi({
     reducerPath: "productColorAPI",
     baseQuery: fetchBaseQuery({baseUrl: "http://localhost:8081/productColor"}),
     tagTypes: ['ProductColor'],
     endpoints: (build) => ({
-        fetchAll: build.query<IProductColor[], { sortBy?: string, priceFrom?: number, priceTo?: number }>({
-            query: (filters) => ({
-                url: "/all",
-                params: filters
-            }),
+        fetchAll: build.query<IProductColor[], IFilterState>({
+            query: (filters) => {
+
+                if(filters.productTypeIds) {
+                    const productTypeIdsParam = filters.productTypeIds.map(x=>`productTypeId=${x}`);
+
+                    return {
+                        url: "/all?"+productTypeIdsParam.join("&"),
+                        params: {sortBy: filters.sortBy, priceFrom: filters.priceFrom, priceTo: filters.priceTo}
+                    }
+                }
+
+                return {
+                    url: "/all",
+                    params: filters
+                }
+            }
+
+                ,
             providesTags: ['ProductColor']
         }),
         fetchAllByProduct: build.query<IProductColor[], number>({

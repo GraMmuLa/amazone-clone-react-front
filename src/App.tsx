@@ -39,7 +39,7 @@ function App() {
                         <Route path="/sellerPage/:sellerId" element={<SellerPage />} />
                         <Route path="/giftCards" element={<GiftCards />} />
                         <Route path="/giftCardsList" element={<GiftCardsList />} />
-                        <Route path="/giftCard" element={<GiftCard />} />
+                        <Route path="/giftCard/:id" element={<GiftCard />} />
                         <Route path="/addProduct" element={<AddProduct />} />
                         <Route path="/addReview" element={<AddReview />} />
                         <Route path="/thankForFeedback" element={<ThankForFeedback />} />

@@ -46,6 +46,11 @@ import {productDetailValueAPI} from "../../redux/api/productDetailValueAPI";
 import {subcategoryImageAPI} from "../../redux/api/subcategoryImageAPI";
 import {productColorImageAPI} from "../../redux/api/productColorImageAPI";
 import SetMainImageProductColor from "./updatePages/SetMainImageProductColor";
+import {productCardDesignAPI} from "../../redux/api/productCardDesignAPI";
+import {productCardDesignImageAPI} from "../../redux/api/productCardDesignImageAPI";
+import AddProductCardDesign from "./addPages/AddProductCardDesign";
+import ProductCardDesignTable from "./tables/ProductCardDesignTable";
+import ProductCardDesignImageTable from "./tables/ProductCardDesignImageTable";
 
 const AdminPage: React.FunctionComponent = () => {
 
@@ -58,6 +63,7 @@ const AdminPage: React.FunctionComponent = () => {
     const [fetchProductTypes, {data: productTypes}] = productTypeAPI.useLazyFetchAllQuery();
     const [fetchProducts, {data: products}] = productAPI.useLazyFetchAllQuery();
     const [fetchProductColors, {data: productColors}] = productColorAPI.useLazyFetchAllQuery();
+    const [fetchProductCardDesigns, {data: productCardDesigns}] = productCardDesignAPI.useLazyFetchAllQuery();
     const [fetchDiscountTypes, {data: discountTypes}] = discountTypeAPI.useLazyFetchAllQuery();
     const [fetchProductReviews, {data: productReviews}] = productReviewAPI.useLazyFetchAllQuery();
     const [fetchProductSizes, {data: productSizes}] = productSizeAPI.useLazyFetchAllQuery();
@@ -66,6 +72,7 @@ const AdminPage: React.FunctionComponent = () => {
     const [fetchProductDetailValues, {data: productDetailValues}] = productDetailValueAPI.useLazyFetchAllQuery();
     const [fetchSubcategoryImages, {data: subcategoryImages}] = subcategoryImageAPI.useLazyFetchAllQuery();
     const [fetchProductColorImages, {data: productColorImages}] = productColorImageAPI.useLazyFetchAllQuery();
+    const [fetchProductCardDesignImages, {data: productCardDesignImages}] = productCardDesignImageAPI.useLazyFetchAllQuery();
     const {data: categories} = categoryAPI.useFetchAllQuery();
 
     return (
@@ -88,6 +95,9 @@ const AdminPage: React.FunctionComponent = () => {
                 </Tab>
                 <Tab onClick={()=>fetchProductColors({})} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Колір продукту
+                </Tab>
+                <Tab onClick={()=>fetchProductCardDesigns()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                    Дизайн подарункових карток
                 </Tab>
                 <Tab onClick={()=>fetchDiscountTypes()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Тип знижки
@@ -118,6 +128,9 @@ const AdminPage: React.FunctionComponent = () => {
                 </Tab>
                 <Tab onClick={()=>fetchProductColorImages()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
                     Картинки кольору продукту
+                </Tab>
+                <Tab onClick={()=>fetchProductCardDesignImages()} selectedClassName={classes.buttonLinkActive} className={classes.buttonLink}>
+                    Картинки дизайну подарункової картки
                 </Tab>
             </TabList>
 
@@ -150,6 +163,11 @@ const AdminPage: React.FunctionComponent = () => {
                 <AddProductColor />
                 <SetMainImageProductColor/>
                 {productColors && <ProductColorTable productColors={productColors} itemsPerPage={itemsPerPage} /> }
+            </TabPanel>
+
+            <TabPanel>
+                <AddProductCardDesign />
+                {productCardDesigns && <ProductCardDesignTable productCardDesigns={productCardDesigns} itemsPerPage={itemsPerPage} /> }
             </TabPanel>
 
             <TabPanel>
@@ -196,6 +214,10 @@ const AdminPage: React.FunctionComponent = () => {
 
             <TabPanel>
                 {productColorImages && <ProductColorImageTable productColorImages={productColorImages} itemsPerPage={itemsPerPage} />}
+            </TabPanel>
+
+            <TabPanel>
+                {productCardDesignImages && <ProductCardDesignImageTable productCardDesignImages={productCardDesignImages} itemsPerPage={itemsPerPage} /> }
             </TabPanel>
         </Tabs>
     );

@@ -4,16 +4,21 @@ import classes from "./MainPage.module.css"
 import { Wrapper } from "../layout/wrapper/Wrapper";
 import OtherDiscounts from "./discounts/otherDiscounts/OtherDiscounts";
 import DayDiscount from "./discounts/dayDiscount/DayDiscount";
-import Recomendations from "./recomendations/Recomendations";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { subcategoryAPI } from "../../redux/api/subcategoryAPI";
 import { discountTypeAPI } from "../../redux/api/discountTypeAPI";
 import { Discounts } from "../../enums/discounts";
 import Preloader from "../preloader/Preloader";
+import Recomendations from "./recomendations/Recomendations";
 
 const MainPage: React.FunctionComponent = () => {
-    const { data: subcategories, isLoading: isLoadingSubcategories } = subcategoryAPI.useFetchAllQuery();
-    const { data: discountTypes, isLoading: isLoadingDiscountTypes } = discountTypeAPI.useFetchExceptDiscountTypeNameQuery(Discounts.dayDiscount);
+    const [fetchSubcategories, { data: subcategories, isLoading: isLoadingSubcategories }] = subcategoryAPI.useLazyFetchAllQuery();
+    const [fetchDiscountTypes, { data: discountTypes, isLoading: isLoadingDiscountTypes }] = discountTypeAPI.useLazyFetchExceptDiscountTypeNameQuery();
+
+    useEffect(() => {
+        fetchDiscountTypes(Discounts.dayDiscount);
+        fetchSubcategories();
+    }, []);
 
     useEffect(() => {
         const preloader = document.querySelector('.preloader');

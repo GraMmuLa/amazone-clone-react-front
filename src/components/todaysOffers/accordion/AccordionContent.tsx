@@ -10,8 +10,6 @@ const AccordionContent: React.FunctionComponent<{ subcategoryId: number }> = ({ 
 
    const [isOpen, setIsOpen] = useState(false);
 
-   const toggleOpen = () => setIsOpen(!isOpen);
-
    return (
        <div className={`${styles.accordion__content} ${isOpen ? `${styles._open}` : `${styles}`}`}>
           <div className={styles.accordion__blockWrapper}>
@@ -27,7 +25,7 @@ const AccordionContent: React.FunctionComponent<{ subcategoryId: number }> = ({ 
                     className={styles.checkbox__label}
                 />
              </div>
-             <button type="button" className={styles.accordion__block} onClick={toggleOpen}>
+             <button type="button" className={styles.accordion__block} onClick={(e)=>setIsOpen(!isOpen)}>
                 {subcategory && <div
                     className={`${styles.accordion__title} ${isOpen ? `${styles._open}` : `${styles}`}`}>{subcategory.name}</div>}
                 <div className={`${styles.accordion__arrow} ${isOpen ? `${styles._open}` : `${styles}`}`}>
@@ -42,7 +40,7 @@ const AccordionContent: React.FunctionComponent<{ subcategoryId: number }> = ({ 
                    style={{height: isOpen ? `${(20 + 8) * subcategory.productTypeIds.length + 15}px` : '0px'}}>
                  <div className="bodyAccordion__content">
                     <div className="bodyAccordion__list">
-                       {subcategory.productTypeIds.map(productTypeId => <AccordionContentBodyItem key={productTypeId} itemId={productTypeId}/>)}
+                       {subcategory.productTypeIds.map(productTypeId => <AccordionContentBodyItem isOpen={isOpen} key={productTypeId} itemId={productTypeId}/>)}
                     </div>
                  </div>
               </div>

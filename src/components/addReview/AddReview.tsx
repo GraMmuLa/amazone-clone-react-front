@@ -97,7 +97,7 @@ const AddReview: React.FunctionComponent = () => {
                   <button type="submit">Надіслати відгук</button>
                </form>
             </div >
-            {productColors && <ProductList productColors={productColors} />}
+            {productColors && <ProductList itemsCount={10} />}
          </div >
       </main >
    );

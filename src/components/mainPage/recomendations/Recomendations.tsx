@@ -24,11 +24,11 @@ const Recomendations: React.FunctionComponent = () => {
                      </Tab>
                   </TabList>
                   <TabPanel>
-                     {productColors && <ProductList productColors={productColors} />}
+                     {productColors && <ProductList itemsCount={10} />}
                   </TabPanel>
                   <TabPanel>
                      hdh
-                     {productColors && <ProductList productColors={productColors} />}
+                     {productColors && <ProductList itemsCount={10} />}
                   </TabPanel>
                </Tabs>
             </div>

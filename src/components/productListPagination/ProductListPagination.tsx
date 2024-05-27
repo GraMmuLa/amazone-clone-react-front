@@ -1,5 +1,5 @@
 import styles from "./ProductListPagination.module.css";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import ProductItem from "../productList/ProductItem";
 import IProductColor from "../../interfaces/IProductColor";
 import ReactPaginate from "react-paginate";
@@ -13,6 +13,10 @@ const ProductListPagination: React.FunctionComponent<{ productColors: IProductCo
     const endOffset = itemOffset + itemsPerPage;
     const currentItems = productColors.slice(itemOffset, endOffset);
     const pageCount = Math.ceil(productColors.length / itemsPerPage);
+
+    useEffect(() => {
+        setItemOffset(0)
+    }, [productColors]);
 
     const handlePageClick = (event: any) => {
         const newOffset = (event.selected * itemsPerPage) % productColors.length;
