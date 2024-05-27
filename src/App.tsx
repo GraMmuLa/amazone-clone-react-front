@@ -14,7 +14,11 @@ import RegisterSeller from "./components/auth/registerSeller/RegisterSeller";
 import ProductsPage from "./components/todaysOffers/ProductsPage";
 import SellerPage from "./components/sellerPage/SellerPage";
 import GiftCards from "./components/giftCards/GiftCards";
+import GiftCardsList from "./components/giftCardsList/GiftCardsList";
 import GiftCard from "./components/giftCard/GiftCard";
+import AddProduct from "./components/addProduct/AddProduct";
+import AddReview from "./components/addReview/AddReview";
+import ThankForFeedback from "./components/thankForFeedback/ThankForFeedback";
 import Login from "./components/auth/login/Login";
 
 function App() {
@@ -34,7 +38,11 @@ function App() {
                         <Route path="/orders/:defaultIndex?" element={<Orders />} />
                         <Route path="/sellerPage/:sellerId" element={<SellerPage />} />
                         <Route path="/giftCards" element={<GiftCards />} />
+                        <Route path="/giftCardsList" element={<GiftCardsList />} />
                         <Route path="/giftCard" element={<GiftCard />} />
+                        <Route path="/addProduct" element={<AddProduct />} />
+                        <Route path="/addReview" element={<AddReview />} />
+                        <Route path="/thankForFeedback" element={<ThankForFeedback />} />
                     </Route>
                 </Routes>
             </ScrollToTop>

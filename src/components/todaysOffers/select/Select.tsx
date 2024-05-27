@@ -28,12 +28,12 @@ const Select: React.FunctionComponent<{ selected: { title: string, value: string
          <div id="main__select" className={styles.main__select}>
             <button onClick={(e) => setIsOpen(!isOpen)} className={`${styles.main__selectButton} ${isOpen ? `${styles._open}` : `${styles}`}`}>{selected.title}<span><img src={arrow} alt="arrow" /></span></button>
             {isOpen && (
-                <div className={styles.main__selectBody}>
-                   {options.map((option) => <button key={option.value} onClick={(e) => {
-                      setSelected(option);
-                      setIsOpen(false)
-                   }} className={styles.main__selectItem}>{option.title}</button>)}
-                </div>
+               <div className={styles.main__selectBody}>
+                  {options.map((option) => <button key={option.value} onClick={(e) => {
+                     setSelected(option);
+                     setIsOpen(false)
+                  }} className={styles.main__selectItem}>{option.title}</button>)}
+               </div>
             )}
          </div>
       </div>

@@ -1,29 +1,34 @@
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { useParams } from "react-router";
+import ProductList from "../../productList/ProductList";
+import { productColorAPI } from "../../../redux/api/productColorAPI";
 import styles from "./Recomendations.module.css"
 
 const Recomendations: React.FunctionComponent = () => {
    const { defaultIndex } = useParams();
 
+   const { data: productColors } = productColorAPI.useFetchAllQuery({});
+
    return (
-      <div className="recomendations">
+      <div className={styles.recomendations}>
          <div className="recomendations__containerMax">
-            <h2 className="recomendations__title"></h2>
-            <div className="recomendations__body">
+            <h2 className={styles.recomendations__title}>Рекомендація</h2>
+            <div className={styles.recomendations__body}>
                <Tabs defaultIndex={defaultIndex ? parseInt(defaultIndex) : 0} className={styles.ordersBodyTabs}>
                   <TabList className={styles.ordersBodyTabList}>
                      <Tab className={styles.ordersBodyTab} selectedClassName={styles._active}>
-                        <button>Замовлення</button>
+                        <button>Для жінок</button>
                      </Tab>
                      <Tab className={styles.ordersBodyTab} selectedClassName={styles._active}>
-                        <button>Замовити знову</button>
+                        <button>Для чоловіків</button>
                      </Tab>
                   </TabList>
                   <TabPanel>
-                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae cumque, nemo accusantium tempore iusto quam veniam, placeat doloribus, autem dolores architecto ratione nesciunt quos. Earum quis laudantium dolorem maiores sequi!
+                     {productColors && <ProductList productColors={productColors} />}
                   </TabPanel>
                   <TabPanel>
-                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque obcaecati facere quod! Neque.
+                     hdh
+                     {productColors && <ProductList productColors={productColors} />}
                   </TabPanel>
                </Tabs>
             </div>

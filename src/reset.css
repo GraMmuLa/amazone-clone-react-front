@@ -45,6 +45,10 @@ textarea {
    line-height: inherit;
 }
 
+textarea {
+   height: auto;
+}
+
 button {
    cursor: pointer;
    color: inherit;

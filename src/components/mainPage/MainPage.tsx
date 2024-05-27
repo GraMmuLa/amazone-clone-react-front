@@ -27,12 +27,15 @@ const MainPage: React.FunctionComponent = () => {
     return (
         <>
             <Preloader />
-            <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night" />
-            <Wrapper>
-                {subcategories && <SubcategoryList subcategories={subcategories} />}
-                <DayDiscount />
-                {discountTypes && <OtherDiscounts discountTypes={discountTypes} />}
-            </Wrapper>
+            <main>
+                <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night" />
+                <Wrapper>
+                    {subcategories && <SubcategoryList subcategories={subcategories} />}
+                    <DayDiscount />
+                    {discountTypes && <OtherDiscounts discountTypes={discountTypes} />}
+                    <Recomendations />
+                </Wrapper>
+            </main>
         </>
     );
 }
