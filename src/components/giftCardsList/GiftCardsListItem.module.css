@@ -1,0 +1,35 @@
+.giftCardsListItem {
+   text-align: center;
+}
+
+.giftCardsListItem__image {
+   position: relative;
+   overflow: hidden;
+   aspect-ratio: 400/250;
+   margin-bottom: 20px;
+}
+
+.giftCardsListItem__image:hover img {
+   transform: scale(1.04);
+}
+
+.giftCardsListItem__image img {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   background-color: #ccc;
+   transition: 0.3s ease 0s;
+}
+
+.giftCardsListItem__text {
+   font-size: 24px;
+   margin-bottom: 10px;
+}
+
+.giftCardsListItem__price {
+   font-size: 40px;
+   font-weight: 500;
+}

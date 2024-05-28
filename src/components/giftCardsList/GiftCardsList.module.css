@@ -1,0 +1,12 @@
+.giftCardsList {
+   padding: 40px 0 80px 0;
+}
+
+.giftCardsList__containerMax {}
+
+.giftCardsList__title {
+   text-align: center;
+   font-size: 40px;
+   font-weight: 500;
+   margin-bottom: 40px;
+}

@@ -20,6 +20,7 @@ import AddProduct from "./components/addProduct/AddProduct";
 import AddReview from "./components/addReview/AddReview";
 import ThankForFeedback from "./components/thankForFeedback/ThankForFeedback";
 import Login from "./components/auth/login/Login";
+import Basket from "./components/basket/Basket";
 
 function App() {
     return (
@@ -43,6 +44,7 @@ function App() {
                         <Route path="/addProduct" element={<AddProduct />} />
                         <Route path="/addReview" element={<AddReview />} />
                         <Route path="/thankForFeedback" element={<ThankForFeedback />} />
+                        <Route path="/basket" element={<Basket />} />
                     </Route>
                 </Routes>
             </ScrollToTop>

@@ -27,7 +27,6 @@ const Recomendations: React.FunctionComponent = () => {
                      {productColors && <ProductList itemsCount={10} />}
                   </TabPanel>
                   <TabPanel>
-                     hdh
                      {productColors && <ProductList itemsCount={10} />}
                   </TabPanel>
                </Tabs>
