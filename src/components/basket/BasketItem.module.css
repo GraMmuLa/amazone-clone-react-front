@@ -1,0 +1,53 @@
+.basketItem {}
+
+.basketItemCheckBlock {
+   position: relative;
+   width: 1.25rem;
+   height: 1.25rem;
+}
+
+.basketItemLabel {
+   cursor: pointer;
+}
+
+.basketItemLabel::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 1.25rem;
+   height: 1.25rem;
+   border: 0.0625rem solid #000;
+}
+
+.basketItemLabel::after {
+   content: '✓';
+   line-height: 0.4;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   -webkit-transform: translate(-50%, -50%);
+   -ms-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
+   opacity: 0;
+}
+
+.basketItem input:checked+.basketItemLabel::after {
+   opacity: 1;
+}
+
+.basketItem__body {}
+
+.basketItem__image {}
+
+.basketItem__content {}
+
+.basketItem__title {}
+
+.basketItem__info {}
+
+.basketItem__bottom {}
+
+.basketItem__price {}
+
+.basketItem__delete {}

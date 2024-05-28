@@ -2,17 +2,18 @@ import { useParams } from "react-router";
 import ProductList from "../productList/ProductList";
 import StarsRating from "../productPage/starsRating/StarsRating";
 import styles from "./AddReview.module.css";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { productColorAPI } from "../../redux/api/productColorAPI";
-import {useAppSelector} from "../../redux/hooks/useAppSelector";
-import {productReviewAPI} from "../../redux/api/productReviewAPI";
-import {productReviewImageAPI} from "../../redux/api/productReviewImageAPI";
+import cross from "../../imgs/cross.svg";
+import { useAppSelector } from "../../redux/hooks/useAppSelector";
+import { productReviewAPI } from "../../redux/api/productReviewAPI";
+import { productReviewImageAPI } from "../../redux/api/productReviewImageAPI";
 
 const AddReview: React.FunctionComponent = () => {
    const { productId } = useParams();
    const { data: productColors } = productColorAPI.useFetchAllQuery({});
 
-   const {id: userId} = useAppSelector(state => state.user);
+   const { id: userId } = useAppSelector(state => state.user);
    const [quality, setQuality] = useState<number>(0);
    const [priceRatio, setPriceRatio] = useState<number>(0);
    const [deliverySpeed, setDeliverySpeed] = useState<number>(0);
@@ -29,8 +30,8 @@ const AddReview: React.FunctionComponent = () => {
 
    const addImage = (e: React.ChangeEvent) => {
       const target = (e.target as HTMLInputElement)
-      if (target.files != null && files.filter(x=>x.name===target.files![0].name).length === 0)
-            setFiles([...files, target.files[0]]);
+      if (target.files != null && files.filter(x => x.name === target.files![0].name).length === 0)
+         setFiles([...files, target.files[0]]);
    }
 
    //TODO
@@ -39,12 +40,12 @@ const AddReview: React.FunctionComponent = () => {
       console.log(userId);
       console.log(starsRating);
       console.log(productId);
-      if(userId && starsRating && productId) {
-         const result = await addReview({userId: userId, mark: starsRating, reviewText: reviewText, productId: parseInt(productId)}).unwrap();
-         if(result && result.id && files) {
+      if (userId && starsRating && productId) {
+         const result = await addReview({ userId: userId, mark: starsRating, reviewText: reviewText, productId: parseInt(productId) }).unwrap();
+         if (result && result.id && files) {
             console.log(result.id);
-            for(const file of files)
-               await addReviewImage({reviewId: result.id, data: file});
+            for (const file of files)
+               await addReviewImage({ reviewId: result.id, data: file });
          }
       }
    }
@@ -121,23 +122,30 @@ const AddReview: React.FunctionComponent = () => {
                      </div>
                   </div>
                   <div className={styles.addReview__addImage}>
-                     <label htmlFor="addReview__addImageLabel">Додайте фото до вашого відгуку</label>
-                     {files.map(file=> {
-                        return (
-                            <img key={file.name} src={URL.createObjectURL(file)} alt={"review item"}/>
-                        );
-                     })}
-                     <input onChange={(e) => addImage(e)} id="addReview__addImageInput" accept=".png, .jpg, .svg, .webp" type='file' name="addReviewAddImage" />
+                     <h2 className={styles.addReview__addImageTitle}>Додайте фото до вашого відгуку</h2>
+                     <div className={styles.addReview__addImageBody}>
+                        <div className={styles.addReview__addImageInputBlock}>
+                           <input onChange={(e) => addImage(e)} accept=".png, .jpg, .svg, .webp" type='file' name="addReviewAddImage" />
+                           <button type="button"><img src={cross} alt="cross" /></button>
+                        </div>
+                        {files.map(file => {
+                           return (
+                              <button type="button" className={styles.addReview__addImageItem}>
+                                 <img key={file.name} src={URL.createObjectURL(file)} alt={"review item"} />
+                              </button>
+                           );
+                        })}
+                     </div>
                   </div>
                   <div className={styles.addReview__addComment}>
                      <label htmlFor="addReview__addComment">Коментар до відгуку</label>
                      <div><textarea value={reviewText ? reviewText : ""}
-                                    id="addReview__addComment"
-                                    placeholder="Що для вас було найцікавішим?"
-                                    name="addReviewComment"
-                                    onChange={(e)=>setReviewText(e.target.value)}></textarea></div>
+                        id="addReview__addComment"
+                        placeholder="Що для вас було найцікавішим?"
+                        name="addReviewComment"
+                        onChange={(e) => setReviewText(e.target.value)}></textarea></div>
                   </div>
-                  <button type="submit">Надіслати відгук</button>
+                  <button className={styles.addReview__formButton} type="submit">Надіслати відгук</button>
                </form>
             </div >
             {productColors && <ProductList itemsCount={10} />}
