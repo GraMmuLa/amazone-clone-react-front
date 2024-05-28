@@ -1,0 +1,108 @@
+.addProduct {}
+
+.addProduct__container {}
+
+.addProduct__title {}
+
+.addProduct__body {}
+
+.addProduct__form {}
+
+.formAddProduct {}
+
+.formAddProduct__item {}
+
+.formAddProduct_addImageTitle {}
+
+/* ======================================================================================================= */
+
+.formAddProduct_addImageBody {
+   display: flex;
+   gap: 30px;
+   flex-wrap: wrap;
+}
+
+.formAddProduct_addImageInputBlock {
+   position: relative;
+   display: inline-block;
+}
+
+.formAddProduct_addImageInputBlock input {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   opacity: 0;
+   font-size: 0;
+   cursor: pointer;
+   z-index: 5;
+}
+
+.formAddProduct_addImageInputBlock button {
+   flex: 0 0 150px;
+   width: 150px;
+   height: 150px;
+   border-radius: 20px;
+   border: 3px dashed #000;
+   background-color: transparent;
+}
+
+.formAddProduct_addImageInputBlock button img {
+   transition: 0.3s ease 0s;
+}
+
+.formAddProduct_addImageInputBlock:hover button img {
+   transform: scale(1.1);
+}
+
+.formAddProduct_addImageItem {
+   position: relative;
+   overflow: hidden;
+   aspect-ratio: 150/150;
+   flex: 0 0 150px;
+   width: 150px;
+   border-radius: 20px;
+   border: 3px solid #000;
+   cursor: pointer;
+}
+
+.formAddProduct_addImageItem::before {
+   content: url('../../imgs/basketDeleteWhite.svg');
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transform: scale(2.5);
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 2;
+   background-color: #0000006a;
+   opacity: 0;
+   visibility: hidden;
+   transition: 0.3s ease 0s;
+}
+
+.formAddProduct_addImageItem:hover::before {
+   opacity: 1;
+   visibility: visible;
+}
+
+.formAddProduct_addImageItem img {
+   position: absolute;
+   top: 0;
+   left: 0;
+   object-fit: cover;
+   width: 100%;
+   height: 100%;
+}
+
+/* ======================================================================================================= */
+
+.formAddProduct__inputBlock {}
+
+.formAddProduct__addBlock {}
+
+.formAddProduct__btn {}

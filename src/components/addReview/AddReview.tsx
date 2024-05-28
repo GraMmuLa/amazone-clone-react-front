@@ -2,8 +2,9 @@ import { useParams } from "react-router";
 import ProductList from "../productList/ProductList";
 import StarsRating from "../productPage/starsRating/StarsRating";
 import styles from "./AddReview.module.css";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { productColorAPI } from "../../redux/api/productColorAPI";
+import cross from "../../imgs/cross.svg";
 
 const AddReview: React.FunctionComponent = () => {
    const { productColorId } = useParams<{ productColorId: string }>();
@@ -94,19 +95,26 @@ const AddReview: React.FunctionComponent = () => {
                      </div>
                   </div>
                   <div className={styles.addReview__addImage}>
-                     <label htmlFor="addReview__addImageLabel">Додайте фото до вашого відгуку</label>
-                     {files.map(file=> {
-                        return (
-                            <img key={file.name} src={URL.createObjectURL(file)} alt={"review item"}/>
-                        );
-                     })}
-                     <input onChange={(e) => addImage(e)} id="addReview__addImageInput" accept=".png, .jpg, .svg, .webp" type='file' name="addReviewAddImage" />
+                     <h2 className={styles.addReview__addImageTitle}>Додайте фото до вашого відгуку</h2>
+                     <div className={styles.addReview__addImageBody}>
+                        <div className={styles.addReview__addImageInputBlock}>
+                           <input onChange={(e) => addImage(e)} accept=".png, .jpg, .svg, .webp" type='file' name="addReviewAddImage" />
+                           <button type="button"><img src={cross} alt="cross" /></button>
+                        </div>
+                        {files.map(file => {
+                           return (
+                              <button type="button" className={styles.addReview__addImageItem}>
+                                 <img key={file.name} src={URL.createObjectURL(file)} alt={"review item"} />
+                              </button>
+                           );
+                        })}
+                     </div>
                   </div>
                   <div className={styles.addReview__addComment}>
                      <label htmlFor="addReview__addComment">Коментар до відгуку</label>
                      <div><textarea id="addReview__addComment" placeholder="Що для вас було найцікавішим?" name="addReviewComment"></textarea></div>
                   </div>
-                  <button type="submit">Надіслати відгук</button>
+                  <button className={styles.addReview__formButton} type="submit">Надіслати відгук</button>
                </form>
             </div >
             {productColors && <ProductList itemsCount={10} />}
