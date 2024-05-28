@@ -1,5 +1,5 @@
 import styles from "./ProductInfoMain.module.css";
-import React from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import IProductColor from "../../../interfaces/IProductColor";
 import { productSizeAPI } from "../../../redux/api/productSizeAPI";
 import { colorAPI } from "../../../redux/api/colorAPI";
@@ -10,10 +10,12 @@ import { productColorImageAPI } from "../../../redux/api/productColorImageAPI";
 import { productDetailValueAPI } from "../../../redux/api/productDetailValueAPI";
 import { productDetailKeyAPI } from "../../../redux/api/productDetailKeyAPI";
 import { discountAPI } from "../../../redux/api/discountAPI";
+import IProductSize from "../../../interfaces/IProductSize";
 
 const ProductInfoMain: React.FunctionComponent<{ productColor: IProductColor }> = ({ productColor }) => {
 
     const { data: product } = productAPI.useFetchByIdQuery(productColor.productId);
+    const [selectedSizeId, setSelectedSizeId] = useState<number>(productColor.productSizeIds![0]);
 
     const Discount: React.FunctionComponent<{ discountId: number }> = ({ discountId }) => {
         const { data: discount } = discountAPI.useFetchByIdQuery(discountId);
@@ -45,7 +47,9 @@ const ProductInfoMain: React.FunctionComponent<{ productColor: IProductColor }> 
                 <h2>Розмір:</h2>
                 <ul>
                     {productColor.productSizeIds &&
-                        productColor.productSizeIds.map(productColorSizeId => <li key={productColorSizeId}><Size productColorSizeId={productColorSizeId} /></li>)}
+                        productColor.productSizeIds.map((productColorSizeId) =>
+                            <li key={productColorSizeId}><Size selectedSizeId={selectedSizeId} setSelectedSizeId={setSelectedSizeId} productColorSizeId={productColorSizeId} /></li>
+                        )}
                 </ul>
             </div>
             <div className={styles.productInfoMain__color}>
@@ -67,14 +71,30 @@ const ProductInfoMain: React.FunctionComponent<{ productColor: IProductColor }> 
     );
 }
 
-const Size: React.FunctionComponent<{ productColorSizeId: number }> = ({ productColorSizeId }) => {
+const Size: React.FunctionComponent<{
+    productColorSizeId: number,
+    selectedSizeId: number,
+    setSelectedSizeId: React.Dispatch<SetStateAction<number>>
+}> = ({ productColorSizeId, selectedSizeId, setSelectedSizeId }) => {
 
     const { data: size } = productSizeAPI.useFetchByIdQuery(productColorSizeId);
 
+    const SizeRadio: React.FunctionComponent<{ size: IProductSize }> = ({ size }) => {
+        return (
+            <>
+                {size && <input className={styles.productInfoMain__sizesInput} type="radio" id={`${size.id}`} name='costItems' checked={selectedSizeId === productColorSizeId} onChange={() => setSelectedSizeId(productColorSizeId)} />}
+                {size && <label className={styles.productInfoMain__sizesList} htmlFor={`${size.id}`}>{size.size}</label>}
+            </>
+        );
+    }
+
     return (
         <>
-            {size && <a href="">{size.size}</a>}
+            {size &&
+                <SizeRadio size={size} />
+            }
         </>
+
     );
 }
 
