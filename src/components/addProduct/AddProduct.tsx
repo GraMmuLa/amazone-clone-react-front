@@ -86,9 +86,9 @@ const AddProduct: React.FunctionComponent = () => {
                      </div>
                      <div className={styles.formAddProduct__addBlock}>
                         {colors.map((colorItem, index) => (
-                           <div key={index} className="">
+                           <div key={index} className={styles.formAddProduct__addBlockItem}>
                               <button onClick={() => setColors(colors.filter((color) => color !== colorItem))} type="button">-</button>
-                              {colorItem}
+                              <span>{colorItem}</span>
                            </div>
                         ))}
                      </div>
@@ -121,14 +121,14 @@ const AddProduct: React.FunctionComponent = () => {
                      </div>
                      <div className={styles.formAddProduct__addBlock}>
                         {sizes.map((sizeItem, index) => (
-                           <div key={index} className="">
+                           <div key={index} className={styles.formAddProduct__addBlockItem}>
                               <button onClick={() => setSizes(sizes.filter((size) => size !== sizeItem))} type="button">-</button>
-                              {sizeItem}
+                              <span>{sizeItem}</span>
                            </div>
                         ))}
                      </div>
                   </div>
-                  <button type="submit" className="formAddProduct__btn">Додати товар</button>
+                  <button type="submit" className={styles.formAddProduct__btn}>Додати товар</button>
                </form>
             </div >
          </div >

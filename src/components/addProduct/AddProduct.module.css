@@ -1,16 +1,49 @@
-.addProduct {}
+.addProduct {
+   padding: 30px 0 200px 0;
+}
 
 .addProduct__container {}
 
-.addProduct__title {}
+.addProduct__title {
+   font-size: 40px;
+   font-weight: 500;
+   margin-bottom: 40px;
+}
 
 .addProduct__body {}
 
 .addProduct__form {}
 
-.formAddProduct {}
+.formAddProduct {
+   max-width: 550px;
+}
+
+.formAddProduct__item:not(:last-child) {
+   margin-bottom: 30px;
+}
 
 .formAddProduct__item {}
+
+.formAddProduct__item label,
+.formAddProduct__item h3 {
+   font-size: 30px;
+   margin-bottom: 20px;
+}
+
+.formAddProduct__item input {
+   padding: 18px;
+   border-radius: 15px;
+}
+
+.formAddProduct__item textarea {
+   display: block;
+   width: 100%;
+   border-radius: 15px;
+   border: 1px solid #000;
+   padding: 20px;
+   min-height: 170px;
+}
+
 
 .formAddProduct_addImageTitle {}
 
@@ -101,8 +134,69 @@
 
 /* ======================================================================================================= */
 
-.formAddProduct__inputBlock {}
+.formAddProduct__inputBlock {
+   display: flex;
+   align-items: center;
+   gap: 30px;
+}
 
-.formAddProduct__addBlock {}
+.formAddProduct__inputBlock:not(:last-child) {
+   margin-bottom: 20px;
+}
 
-.formAddProduct__btn {}
+.formAddProduct__inputBlock button {
+   color: #919191;
+   padding: 20px;
+   border-radius: 15px;
+   border: 1px solid #000;
+   min-height: 100%;
+   transition: 0.3s ease 0s;
+}
+
+.formAddProduct__inputBlock button:hover {
+   color: #000;
+   background-color: #dcdcdc;
+}
+
+.formAddProduct__addBlock {
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 15px;
+}
+
+.formAddProduct__addBlockItem {
+   display: inline-flex;
+   align-items: center;
+   height: 100%;
+}
+
+.formAddProduct__addBlockItem span {
+   display: block;
+   border: 1px solid #000;
+   padding: 5px;
+   border-radius: 0 50pc 50pc 0;
+   height: 100%;
+   border-left: 0;
+
+}
+
+.formAddProduct__addBlockItem button {
+   border: 1px solid #000;
+   padding: 5px 10px;
+   border-radius: 50pc 0 0 50pc;
+   transition: 0.3s ease 0s;
+}
+
+.formAddProduct__addBlockItem button:hover {
+   background-color: #d2d2d2;
+}
+
+.formAddProduct__btn {
+   color: #fff;
+   background-color: #000;
+   font-size: 30px;
+   font-weight: 500;
+   padding: 12px 20px;
+   border-radius: 15px;
+}

@@ -1,0 +1,48 @@
+.addProductSelect {
+   display: block;
+   width: 100%;
+   border-radius: 15px;
+   border: 1px solid #000;
+}
+
+.addProductSelect__button {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+   gap: 30px;
+   padding: 20px;
+}
+
+.addProductSelect__button._open img {
+   transform: rotate(180deg);
+}
+
+.addProductSelect__button span {
+   display: block;
+   width: 15px;
+   height: 7px;
+}
+
+.addProductSelect__button img {
+   max-width: 100%;
+}
+
+.addProductSelect__list {
+   border-top: 1px solid #000;
+}
+
+.addProductSelect__list button {
+   text-align: left;
+   width: 100%;
+   padding: 15px 20px;
+   transition: 0.3s ease 0s;
+}
+
+.addProductSelect__list button:hover {
+   background-color: #dcdcdc;
+}
+
+.addProductSelect__list li:not(:last-child) {
+   border-bottom: 1px solid #000;
+}

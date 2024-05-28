@@ -20,27 +20,20 @@ const MainPage: React.FunctionComponent = () => {
         fetchSubcategories();
     }, []);
 
-    useEffect(() => {
-        const preloader = document.querySelector('.preloader');
-        if (isLoadingSubcategories || isLoadingDiscountTypes) {
-            preloader?.classList.add("_active");
-        } else {
-            preloader?.classList.remove("_active");
-        }
-    }, [isLoadingSubcategories, isLoadingDiscountTypes]);
-
     return (
         <>
-            <Preloader />
-            <main>
-                <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night" />
-                <Wrapper>
-                    {subcategories && <SubcategoryList subcategories={subcategories} />}
-                    <DayDiscount />
-                    {discountTypes && <OtherDiscounts discountTypes={discountTypes} />}
-                    <Recomendations />
-                </Wrapper>
-            </main>
+            {isLoadingSubcategories || isLoadingDiscountTypes ?
+                <Preloader/> :
+                <main>
+                    <img className={classes.promNightBanner} src={promNightBanner} alt="Prom Night"/>
+                    <Wrapper>
+                        {subcategories && <SubcategoryList subcategories={subcategories}/>}
+                        <DayDiscount/>
+                        {discountTypes && <OtherDiscounts discountTypes={discountTypes}/>}
+                        <Recomendations/>
+                    </Wrapper>
+                </main>
+            }
         </>
     );
 }

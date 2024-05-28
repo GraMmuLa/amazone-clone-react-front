@@ -18,7 +18,7 @@ const ProductListPagination: React.FunctionComponent<{ productColors: IProductCo
         setItemOffset(0)
     }, [productColors]);
 
-    const handlePageClick = (event: any) => {
+    const handlePageClick = async (event: any) => {
         const newOffset = (event.selected * itemsPerPage) % productColors.length;
         setItemOffset(newOffset);
     };
