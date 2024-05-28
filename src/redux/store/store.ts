@@ -24,6 +24,7 @@ import {bannerAPI} from "../api/bannerAPI";
 import {productCardDesignAPI} from "../api/productCardDesignAPI";
 import {productCardDesignImageAPI} from "../api/productCardDesignImageAPI";
 import {productCardAPI} from "../api/productCardAPI";
+import {productReviewImageAPI} from "../api/productReviewImageAPI";
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -40,6 +41,7 @@ const rootReducer = combineReducers({
     [discountTypeAPI.reducerPath]: discountTypeAPI.reducer,
     [discountAPI.reducerPath]: discountAPI.reducer,
     [productReviewAPI.reducerPath]: productReviewAPI.reducer,
+    [productReviewImageAPI.reducerPath]: productReviewImageAPI.reducer,
     [productSizeAPI.reducerPath]: productSizeAPI.reducer,
     [productDetailKeyAPI.reducerPath]: productDetailKeyAPI.reducer,
     [productDetailValueAPI.reducerPath]: productDetailValueAPI.reducer,
@@ -70,6 +72,7 @@ const setupStore = () => {
                 .concat(discountTypeAPI.middleware)
                 .concat(discountAPI.middleware)
                 .concat(productReviewAPI.middleware)
+                .concat(productReviewImageAPI.middleware)
                 .concat(productSizeAPI.middleware)
                 .concat(productDetailKeyAPI.middleware)
                 .concat(productDetailValueAPI.middleware)

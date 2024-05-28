@@ -5,4 +5,5 @@ export default interface IReview extends IEntity {
     reviewText?: string,
     productId: number,
     userId: number,
+    productReviewImageIds?: number[]
 }

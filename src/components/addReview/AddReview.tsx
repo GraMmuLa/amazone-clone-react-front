@@ -5,9 +5,11 @@ import styles from "./AddReview.module.css";
 import React, {useEffect, useState} from "react";
 import { productColorAPI } from "../../redux/api/productColorAPI";
 import {useAppSelector} from "../../redux/hooks/useAppSelector";
+import {productReviewAPI} from "../../redux/api/productReviewAPI";
+import {productReviewImageAPI} from "../../redux/api/productReviewImageAPI";
 
 const AddReview: React.FunctionComponent = () => {
-   const { productColorId } = useParams<{ productColorId: string }>();
+   const { productId } = useParams();
    const { data: productColors } = productColorAPI.useFetchAllQuery({});
 
    const {id: userId} = useAppSelector(state => state.user);
@@ -16,16 +18,35 @@ const AddReview: React.FunctionComponent = () => {
    const [deliverySpeed, setDeliverySpeed] = useState<number>(0);
    const [files, setFiles] = useState<File[]>([]);
    const [reviewText, setReviewText] = useState<string>();
+   const [starsRating, setStarsRating] = useState<number>(0);
+
+   const [addReview] = productReviewAPI.useAddMutation();
+   const [addReviewImage] = productReviewImageAPI.useAddMutation();
+
+   useEffect(() => {
+      setStarsRating(Math.round(((quality + priceRatio + deliverySpeed) / 3) * 10) / 10);
+   }, [quality, priceRatio, deliverySpeed]);
 
    const addImage = (e: React.ChangeEvent) => {
       const target = (e.target as HTMLInputElement)
-      if (target.files != null)
-         setFiles([...files, target.files[0]]);
+      if (target.files != null && files.filter(x=>x.name===target.files![0].name).length === 0)
+            setFiles([...files, target.files[0]]);
    }
 
    //TODO
-   const handleSubmit = (e: React.FormEvent) => {
-      //if(userId)
+   const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      console.log(userId);
+      console.log(starsRating);
+      console.log(productId);
+      if(userId && starsRating && productId) {
+         const result = await addReview({userId: userId, mark: starsRating, reviewText: reviewText, productId: parseInt(productId)}).unwrap();
+         if(result && result.id && files) {
+            console.log(result.id);
+            for(const file of files)
+               await addReviewImage({reviewId: result.id, data: file});
+         }
+      }
    }
 
    return (
@@ -37,12 +58,14 @@ const AddReview: React.FunctionComponent = () => {
                   <div className={styles.addReview__image}>
                      <a href=""><img src="" alt="product image" /></a>
                   </div>
-                  <div className={styles.addReview__text}><a href="">Жіночий кардиган-кімоно з квітковим принтом і пухкими рукавами, вільна повсякденна блузка з прикриттям</a></div>
+                  <div className={styles.addReview__text}>
+                     <a href="">Жіночий кардиган-кімоно з квітковим принтом і пухкими рукавами, вільна повсякденна блузка з прикриттям</a>
+                  </div>
                </div>
-               <form action="" className={styles.addReview__form}>
+               <form onSubmit={(e) => handleSubmit(e)} className={styles.addReview__form}>
                   <div className={styles.addReview__totalReview}>
                      <h2 className={styles.addReview__totalFormTitle}>Загальний відгук</h2>
-                     <StarsRating rating={(quality + priceRatio + deliverySpeed) / 3} width={38} />
+                     <StarsRating rating={starsRating} width={38} />
                   </div>
                   <div className={`${styles.addReview__otherReviews} ${styles.otherReviews}`}>
                      <div className={styles.otherReviews__item}>

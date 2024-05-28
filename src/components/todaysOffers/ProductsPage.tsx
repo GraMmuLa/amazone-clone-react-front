@@ -14,8 +14,6 @@ import { useAppSelector } from "../../redux/hooks/useAppSelector";
 const ProductsPage = () => {
     const filter = useAppSelector(state => state.filter);
 
-    // let { data: productColors, isLoading: isLoadingProductColors} = productColorAPI.useFetchAllQuery(filter);
-
     const [fetchProductColors, { data: productColors, isLoading: isLoadingProductColors }] = productColorAPI.useLazyFetchAllQuery();
 
     const [fetchCategories, { data: categories, isLoading: isLoadingCategories }] = categoryAPI.useLazyFetchAllQuery();
@@ -28,28 +26,21 @@ const ProductsPage = () => {
         fetchSubcategories();
     }, [filter]);
 
-    useEffect(() => {
-        const preloader = document.querySelector('.preloader');
-        if (isLoadingProductColors || isLoadingCategories || isLoadingSubcategories) {
-            preloader?.classList.add("_active");
-        } else {
-            preloader?.classList.remove("_active");
-        }
-    }, [isLoadingProductColors, isLoadingCategories, isLoadingSubcategories]);
-
     return (
         <>
-            <Preloader />
-            <main className={styles.page}>
-                {categories && <Offers categories={categories} title='Сьогоднішні пропозиції' />}
-                <div className={styles.main}>
-                    <Select />
-                    <div className={styles.main__wrapper}>
-                        {subcategories && <Aside subcategories={subcategories} />}
-                        {productColors && <Body productColors={productColors} />}
+            {isLoadingCategories || isLoadingProductColors || isLoadingSubcategories ?
+                <Preloader/> :
+                <main className={styles.page}>
+                    {categories && <Offers categories={categories} title='Сьогоднішні пропозиції'/>}
+                    <div className={styles.main}>
+                        <Select/>
+                        <div className={styles.main__wrapper}>
+                            {subcategories && <Aside subcategories={subcategories}/>}
+                            {productColors && <Body productColors={productColors}/>}
+                        </div>
                     </div>
-                </div>
-            </main>
+                </main>
+            }
         </>
     );
 }

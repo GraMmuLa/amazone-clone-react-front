@@ -31,7 +31,6 @@
 
 .mainProductSlider {
    position: relative;
-   aspect-ratio: 650/850;
    overflow: hidden;
 }
 

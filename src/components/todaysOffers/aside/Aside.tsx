@@ -17,20 +17,20 @@ const Aside: React.FunctionComponent<{subcategories: ISubcategory[]}> = ({subcat
 
    return (
       <aside className={styles.aside}>
-         <div className={styles.asideProductsItems}>
-            <div className={styles.asideMain__allProducts}>
-               <input type="radio" id="asideAllProducts" name='asideProductsItem' checked={selectedProductsItem === 'asideAllProducts'} onChange={() => setSelectedProductsItem('asideAllProducts')} />
-               <label htmlFor="asideAllProducts">Всі товари</label>
-            </div>
-            <div className={styles.asideMain__inStock}>
-               <input type="radio" id="asideInStock" name='asideProductsItem' checked={selectedProductsItem === 'asideInStock'} onChange={() => setSelectedProductsItem('asideInStock')} />
-               <label htmlFor="asideInStock">В наявності</label>
-            </div>
-            <div className={styles.asideMain__wishList}>
-               <input type="radio" id="asideWishList" name='asideProductsItem' checked={selectedProductsItem === 'asideWishList'} onChange={() => setSelectedProductsItem('asideWishList')} />
-               <label htmlFor="asideWishList">Зі списку бажань</label>
-            </div>
-         </div>
+         {/*<div className={styles.asideProductsItems}>*/}
+         {/*   <div className={styles.asideMain__allProducts}>*/}
+         {/*      <input type="radio" id="asideAllProducts" name='asideProductsItem' checked={selectedProductsItem === 'asideAllProducts'} onChange={() => setSelectedProductsItem('asideAllProducts')} />*/}
+         {/*      <label htmlFor="asideAllProducts">Всі товари</label>*/}
+         {/*   </div>*/}
+         {/*   <div className={styles.asideMain__inStock}>*/}
+         {/*      <input type="radio" id="asideInStock" name='asideProductsItem' checked={selectedProductsItem === 'asideInStock'} onChange={() => setSelectedProductsItem('asideInStock')} />*/}
+         {/*      <label htmlFor="asideInStock">В наявності</label>*/}
+         {/*   </div>*/}
+         {/*   <div className={styles.asideMain__wishList}>*/}
+         {/*      <input type="radio" id="asideWishList" name='asideProductsItem' checked={selectedProductsItem === 'asideWishList'} onChange={() => setSelectedProductsItem('asideWishList')} />*/}
+         {/*      <label htmlFor="asideWishList">Зі списку бажань</label>*/}
+         {/*   </div>*/}
+         {/*</div>*/}
          <div className={styles.asideMain__sections}>
             <div className={styles.asideMain__sectionsLabel}>Розділи</div>
             {subcategories && <Accordion accordionItems={subcategories} />}
