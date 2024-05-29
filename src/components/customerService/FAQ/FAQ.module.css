@@ -1,0 +1,34 @@
+.FAQ__tabsItems {
+   display: grid;
+   row-gap: 30px;
+   column-gap: 75px;
+   grid-template-columns: repeat(auto-fill, minmax(475px, 1fr));
+}
+
+.FAQ__tabsItem {
+   padding: 10px 15px 20px;
+   border: 2px solid #929292;
+   transition: 0.3s ease 0s;
+}
+
+.FAQ__tabsItem:hover {
+   text-decoration: none;
+   background-color: #ecf7ff;
+}
+
+.FAQ__tabsTitle {
+   text-wrap: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   margin-bottom: 10px;
+}
+
+.FAQ__tabsText {
+   font-size: 18px;
+   line-height: 1.2;
+   color: #757575;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 3;
+   overflow: hidden;
+}
