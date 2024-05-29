@@ -5,6 +5,8 @@ import specialGiftCards from "../../imgs/giftCards/specialGiftCards.svg"
 import step1 from "../../imgs/giftCards/step1.svg"
 import step2 from "../../imgs/giftCards/step2.svg"
 import step3 from "../../imgs/giftCards/step3.svg"
+import React from "react";
+import {NavLink} from "react-router-dom";
 
 
 const GiftCards = () => {
@@ -15,8 +17,8 @@ const GiftCards = () => {
             <div className={styles.giftCards__container}>
                <h2 className={styles.giftCards__tilte}>Подарункові карти</h2>
                <div className={styles.giftCards__items}>
-                  <div className={styles.giftCards__item}><a href=""><img src={giftCards} alt="giftCards" /></a></div>
-                  <div className={styles.giftCards__item}><a href=""><img src={specialGiftCards} alt="giftCards" /></a></div>
+                  <div className={styles.giftCards__item}><NavLink to={"/giftCardsList"}><img src={giftCards} alt="giftCards" /></NavLink></div>
+                  <div className={styles.giftCards__item}><a href="#"><img src={specialGiftCards} alt="giftCards" /></a></div>
                </div>
             </div>
          </div>

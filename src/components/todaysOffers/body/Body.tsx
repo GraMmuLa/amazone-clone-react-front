@@ -5,7 +5,7 @@ import ProductListPagination from "../../productListPagination/ProductListPagina
 
 const Body: React.FunctionComponent<{productColors: IProductColor[]}> = ({productColors}) => {
 
-    const itemsPerPage = 10;
+    const itemsPerPage = 8;
 
    return (
       <div className={styles.bodyMain}>

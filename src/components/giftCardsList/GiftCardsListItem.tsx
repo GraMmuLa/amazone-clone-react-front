@@ -1,19 +1,39 @@
 import React from "react";
 import styles from "./GiftCardsListItem.module.css";
+import IProductCardDesign from "../../interfaces/IProductCardDesign";
+import {productCardDesignImageAPI} from "../../redux/api/productCardDesignImageAPI";
+import {NavLink} from "react-router-dom";
+import giftCards from "../giftCards/GiftCards";
 
 
-const GiftCardsListItem: React.FunctionComponent<{ image: string, text: string, minPrice: number, maxPrice: number }> = ({ image, text, minPrice, maxPrice }) => {
+const GiftCardsListItem: React.FunctionComponent<{giftCardDesign: IProductCardDesign}> = ({ giftCardDesign }) => {
 
-   return (
-      <div className={styles.giftCardsListItem}>
-         <div className={styles.giftCardsListItem__image}>
-            <a href=""><img src={image} alt={image} /></a>
-         </div>
-         <div className={styles.giftCardsListItem__text}><a href="">{text}</a></div>
-         <div className={styles.giftCardsListItem__price}>
-            {minPrice} - {maxPrice} грн
-         </div>
-      </div>
+    const Image: React.FunctionComponent<{imageId: number}> = ({imageId}) => {
+
+        const {data: image} = productCardDesignImageAPI.useFetchByIdQuery(imageId);
+
+        return (
+            <>
+                {image && giftCardDesign.id &&
+                    <div className={styles.giftCardsListItem__image}>
+                        <NavLink to={`/giftCard/${giftCardDesign.id}`}><img src={`data:image/jpg;base64,${image.data}`} alt={"gift card"}/></NavLink>
+                    </div>
+                }
+            </>
+        );
+    }
+
+    return (
+        <div className={styles.giftCardsListItem}>
+            { giftCardDesign.productCardDesignImageId &&
+                <Image imageId={giftCardDesign.productCardDesignImageId}/> }
+            <div className={styles.giftCardsListItem__text}>
+                <NavLink to={`/giftCard/${giftCardDesign.id}`}>{giftCardDesign.name}</NavLink>
+            </div>
+            <div className={styles.giftCardsListItem__price}>
+                {50} - ... грн
+            </div>
+    </div>
    );
 }
 
