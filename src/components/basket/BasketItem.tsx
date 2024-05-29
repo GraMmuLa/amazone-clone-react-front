@@ -30,10 +30,10 @@ const BasketItem: React.FunctionComponent<{ priceSum: Function, image: string, t
                <a href=""><img src={image} alt={image} /></a>
             </div>
             <div className={styles.basketItem__content}>
-               <h4 className={styles.basketItem__title}><a href="">{text}</a></h4>
+               <a href="" className={styles.basketItem__title}>{text}</a>
                <div className={styles.basketItem__info}>{color}/{size}</div>
                <div className={styles.basketItem__bottom}>
-                  <div className={styles.basketItem__price}>{price}</div>
+                  <div className={styles.basketItem__price}>{price} грн</div>
                   <button className={styles.basketItem__delete}><img src={basketDelete} alt="delete" /></button>
                </div>
             </div>
