@@ -11,7 +11,9 @@ import { productReviewImageAPI } from "../../redux/api/productReviewImageAPI";
 
 const AddReview: React.FunctionComponent = () => {
    const { productId } = useParams();
-   const { data: productColors } = productColorAPI.useFetchAllQuery({});
+
+   const itemsCount = 10;
+   const { data: productColors } = productColorAPI.useFetchAllQuery({quantity: itemsCount});
 
    const { id: userId } = useAppSelector(state => state.user);
    const [quality, setQuality] = useState<number>(0);
@@ -29,9 +31,15 @@ const AddReview: React.FunctionComponent = () => {
    }, [quality, priceRatio, deliverySpeed]);
 
    const addImage = (e: React.ChangeEvent) => {
+      if(!e.target)
+         return;
       const target = (e.target as HTMLInputElement)
-      if (target.files != null && files.filter(x => x.name === target.files![0].name).length === 0)
+      if (target.files && target.files[0] && files.filter(x => x.name === target.files![0].name).length === 0)
          setFiles([...files, target.files[0]]);
+   }
+
+   const removeImage = (e: React.MouseEvent, index: number) => {
+      setFiles(files.filter(x=>x!=files[index]));
    }
 
    //TODO
@@ -128,9 +136,9 @@ const AddReview: React.FunctionComponent = () => {
                            <input onChange={(e) => addImage(e)} accept=".png, .jpg, .svg, .webp" type='file' name="addReviewAddImage" />
                            <button type="button"><img src={cross} alt="cross" /></button>
                         </div>
-                        {files.map(file => {
+                        {files.map((file, index) => {
                            return (
-                              <button type="button" className={styles.addReview__addImageItem}>
+                              <button type="button" onClick={(e)=>removeImage(e, index)} className={styles.addReview__addImageItem}>
                                  <img key={file.name} src={URL.createObjectURL(file)} alt={"review item"} />
                               </button>
                            );
@@ -148,7 +156,7 @@ const AddReview: React.FunctionComponent = () => {
                   <button className={styles.addReview__formButton} type="submit">Надіслати відгук</button>
                </form>
             </div >
-            {productColors && <ProductList itemsCount={10} />}
+            {productColors && <ProductList productColors={productColors} itemsCount={itemsCount} />}
          </div >
       </main >
    );

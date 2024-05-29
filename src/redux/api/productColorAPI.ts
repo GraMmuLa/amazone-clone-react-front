@@ -35,6 +35,20 @@ export const productColorAPI = createApi({
             }),
             providesTags: ['ProductColor']
         }),
+        fetchAllBySubcategory: build.query<IProductColor[], number>({
+            query: (subcategoryId: number) => ({
+                url: "/subcategory",
+                params: {subcategoryId}
+            }),
+            providesTags: ['ProductColor']
+        }),
+        fetchAllBySubcategoryName: build.query<IProductColor[], string>({
+            query: (subcategoryName: string) => ({
+                url: "/subcategoryName",
+                params: {subcategoryName}
+            }),
+            providesTags: ['ProductColor']
+        }),
         fetchById: build.query<IProductColor, number>({
             query: (id: number) => ({
                 url: "",

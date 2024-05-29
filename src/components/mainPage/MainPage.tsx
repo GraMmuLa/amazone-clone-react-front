@@ -4,21 +4,16 @@ import classes from "./MainPage.module.css"
 import { Wrapper } from "../layout/wrapper/Wrapper";
 import OtherDiscounts from "./discounts/otherDiscounts/OtherDiscounts";
 import DayDiscount from "./discounts/dayDiscount/DayDiscount";
-import React, { useEffect } from "react";
+import React from "react";
 import { subcategoryAPI } from "../../redux/api/subcategoryAPI";
 import { discountTypeAPI } from "../../redux/api/discountTypeAPI";
 import { Discounts } from "../../enums/discounts";
 import Preloader from "../preloader/Preloader";
-import Recomendations from "./recomendations/Recomendations";
+import Recommendations from "./recomendations/Recommendations";
 
 const MainPage: React.FunctionComponent = () => {
-    const [fetchSubcategories, { data: subcategories, isLoading: isLoadingSubcategories }] = subcategoryAPI.useLazyFetchAllQuery();
-    const [fetchDiscountTypes, { data: discountTypes, isLoading: isLoadingDiscountTypes }] = discountTypeAPI.useLazyFetchExceptDiscountTypeNameQuery();
-
-    useEffect(() => {
-        fetchDiscountTypes(Discounts.dayDiscount);
-        fetchSubcategories();
-    }, []);
+    const { data: subcategories, isLoading: isLoadingSubcategories } = subcategoryAPI.useFetchAllQuery();
+    const { data: discountTypes, isLoading: isLoadingDiscountTypes } = discountTypeAPI.useFetchExceptDiscountTypeNameQuery(Discounts.dayDiscount);
 
     return (
         <>
@@ -30,7 +25,7 @@ const MainPage: React.FunctionComponent = () => {
                         {subcategories && <SubcategoryList subcategories={subcategories}/>}
                         <DayDiscount/>
                         {discountTypes && <OtherDiscounts discountTypes={discountTypes}/>}
-                        <Recomendations/>
+                        <Recommendations/>
                     </Wrapper>
                 </main>
             }
