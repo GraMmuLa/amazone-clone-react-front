@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import MainPage from "./components/mainPage/MainPage";
 import { Route, Routes } from "react-router";
@@ -21,6 +21,7 @@ import AddReview from "./components/addReview/AddReview";
 import ThankForFeedback from "./components/thankForFeedback/ThankForFeedback";
 import Login from "./components/auth/login/Login";
 import Basket from "./components/basket/Basket";
+import CustomerService from "./components/customerService/CustomerService";
 
 function App() {
     return (
@@ -45,6 +46,7 @@ function App() {
                         <Route path="/addReview/:productId" element={<AddReview />} />
                         <Route path="/thankForFeedback" element={<ThankForFeedback />} />
                         <Route path="/basket" element={<Basket />} />
+                        <Route path="/customerService" element={<CustomerService />} />
                     </Route>
                 </Routes>
             </ScrollToTop>
