@@ -1,28 +1,20 @@
 import React from "react";
-import IProduct from "../../../../interfaces/IProduct";
 import classes from "./DayDiscountItem.module.css"
 import {productColorImageAPI} from "../../../../redux/api/productColorImageAPI";
 import {discountAPI} from "../../../../redux/api/discountAPI";
-import {productColorAPI} from "../../../../redux/api/productColorAPI";
 import IProductColor from "../../../../interfaces/IProductColor";
 import {NavLink} from "react-router-dom";
 
-const DayDiscountItem: React.FunctionComponent<{dayDiscount: IProduct}> = ({dayDiscount}) => {
-
-    const {data: productColor, isLoading} = productColorAPI.useFetchByIdQuery(dayDiscount.productColorsIds![0]);
+const DayDiscountItem: React.FunctionComponent<{dayDiscount: IProductColor}> = ({dayDiscount}) => {
 
     return (
-        <>
-            { isLoading ? <div>Loading...</div> :
-                <div className={classes.dayDiscountItem}>
-                    <div className={classes.dayDiscountItem__imgBlock}>
-                        <Image productColor={productColor!}/>
-                        <DiscountTag productColor={productColor!}/>
-                    </div>
-                    <DiscountBlock productColor={productColor!}/>
-                </div>
-            }
-        </>
+        <div className={classes.dayDiscountItem}>
+            <div className={classes.dayDiscountItem__imgBlock}>
+                <Image productColor={dayDiscount}/>
+                <DiscountTag productColor={dayDiscount}/>
+            </div>
+            <DiscountBlock productColor={dayDiscount}/>
+        </div>
     );
 }
 

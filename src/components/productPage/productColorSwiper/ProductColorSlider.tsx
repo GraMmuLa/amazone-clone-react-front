@@ -22,7 +22,7 @@ const ProductColorSlider: React.FunctionComponent<{ productColorImages: IProduct
 
     const { productColorId } = useParams();
 
-    const { id: userId, favouriteProductColorIds } = useAppSelector(state => state.user);
+    const { id: userId, favouriteProductColorIds, isLogged } = useAppSelector(state => state.user);
     const dispatch = useAppDispatch();
     const { init } = userSlice.actions;
 
@@ -88,7 +88,7 @@ const ProductColorSlider: React.FunctionComponent<{ productColorImages: IProduct
                 >
                     {productColorImages.map(productColorImage => <SwiperSlide className={styles.mainProductSlide} key={productColorImage.id!}><span>.<img src={`data:image/jpg;base64,${productColorImage.data}`} alt="ProductColor" /></span></SwiperSlide>)}
                 </Swiper>
-                {productColorId && favouriteProductColorIds &&
+                {isLogged && productColorId && favouriteProductColorIds &&
                     (favouriteProductColorIds.includes(parseInt(productColorId)) ?
                         <button onClick={() => handleDeleteButtonClick()} className={styles.productSliderLink}>Видалити з кошика</button> :
                         <button onClick={() => handleAddButtonClick()} className={styles.productSliderLink}>Додати до кошика</button>

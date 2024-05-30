@@ -1,7 +1,6 @@
 import styles from "./ProductList.module.css";
 import React from "react";
 import ProductItem from "./ProductItem";
-import {productColorAPI} from "../../redux/api/productColorAPI";
 import IProductColor from "../../interfaces/IProductColor";
 
 const ProductList: React.FunctionComponent<{productColors: IProductColor[], itemsCount: number}> = ({ productColors, itemsCount}) => {

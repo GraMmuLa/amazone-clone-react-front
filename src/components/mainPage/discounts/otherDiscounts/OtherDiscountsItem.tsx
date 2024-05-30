@@ -6,21 +6,15 @@ import IProductColor from "../../../../interfaces/IProductColor";
 import { productColorImageAPI } from "../../../../redux/api/productColorImageAPI";
 import { discountAPI } from "../../../../redux/api/discountAPI";
 
-const OtherDiscountsItem: React.FunctionComponent<{ product: IProduct }> = ({ product }) => {
-
-    const { data: productColor, isLoading } = productColorAPI.useFetchByIdQuery(product.productColorsIds![0]);
+const OtherDiscountsItem: React.FunctionComponent<{ productColor: IProductColor }> = ({ productColor }) => {
 
     return (
-        <>
-            {isLoading ? <div>Loading...</div> :
-                <div className={classes.dayDiscountItem}>
-                    <div className={classes.discount__imgBlock}>
-                        <Image productColor={productColor!} />
-                    </div>
-                    <DiscountBlock productColor={productColor!} />
-                </div>
-            }
-        </>
+        <div className={classes.dayDiscountItem}>
+            <div className={classes.discount__imgBlock}>
+                <Image productColor={productColor!} />
+            </div>
+            <DiscountBlock productColor={productColor!} />
+        </div>
     );
 }
 
