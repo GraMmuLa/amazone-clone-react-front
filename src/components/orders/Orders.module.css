@@ -1,0 +1,19 @@
+.orders__recommendations {
+    border-top: 1px solid #000;
+    padding: 0 100px;
+}
+
+.orders__recommendationsTitle {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 30px 0;
+}
+
+.orders_notLogged {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    margin: 150px 0;
+}

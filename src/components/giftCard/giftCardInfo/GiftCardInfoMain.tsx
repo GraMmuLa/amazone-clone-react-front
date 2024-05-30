@@ -45,7 +45,7 @@ const GiftCardInfoMain: React.FunctionComponent = () => {
                    {productCardDesigns.map((productCardDesign) =>
                       productCardDesign.id &&
                       productCardDesign.productCardDesignImageId &&
-                      <ProductCardDesignImage productCardDesignId={productCardDesign.id} productCardDesignImageId={productCardDesign.productCardDesignImageId}/>)}
+                      <ProductCardDesignImage key={productCardDesign.productCardDesignImageId} productCardDesignId={productCardDesign.id} productCardDesignImageId={productCardDesign.productCardDesignImageId}/>)}
                 </ul>
             }
 

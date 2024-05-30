@@ -3,20 +3,20 @@ import { useParams } from "react-router";
 import ProductList from "../../productList/ProductList";
 import { productColorAPI } from "../../../redux/api/productColorAPI";
 import styles from "./Recomendations.module.css"
+import React from "react";
 
-const Recomendations: React.FunctionComponent = () => {
-   const { defaultIndex } = useParams();
-
-   const { data: productColors } = productColorAPI.useFetchAllQuery({});
+const Recommendations: React.FunctionComponent = () => {
+   const { data: productColorsWomens } = productColorAPI.useFetchAllBySubcategoryNameQuery("Жіночий одяг");
+   const { data: productColorsMens } = productColorAPI.useFetchAllBySubcategoryNameQuery("Чоловічий одяг");
 
    return (
       <div className={styles.recomendations}>
          <div className="recomendations__containerMax">
             <h2 className={styles.recomendations__title}>Рекомендація</h2>
             <div className={styles.recomendations__body}>
-               <Tabs defaultIndex={defaultIndex ? parseInt(defaultIndex) : 0} className={styles.ordersBodyTabs}>
+               <Tabs className={styles.ordersBodyTabs}>
                   <TabList className={styles.ordersBodyTabList}>
-                     <Tab className={styles.ordersBodyTab} selectedClassName={styles._active}>
+                     <Tab defaultChecked={true} className={styles.ordersBodyTab} selectedClassName={styles._active}>
                         <button>Для жінок</button>
                      </Tab>
                      <Tab className={styles.ordersBodyTab} selectedClassName={styles._active}>
@@ -24,10 +24,10 @@ const Recomendations: React.FunctionComponent = () => {
                      </Tab>
                   </TabList>
                   <TabPanel>
-                     {productColors && <ProductList itemsCount={10} />}
+                     {productColorsWomens && <ProductList productColors={productColorsWomens} itemsCount={10} />}
                   </TabPanel>
                   <TabPanel>
-                     {productColors && <ProductList itemsCount={10} />}
+                     {productColorsMens && <ProductList productColors={productColorsMens} itemsCount={10} />}
                   </TabPanel>
                </Tabs>
             </div>
@@ -36,4 +36,4 @@ const Recomendations: React.FunctionComponent = () => {
    );
 }
 
-export default Recomendations;
+export default Recommendations;

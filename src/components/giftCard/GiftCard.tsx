@@ -9,13 +9,17 @@ const GiftCard: React.FunctionComponent = () => {
 
     const {id} = useParams();
 
+    const itemsCount = 10;
+
+    const {data: productColors} = productColorAPI.useFetchAllQuery({quantity: itemsCount});
+
     return (
         <main className={styles.giftCard}>
             {id && <GiftCardBlock productCardDesignId={parseInt(id)} /> }
             <div className={styles.giftCard__recommendations}>
                 <div className="giftCard__containerMax">
                     <h2 className={styles.giftCard__recommendationsTitle}>Клієнти також переглядали</h2>
-                    <ProductList itemsCount={10} />
+                    { productColors && <ProductList productColors={productColors} itemsCount={itemsCount} /> }
                 </div>
             </div>
         </main>

@@ -1,12 +1,11 @@
 import styles from "./Body.module.css";
-import ProductList from "../../productList/ProductList";
-import React, {useState} from "react";
+import React from "react";
 import IProductColor from "../../../interfaces/IProductColor";
 import ProductListPagination from "../../productListPagination/ProductListPagination";
 
 const Body: React.FunctionComponent<{productColors: IProductColor[]}> = ({productColors}) => {
 
-    const itemsPerPage = 5;
+    const itemsPerPage = 8;
 
    return (
       <div className={styles.bodyMain}>

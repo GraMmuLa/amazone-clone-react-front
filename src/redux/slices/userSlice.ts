@@ -14,7 +14,6 @@ if(auth_token !== null) {
     const decoded: IDecodedJwtToken = jwtDecode(auth_token);
     let expDate=new Date('1970-01-01T00:00:00Z');
     expDate.setUTCSeconds(decoded.exp);
-    console.log(decoded.favouriteProductColorIds);
     if(expDate < new Date()) {
         sessionStorage.removeItem("auth_token");
     }

@@ -27,7 +27,7 @@ const HeaderMenu: React.FunctionComponent = () => {
                 </li>
                 <li className={styles.menu__item}><NavLink to="/todaysOffers" className={styles.menu__link}>Сьогоднішні пропозиції</NavLink></li>
                 <li className={styles.menu__item}><NavLink to="/orders/1" className={styles.menu__link}>Купити знову</NavLink></li>
-                <li className={styles.menu__item}><a href="" className={styles.menu__link}>Обслуговування клієнтів</a></li>
+                <li className={styles.menu__item}><NavLink to="/customerService" className={styles.menu__link}>Обслуговування клієнтів</NavLink></li>
                 <li className={styles.menu__item}><NavLink to="/giftCards" className={styles.menu__link}>Подарункові карти</NavLink></li>
                 {!isLogged && <li className={styles.menu__item}><NavLink to="/becomeSeller" className={styles.menu__link}>Продати</NavLink></li>}
             </ul>
