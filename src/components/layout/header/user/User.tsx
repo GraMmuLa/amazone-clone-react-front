@@ -40,15 +40,14 @@ const User: React.FunctionComponent = () => {
          </div>
          <div className={styles.user__body}>
             <ul className={styles.user__list}>
-               <li className={styles.user__item}><a href="" className={styles.user__link}>Жіночий одяг<img src={arrow} alt="arrow" /></a></li>
-               <li className={styles.user__item}><a href="" className={styles.user__link}>Чоловічий одяг<img src={arrow} alt="arrow" /></a></li>
-               <li className={styles.user__item}><a href="" className={styles.user__link}>Взуття<img src={arrow} alt="arrow" /></a></li>
-               <li className={styles.user__item}><a href="" className={styles.user__link}>Прикраси<img src={arrow} alt="arrow" /></a></li>
-               <li className={styles.user__item}><a href="" className={styles.user__link}>Телефони<img src={arrow} alt="arrow" /></a></li>
-               <li className={styles.user__item}><a href="" className={styles.user__link}>Ноутбуки<img src={arrow} alt="arrow" /></a></li>
-               <li className={styles.user__item}><a href="" className={styles.user__link}>Планшети<img src={arrow} alt="arrow" /></a></li>
-               <li className={styles.user__item}><a href="" className={styles.user__link}>Доставка</a></li>
-               <li className={styles.user__item}><a href="" className={styles.user__link}>Налаштування</a></li>
+               <li className={styles.user__item}><NavLink to="/todaysOffers" className={styles.user__link}>Жіночий одяг<img src={arrow} alt="arrow" /></NavLink></li>
+               <li className={styles.user__item}><NavLink to="/todaysOffers" className={styles.user__link}>Чоловічий одяг<img src={arrow} alt="arrow" /></NavLink></li>
+               <li className={styles.user__item}><NavLink to="/todaysOffers" className={styles.user__link}>Взуття<img src={arrow} alt="arrow" /></NavLink></li>
+               <li className={styles.user__item}><NavLink to="/todaysOffers" className={styles.user__link}>Прикраси<img src={arrow} alt="arrow" /></NavLink></li>
+               <li className={styles.user__item}><NavLink to="/todaysOffers" className={styles.user__link}>Телефони<img src={arrow} alt="arrow" /></NavLink></li>
+               <li className={styles.user__item}><NavLink to="/todaysOffers" className={styles.user__link}>Ноутбуки<img src={arrow} alt="arrow" /></NavLink></li>
+               <li className={styles.user__item}><NavLink to="/todaysOffers" className={styles.user__link}>Планшети<img src={arrow} alt="arrow" /></NavLink></li>
+               <li className={styles.user__item}><NavLink to="/customerService" className={styles.user__link}>FAQ</NavLink></li>
             </ul>
          </div>
       </div>

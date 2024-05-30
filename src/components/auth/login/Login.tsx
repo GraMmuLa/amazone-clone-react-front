@@ -7,6 +7,8 @@ import { useAppDispatch } from "../../../redux/hooks/useAppDispatch";
 import { userSlice } from "../../../redux/slices/userSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import classes from "../Auth.module.css"
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 
 const Login: React.FunctionComponent = () => {
 
@@ -24,26 +26,39 @@ const Login: React.FunctionComponent = () => {
     const [loginByPhone] = authAPI.useLoginByPhoneMutation();
 
     const [isError, setIsError] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<string>("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (invalidPasswordPattern.test(password)) {
+            setErrorMessage("Введіть коректний пароль!")
             setIsError(true);
             return;
         }
         if (emailPattern.test(phoneEmail)) {
-            const withEmailToken = await loginByEmail({ email: phoneEmail, password: password }).unwrap();
-            console.log(withEmailToken);
-            dispatch(init(withEmailToken));
-            sessionStorage.setItem("auth_token", `Bearer ${withEmailToken.token}`);
-            navigate("/");
+            try {
+                const withEmailToken = await loginByEmail({ email: phoneEmail, password: password }).unwrap();
+                console.log(withEmailToken);
+                dispatch(init(withEmailToken));
+                sessionStorage.setItem("auth_token", `Bearer ${withEmailToken.token}`);
+                navigate("/");
+            } catch (e) {
+                setIsError(true);
+                setErrorMessage("Невірний пароль, пошта");
+            }
+
         }
         else {
-            const withPhoneToken = await loginByPhone({ phone: phoneEmail, password: password }).unwrap();
-            console.log(withPhoneToken);
-            dispatch(init(withPhoneToken));
-            sessionStorage.setItem("auth_token", `Bearer ${withPhoneToken.token}`);
-            navigate("/");
+            try {
+                const withPhoneToken = await loginByPhone({ phone: phoneEmail, password: password }).unwrap();
+                console.log(withPhoneToken);
+                dispatch(init(withPhoneToken));
+                sessionStorage.setItem("auth_token", `Bearer ${withPhoneToken.token}`);
+                navigate("/");
+            } catch (e) {
+                setIsError(true);
+                setErrorMessage("Невірний пароль, номер телефону");
+            }
         }
     }
 
@@ -52,10 +67,13 @@ const Login: React.FunctionComponent = () => {
             <form onSubmit={handleSubmit}>
                 {!goNext
                     ?
-                    <LoginEmail phoneEmail={phoneEmail} setPhoneEmail={setPhoneEmail} goNext={goNext} setGoNext={setGoNext} />
+                    <LoginEmail errorMessage={errorMessage} setErrorMessage={setErrorMessage}
+                                isError={isError} setIsError={setIsError}
+                                phoneEmail={phoneEmail} setPhoneEmail={setPhoneEmail}
+                                goNext={goNext} setGoNext={setGoNext} />
                     :
                     <>
-                        <LoginPassword password={password} setPassword={setPassword} setGoNext={setGoNext} isError={isError} setIsError={setIsError} />
+                        <LoginPassword errorMessage={errorMessage} password={password} setPassword={setPassword} setGoNext={setGoNext} isError={isError} setIsError={setIsError} />
                     </>
                 }
             </form>
@@ -67,15 +85,17 @@ const LoginEmail: React.FunctionComponent<{
     phoneEmail: string,
     setPhoneEmail: React.Dispatch<React.SetStateAction<string>>,
     goNext: boolean,
-    setGoNext: React.Dispatch<React.SetStateAction<boolean>>
-}> = ({ phoneEmail, setPhoneEmail, goNext, setGoNext }) => {
-
-    const [isErrorEmail, setIsErrorEmail] = useState<boolean>(false);
+    setGoNext: React.Dispatch<React.SetStateAction<boolean>>,
+    isError: boolean,
+    setIsError: React.Dispatch<React.SetStateAction<boolean>>,
+    errorMessage: string,
+    setErrorMessage: React.Dispatch<React.SetStateAction<string>>
+}> = ({ phoneEmail, setPhoneEmail, goNext, setGoNext, isError, setIsError, errorMessage, setErrorMessage }) => {
 
     return (
         <div className={classes.formBlock}>
             <div className={classes.cardWrapper}>
-                {isErrorEmail && <div className={classes.error}>Введіть правильний телефон або email.</div>}
+                {isError && <div className={classes.error}>{errorMessage}</div>}
                 <h2 className={classes.formHeader}>Ввійти</h2>
                 <div className={classes.formBody}>
                     <div className={classes.formGroup}>
@@ -83,12 +103,14 @@ const LoginEmail: React.FunctionComponent<{
                         <input className={classes.formInput} placeholder="Емейл або номер телефону" id="loginInput" type="text" value={phoneEmail} onChange={(e) => setPhoneEmail(e.target.value)} />
                     </div>
                 </div>
-                <button className={classes.formSubmit} onClick={(e) => {
+                <button type="button" className={classes.formSubmit} onClick={(e) => {
                     if (emailPattern.test(phoneEmail) || phonePattern.test(phoneEmail)) {
-                        setIsErrorEmail(false);
+                        setIsError(false);
                         setGoNext(true);
                     } else {
-                        setIsErrorEmail(true);
+                        console.log(phonePattern.test(phoneEmail));
+                        setErrorMessage("Введіть коректний телефон або email!")
+                        setIsError(true);
                     }
                 }}>Продовжити</button>
             </div>
@@ -105,28 +127,35 @@ const LoginPassword: React.FunctionComponent<{
     setPassword: React.Dispatch<React.SetStateAction<string>>,
     setGoNext: React.Dispatch<React.SetStateAction<boolean>>,
     isError: boolean,
-    setIsError: React.Dispatch<React.SetStateAction<boolean>>
-}> = ({ password, setPassword, setGoNext, isError, setIsError }) => {
+    setIsError: React.Dispatch<React.SetStateAction<boolean>>,
+    errorMessage: string
+}> = ({ password, setPassword, setGoNext, isError, setIsError, errorMessage}) => {
 
     useEffect(() => {
         setIsError(false);
     }, []);
 
+    const handleReturn = () => {
+        setGoNext(false);
+        setIsError(false);
+        setPassword("");
+    }
+
     return (
         <div className={classes.formBlock}>
             <div className={classes.cardWrapper}>
-                {isError && <div className={classes.error}>Введіть коректний пароль</div>}
+                {isError && <div className={classes.error}>{errorMessage}</div>}
                 <h2 className={classes.formHeader}>Ввійти</h2>
                 <div className={classes.formBody}>
                     <div className={classes.formGroup}>
                         <label htmlFor="passwordInput">Пароль</label>
                         <input className={classes.formInput} placeholder="Пароль" id="passwordInput" type="password" value={password}
-                            onChange={(e) => setPassword(e.target.value)} />
+                               onChange={(e) => setPassword(e.target.value)} />
                     </div>
                 </div>
                 <button className={classes.formSubmit} type="submit">Продовжити</button>
             </div>
-            <button className={classes.returnButton} onClick={() => setGoNext(false)}>{'<-'}</button>
+            <button className={classes.returnButton} onClick={() => handleReturn()}>{'<-'}</button>
             <div className={classes.otherBlock}>
                 <span>Немає аккаунту?</span>
                 <NavLink to="/register" className={classes.buttonLink}>Створити новий аккаунт</NavLink>

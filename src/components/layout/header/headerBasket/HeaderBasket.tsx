@@ -1,11 +1,9 @@
-import HeaderBasketList from "./HeaderBasketList";
 import styles from "./HeaderBasket.module.css";
 import headerBasketImg from "../../../../imgs/header/basket.svg"
 import React from "react";
-import IProduct from "../../../../interfaces/IProduct";
-import {productAPI} from "../../../../redux/api/productAPI";
-import {useSelector} from "react-redux";
 import {useAppSelector} from "../../../../redux/hooks/useAppSelector";
+import {NavLink} from "react-router-dom";
+import HeaderBasketItem from "./HeaderBasketItem";
 
 const HeaderBasket: React.FunctionComponent = () => {
 
@@ -13,7 +11,7 @@ const HeaderBasket: React.FunctionComponent = () => {
 
     return (
         <div className={styles.header__basketWrapper}>
-            <a href="" className={styles.header__basketBlock}>
+            <a href="#" className={styles.header__basketBlock}>
                 <img src={headerBasketImg} alt="basket" />
                 {favouriteProductColorIds && <div className={styles.header__value}>{favouriteProductColorIds.length}</div> }
             </a>
@@ -21,8 +19,13 @@ const HeaderBasket: React.FunctionComponent = () => {
 
                 {favouriteProductColorIds &&
                     <>
-                        <div className={styles.basketBody__count}>Ваші товари: <span>{favouriteProductColorIds.length}</span></div>
-                        <HeaderBasketList productColorIds={favouriteProductColorIds}/>
+                        <div className={styles.basketBody__count}>Ваші
+                            товари: <span>{favouriteProductColorIds.length}</span></div>
+                        <div className={styles.basketBody__items}>
+                            {favouriteProductColorIds.map(productColorId => (
+                                <HeaderBasketItem key={productColorId} productColorId={productColorId}/>))}
+                        </div>
+                        <NavLink to="/basket" className={styles.basketBody__link}>Перейти до корзини</NavLink>
                     </>
                 }
             </div>

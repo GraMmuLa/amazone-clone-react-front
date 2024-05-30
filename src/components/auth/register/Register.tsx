@@ -102,12 +102,12 @@ const Register: React.FunctionComponent = () => {
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="passwordInput">Пароль</label>
-                            <input value={password} className={classes.formInput} placeholder="Пароль" type="text" id="passwordInput"
+                            <input value={password} className={classes.formInput} placeholder="Пароль" type="password" id="passwordInput"
                                 onChange={(e) => setPassword(e.target.value)} />
                         </div>
                         <div className={classes.formGroup}>
                             <label htmlFor="passwordRepeatInput">Повторіть пароль</label>
-                            <input value={passwordRepeat} className={classes.formInput} placeholder="Повторіть пароль" type="text"
+                            <input value={passwordRepeat} className={classes.formInput} placeholder="Повторіть пароль" type="password"
                                 id="passwordRepeatInput" onChange={(e) => setPasswordRepeat(e.target.value)} />
                         </div>
                         <div className={classes.formGroup}>

@@ -49,6 +49,13 @@ export const productColorAPI = createApi({
             }),
             providesTags: ['ProductColor']
         }),
+        fetchAllFavouritedByUser: build.query<IProductColor[], number>({
+            query: (userId: number) => ({
+                url: "/user",
+                params: {userId}
+            }),
+            providesTags: ['ProductColor']
+        }),
         fetchById: build.query<IProductColor, number>({
             query: (id: number) => ({
                 url: "",
@@ -98,4 +105,4 @@ export const productColorAPI = createApi({
             invalidatesTags: ['ProductColor']
         })
     })
-})
+});

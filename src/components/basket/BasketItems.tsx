@@ -1,14 +1,31 @@
-import styles from "./BasketItems.module.css";
+import React, {Dispatch, useState} from "react";
 import BasketItem from "./BasketItem";
-import React from "react";
+import IProductColor from "../../interfaces/IProductColor";
 
-const BasketItems: React.FunctionComponent<{ priceSum: Function, products: Array<{ image: string, text: string, color: string, size: string, price: number }> }> = ({ priceSum, products }) => {
+const BasketItems: React.FunctionComponent<{
+    productColors: IProductColor[],
+    removeProductColor: Function,
+    priceSum: number,
+    setPriceSum: Dispatch<React.SetStateAction<number>>,
+    allCheck: boolean}> = ({productColors,
+                                              removeProductColor,
+                                              priceSum,
+                                              setPriceSum,
+                                              allCheck}) => {
 
-   return (
-      <ul className="basketItems">
-         {products.map(product => <BasketItem priceSum={priceSum} image={product.image} text={product.text} color={product.color} size={product.size} price={product.price} />)}
-      </ul>
-   );
+    const [productColorsState, setProductColorsState] = useState<IProductColor[]>(productColors);
+    return (
+        <ul className="basketItems">
+            {productColorsState.map(productColor => productColor.id && <BasketItem key={productColor.id}
+                                                           removeProductColor={removeProductColor}
+                                                           allCheck={allCheck}
+                                                           priceSum={priceSum}
+                                                           setPriceSum={setPriceSum}
+                                                           productColor={productColor}
+                                                           productColorsState={productColorsState}
+                                                           setProductColorsState={setProductColorsState}/>)}
+        </ul>
+    );
 }
 
 export default BasketItems;

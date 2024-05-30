@@ -23,6 +23,23 @@
    align-items: center;
 }
 
+.basketBody__link {
+   display: block;
+   margin: 1.875rem 0.9375rem 0 0.9375rem;
+   background-color: #000000;
+   color: #fff;
+   padding: 0.5rem 1.25rem;
+   text-align: center;
+   line-height: 1.2;
+   max-width: 100%;
+   border-radius: 50pc;
+   transition: background-color 0.3s ease 0s;
+}
+
+.basketBody__link:hover {
+   background-color: #646464;
+}
+
 .header__basketBlock::before {
    /* content: url("../img/basket/arrow.svg"); */
    position: absolute;

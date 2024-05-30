@@ -2,6 +2,7 @@ import classes from './subcategoryCard.module.css'
 import React from "react";
 import ISubcategory from "../../interfaces/ISubcategory";
 import { subcategoryImageAPI } from "../../redux/api/subcategoryImageAPI";
+import {NavLink} from "react-router-dom";
 
 const SubcategoryCard: React.FunctionComponent<{ subcategory: ISubcategory }> = ({ subcategory }) => {
 
@@ -11,11 +12,13 @@ const SubcategoryCard: React.FunctionComponent<{ subcategory: ISubcategory }> = 
     return (
         <div className={classes.subcategoryCard}>
             <div className={classes.subcategoryCardLink}>
-                <img className={classes.subcategoryCardImage}
-                    src={'data:image/jpg;base64,' + (subcategoryImage ? subcategoryImage.data : '')}
-                    alt="Category" />
+                <NavLink to="/todaysOffers">
+                    <img className={classes.subcategoryCardImage}
+                         src={'data:image/jpg;base64,' + (subcategoryImage ? subcategoryImage.data : '')}
+                         alt="Category"/>
+                </NavLink>
             </div>
-            <a href='' className={classes.subcategoryCardText}>{subcategory.name}</a>
+            <NavLink to="/todaysOffers" className={classes.subcategoryCardText}>{subcategory.name}</NavLink>
         </div>
     );
 }

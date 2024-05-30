@@ -106,4 +106,8 @@
    font-weight: 500;
 }
 
+.discount {
+   color: red;
+}
+
 .basketItem__delete {}

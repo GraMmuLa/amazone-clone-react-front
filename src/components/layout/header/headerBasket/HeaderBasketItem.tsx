@@ -5,6 +5,7 @@ import {colorAPI} from "../../../../redux/api/colorAPI";
 import IProductColor from "../../../../interfaces/IProductColor";
 import {productColorImageAPI} from "../../../../redux/api/productColorImageAPI";
 import {productAPI} from "../../../../redux/api/productAPI";
+import {NavLink} from "react-router-dom";
 
 const HeaderBasketItem: React.FunctionComponent<{ productColorId: number }> = ({ productColorId }) => {
 
@@ -21,11 +22,12 @@ const HeaderBasketItem: React.FunctionComponent<{ productColorId: number }> = ({
             {
                 productColor &&
                 <div className={styles.basketBody__item}>
-                    <div className={styles.basketBodyItem__checkboxBlock}>
-                        <input checked={isChecked} onChange={handleCheckboxChange} id={`${productColor.id}`} type="checkbox"/>
-                        <label className={styles.basketBodyItem__label} htmlFor={`${productColor.id}`}></label>
-                    </div>
-                    {productColor.mainImageId && <MainImage mainImageId={productColor.mainImageId}/>}
+                    {/*<div className={styles.basketBodyItem__checkboxBlock}>*/}
+                    {/*    <input checked={isChecked} onChange={handleCheckboxChange} id={`${productColor.id}`} type="checkbox"/>*/}
+                    {/*    <label className={styles.basketBodyItem__label} htmlFor={`${productColor.id}`}></label>*/}
+                    {/*</div>*/}
+                    {productColor.id && productColor.mainImageId &&
+                        <MainImage productColorId={productColor.id} mainImageId={productColor.mainImageId}/>}
                     {<HeaderBasketContent productColor={productColor} productId={productColor.productId}/>}
                 </div>
             }
@@ -33,13 +35,13 @@ const HeaderBasketItem: React.FunctionComponent<{ productColorId: number }> = ({
     );
 }
 
-const MainImage: React.FunctionComponent<{ mainImageId: number }> = ({mainImageId}) => {
+const MainImage: React.FunctionComponent<{ productColorId: number, mainImageId: number }> = ({ productColorId, mainImageId}) => {
 
     const {data: mainImage} = productColorImageAPI.useFetchByIdQuery(mainImageId);
 
     return (
         <div className={styles.basketBodyItem__image}>
-            <a href="#">
+            <NavLink to={`/productPage/${productColorId}`}>
                 {mainImage &&
                     <picture>
                         <source srcSet={`data:image/jpg;base64,${mainImage.data}`} type="image/jpg"/>
@@ -47,7 +49,7 @@ const MainImage: React.FunctionComponent<{ mainImageId: number }> = ({mainImageI
                              alt="product"/>
                     </picture>
                 }
-            </a>
+            </NavLink>
         </div>
     );
 }
