@@ -3,6 +3,7 @@ import classes from "./DayDiscount.module.css"
 import DayDiscountList from "./DayDiscountList";
 import {productAPI} from "../../../../redux/api/productAPI";
 import {Discounts} from "../../../../enums/discounts";
+import {productColorAPI} from "../../../../redux/api/productColorAPI";
 
 const DayDiscount: React.FunctionComponent = () => {
     const tomorrow = new Date();
@@ -10,7 +11,7 @@ const DayDiscount: React.FunctionComponent = () => {
 
     const [sub, setSub] = useState<Date>(new Date(tomorrow.getTime() - new Date().getTime()));
 
-    const {data: products, isLoading} = productAPI.useFetchAllByDiscountTypeNameQuery(Discounts.dayDiscount);
+    const {data: productColors, isLoading} = productColorAPI.useFetchAllByDiscountTypeNameQuery({discountTypeName: Discounts.dayDiscount, quantity: 7});
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -31,7 +32,7 @@ const DayDiscount: React.FunctionComponent = () => {
             </div>
             { isLoading ?
                 <div>Loading...</div> :
-                products && <DayDiscountList dayDiscounts={products}/>
+                productColors && <DayDiscountList dayDiscounts={productColors}/>
             }
         </div>
     );

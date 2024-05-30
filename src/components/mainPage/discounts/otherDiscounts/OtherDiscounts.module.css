@@ -3,6 +3,7 @@
     cursor: pointer;
     overflow: hidden;
     aspect-ratio: 300/400;
+    margin-bottom: 15px;
 }
 
 .discount__imgBlock:hover img {
@@ -32,6 +33,7 @@
 }
 
 .discounts__nav {
+    padding-top: 100px;
     display: flex;
     flex-wrap: wrap;
     gap: 55px;
@@ -45,6 +47,16 @@
     background: none;
     font-size: 32px;
     color: #959595;
+    transition: 0.3s ease 0s;
+}
+
+.buttonLink:hover {
+    text-decoration: underline;
+}
+
+.buttonLink._active {
+    font-weight: 500;
+    color: #000;
 }
 
 .buttonLinkActive {

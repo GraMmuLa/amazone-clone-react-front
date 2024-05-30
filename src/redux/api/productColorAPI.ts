@@ -56,6 +56,13 @@ export const productColorAPI = createApi({
             }),
             providesTags: ['ProductColor']
         }),
+        fetchAllByDiscountTypeName: build.query<IProductColor[], { discountTypeName: string, quantity: number }>({
+            query: (data) => ({
+                url: "/discountTypeName",
+                params: data
+            }),
+            providesTags: ['ProductColor']
+        }),
         fetchById: build.query<IProductColor, number>({
             query: (id: number) => ({
                 url: "",
