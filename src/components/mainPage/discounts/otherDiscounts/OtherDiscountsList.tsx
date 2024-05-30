@@ -6,6 +6,7 @@ import classes from "./OtherDiscountsList.module.css";
 
 const OtherDiscountsList: React.FunctionComponent<{ discountType: IDiscountType }> = ({ discountType }) => {
 
+
     const { data: products, isLoading } = productAPI.useFetchAllByDiscountTypeNameQuery(discountType.type);
 
     return (

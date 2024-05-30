@@ -44,7 +44,6 @@ const Basket: React.FunctionComponent = () => {
                            }} id="basket__allProductsEl" type="checkbox" />
                            <label className={styles.basket__allProductsLabel} htmlFor="basket__allProductsEl">Всі товари {`(${products.length})`}</label>
                         </div>
-                        {/* <h3 className={styles.basket__allProductsTitle}>Всі товари {`(${products.length})`}</h3> */}
                      </div>
                      <BasketItems priceSum={priceSum} products={products} />
                   </div>

@@ -1,17 +1,12 @@
 import styles from "./BasketItem.module.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import basketDelete from "../../imgs/basketDelete.svg";
 
 const BasketItem: React.FunctionComponent<{ priceSum: Function, image: string, text: string, color: string, size: string, price: number }> = ({ priceSum, image, text, color, size, price }) => {
 
    const [isChecked, setIsChecked] = useState(true);
-   const handleCheckboxChange = () => {
-      setIsChecked(!isChecked);
-   }
-   const [check, setCheck] = useState(Number);
-   console.log(check);
 
-   if (check) {
+   if (isChecked) {
       const gg = document.querySelector("#payBasket__allPrice span") as HTMLElement;
       gg.textContent = `${price}`;
    }
@@ -20,8 +15,7 @@ const BasketItem: React.FunctionComponent<{ priceSum: Function, image: string, t
       <li className={styles.basketItem}>
          <div className={styles.basketItemCheckBlock}>
             <input checked={isChecked} onChange={(e) => {
-               handleCheckboxChange();
-               e.target.checked ? setCheck(1) : setCheck(0)
+               e.target.checked ? setIsChecked(true) : setIsChecked(false)
             }} id={text} type="checkbox" />
             <label className={styles.basketItemLabel} htmlFor={text}></label>
          </div>
