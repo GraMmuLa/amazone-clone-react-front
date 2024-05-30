@@ -25,7 +25,8 @@ const ProductInfoMain: React.FunctionComponent<{ productColor: IProductColor }> 
                 {discount &&
                     <>
                         <h2>Ціна:</h2>
-                        <span>{productColor.price - discount.price} грн</span>
+                        <span className={styles.discountWrapper} style={{ color: '#FA6338' }}>{productColor.price - discount.price} грн <span className={styles.discount}>-{Math.round(discount.price / productColor.price * 100)}%</span></span>
+                        <span className={styles.prevPrice}>{productColor.price} грн</span>
                     </>
                 }
             </>

@@ -13,6 +13,7 @@ const OtherDiscounts: React.FunctionComponent<{ discountTypes: IDiscountType[] }
             <TabList className={classes.discounts__nav}>
                 {discountTypes.map(discountType =>
                     <Tab className={`${classes.discounts__navItem} ${classes.buttonLink}`}
+                        selectedClassName={classes._active}
                         key={discountType.id}
                         id={`${discountType.id}`}>{discountType.type}</Tab>)
                 }

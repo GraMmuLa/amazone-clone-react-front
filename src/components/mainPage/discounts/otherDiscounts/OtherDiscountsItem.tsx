@@ -5,6 +5,7 @@ import classes from "./OtherDiscounts.module.css";
 import IProductColor from "../../../../interfaces/IProductColor";
 import { productColorImageAPI } from "../../../../redux/api/productColorImageAPI";
 import { discountAPI } from "../../../../redux/api/discountAPI";
+import { NavLink } from "react-router-dom";
 
 const OtherDiscountsItem: React.FunctionComponent<{ productColor: IProductColor }> = ({ productColor }) => {
 
@@ -23,7 +24,7 @@ const Image: React.FunctionComponent<{ productColor: IProductColor }> = ({ produ
 
     return (
         <>
-            {productColorImage && <img src={'data:image/jpg;base64,' + productColorImage.data} alt="Product" className={classes.discount__img} />}
+            {productColorImage && productColor.id && <NavLink to={`/productPage/${productColor.id}`}><img src={'data:image/jpg;base64,' + productColorImage.data} alt="Product" className={classes.discount__img} /></NavLink>}
         </>
     );
 }
