@@ -18,7 +18,7 @@ const Orders: React.FunctionComponent = () => {
           <main className={styles.orders}>
               {isLogged ?
                 <OrdersBody/> :
-                  <h2 className={styles.orders__title}>Для перегляду замовлення увійдіть в акаунт!</h2>
+                  <h2 className={styles.orders_notLogged}>Для перегляду замовлення увійдіть в аккаунт!</h2>
               }
               <div className={styles.orders__recommendations}>
                   <h2 className={styles.orders__recommendationsTitle}>Клієнти також переглядали</h2>
