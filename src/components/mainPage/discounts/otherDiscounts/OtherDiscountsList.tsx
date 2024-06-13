@@ -14,7 +14,7 @@ const OtherDiscountsList: React.FunctionComponent<{ discountType: IDiscountType 
             {isLoading ?
                 <div>Loading...</div> :
                 <div className={classes.otherDiscountsList}>
-                    {productColors && productColors.map(productColor => <OtherDiscountsItem productColor={productColor} />)}
+                    {productColors && productColors.map(productColor => productColor.id && <OtherDiscountsItem key={productColor.id} productColor={productColor} />)}
                 </div>
             }
         </>

@@ -8,7 +8,7 @@ import {useAppSelector} from "../../../redux/hooks/useAppSelector";
 import {useAppDispatch} from "../../../redux/hooks/useAppDispatch";
 import {productCardSlice} from "../../../redux/slices/productCardSlice";
 
-const GiftCardBlock: React.FunctionComponent<{productCardDesignId: number}> = ({productCardDesignId}) => {
+const GiftCardBlock: React.FunctionComponent<{productCardDesignId: number, isOrdered: boolean, setIsOrdered: React.Dispatch<React.SetStateAction<boolean>>}> = ({productCardDesignId, isOrdered, setIsOrdered}) => {
 
    const { data: productCardDesign } = productCardDesignAPI.useFetchByIdQuery(productCardDesignId);
 
@@ -30,6 +30,8 @@ const GiftCardBlock: React.FunctionComponent<{productCardDesignId: number}> = ({
           productCard.email &&
           productCard.productCardDesignId) {
          const result = await addProductCard(productCard).unwrap();
+         if(result)
+            setIsOrdered(true);
       }
    }
 

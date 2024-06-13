@@ -44,7 +44,6 @@ function App() {
                         <Route path="/giftCard/:id" element={<GiftCard />} />
                         <Route path="/addProduct" element={<AddProduct />} />
                         <Route path="/addReview/:productId" element={<AddReview />} />
-                        <Route path="/thankForFeedback" element={<ThankForFeedback />} />
                         <Route path="/basket" element={<Basket />} />
                         <Route path="/customerService" element={<CustomerService />} />
                     </Route>

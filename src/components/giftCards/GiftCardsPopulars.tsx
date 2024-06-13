@@ -14,7 +14,7 @@ const GiftCardsPopulars: React.FunctionComponent = () => {
             <h3 className={styles.giftCardsPopulars__title}>Найпопулярніші</h3>
             { productCardDesigns &&
                 <div className={styles.giftCardsPopularsItems}>
-                   {productCardDesigns.map(productCardDesign => <GiftCardsPopularsItem
+                   {productCardDesigns.map(productCardDesign => productCardDesign.id && <GiftCardsPopularsItem key={productCardDesign.id}
                        productCardDesign={productCardDesign}/>)}
                 </div>
             }

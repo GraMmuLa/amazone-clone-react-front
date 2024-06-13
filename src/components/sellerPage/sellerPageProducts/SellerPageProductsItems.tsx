@@ -11,7 +11,7 @@ const SellerPageProductsItems: React.FunctionComponent<{ products: IProduct[] }>
 
    return (
       <div className={styles.qinsenProductsItems}>
-         {products.map(product => product.id && <SellerPageProductsItem productId={product.id} productName={product.name} />)}
+         {products.map(product => product.id && <SellerPageProductsItem key={product.id} productId={product.id} productName={product.name} />)}
       </div>
    );
 }
@@ -55,7 +55,7 @@ const SellerPageProductsItem:React.FunctionComponent<{productId: number, product
       <>
          {productColors &&
             productColors.map(productColor => productColor.mainImageId && productColor.id && (
-               <div className={styles.qinsenProductsItem}>
+               <div key={productColor.id} className={styles.qinsenProductsItem}>
                   <MainImage productColorId={productColor.id} imageId={productColor.mainImageId}/>
                   <div className={styles.qinsenProductsItem__title}><NavLink to={`/productPage/${productColor.id}`}>{productName}</NavLink></div>
                   {productColor.discountId ?
